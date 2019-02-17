@@ -1,0 +1,49 @@
+## Created with gatsby-plugin-netlify
+
+/*
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block
+  X-Content-Type-Options: nosniff
+/static/*
+  Cache-Control: public, max-age=31536000, immutable
+/sw.js
+  Cache-Control: no-cache
+/offline-plugin-app-shell-fallback/
+  Link: </webpack-runtime-019e791e10a584b6314f.js>; rel=preload; as=script
+  Link: </component---node-modules-gatsby-plugin-offline-app-shell-js-5afde8adc24146571735.js>; rel=preload; as=script
+/blog
+  Link: </webpack-runtime-019e791e10a584b6314f.js>; rel=preload; as=script
+  Link: </component---src-templates-blog-js-711a2aee18d0f3d9c499.js>; rel=preload; as=script
+/contact/
+  Link: </webpack-runtime-019e791e10a584b6314f.js>; rel=preload; as=script
+  Link: </component---src-templates-contact-page-js-7b4613e978c02d5815cb.js>; rel=preload; as=script
+/pricing/
+  Link: </webpack-runtime-019e791e10a584b6314f.js>; rel=preload; as=script
+  Link: </component---src-templates-pricing-page-js-7d3c13efa846dc0d7168.js>; rel=preload; as=script
+/
+  Link: </webpack-runtime-019e791e10a584b6314f.js>; rel=preload; as=script
+  Link: </component---src-templates-home-page-js-8e5a13d8f45c0ba9994b.js>; rel=preload; as=script
+/about/
+  Link: </webpack-runtime-019e791e10a584b6314f.js>; rel=preload; as=script
+  Link: </component---src-templates-about-page-js-781d758770f2310d53d2.js>; rel=preload; as=script
+/technologies/
+  Link: </webpack-runtime-019e791e10a584b6314f.js>; rel=preload; as=script
+  Link: </component---src-templates-technologies-page-js-0cd8538f5a279b7c64e4.js>; rel=preload; as=script
+/blog/lorem-ipsum-dolor-situm/
+  Link: </webpack-runtime-019e791e10a584b6314f.js>; rel=preload; as=script
+  Link: </0-1edd48b1ee2fc9d64f4b.js>; rel=preload; as=script
+/tags/lorem/
+  Link: </webpack-runtime-019e791e10a584b6314f.js>; rel=preload; as=script
+  Link: </component---src-templates-tags-js-539da3d7076e964a1ac5.js>; rel=preload; as=script
+/tags/ipsum/
+  Link: </webpack-runtime-019e791e10a584b6314f.js>; rel=preload; as=script
+  Link: </component---src-templates-tags-js-539da3d7076e964a1ac5.js>; rel=preload; as=script
+/404/
+  Link: </webpack-runtime-019e791e10a584b6314f.js>; rel=preload; as=script
+  Link: </component---src-pages-404-js-0044e62737a9116cd441.js>; rel=preload; as=script
+/tags/
+  Link: </webpack-runtime-019e791e10a584b6314f.js>; rel=preload; as=script
+  Link: </0-1edd48b1ee2fc9d64f4b.js>; rel=preload; as=script
+/404.html
+  Link: </webpack-runtime-019e791e10a584b6314f.js>; rel=preload; as=script
+  Link: </component---src-pages-404-js-0044e62737a9116cd441.js>; rel=preload; as=script

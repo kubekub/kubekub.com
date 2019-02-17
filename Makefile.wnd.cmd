@@ -13,7 +13,7 @@ goto :eof
 
 :build
 CMD /C npm run build
-xcopy /s build docs
+xcopy /s public docs
 xcopy /Y CNAME docs
 goto :eof
 
