@@ -14,7 +14,7 @@ goto :eof
 :build
 CMD /C npm run build
 xcopy /s build docs
-xcopy /-Y CNAME docs
+xcopy /Y CNAME docs
 goto :eof
 
 :serve
