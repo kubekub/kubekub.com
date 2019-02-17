@@ -7,15 +7,23 @@ goto %1
 echo DEFAULT
 goto :eof
 
-:install-ruby
-choco uninstall ruby
-choco install ruby --version 2.3.3
-choco install ruby2.devkit
+:install
+npm install -g npx
 goto :eof
 
+:build
+CMD /C npm run build
+xcopy /s build docs
+xcopy /-Y CNAME docs
+goto :eof
 
-:install-bundler
-gem install bundler
+:serve
+CMD /C npm run develop
+goto :eof
+
+:test
+echo 1
+echo 2
 goto :eof
 
 
