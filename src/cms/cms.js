@@ -9,7 +9,7 @@ import ContactPagePreview from './preview-templates/ContactPagePreview'
 
 CMS.registerPreviewStyle('/styles.css')
 CMS.registerPreviewTemplate('home', HomePagePreview)
-CMS.registerPreviewTemplate('about', AboutPagePreview)
+//CMS.registerPreviewTemplate('about', AboutPagePreview)
 CMS.registerPreviewTemplate('technologies', TechnologiesPagePreview)
 //CMS.registerPreviewTemplate('pricing', PricingPagePreview)
 CMS.registerPreviewTemplate('contact', ContactPagePreview)

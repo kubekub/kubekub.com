@@ -10,6 +10,7 @@ const ArticlePreview = ({entry, widgetFor}) => {
       cover={entry.getIn(['data', 'cover'])}
       meta_title={entry.getIn(['data', 'meta_title'])}
       meta_desc={entry.getIn(['data', 'meta_description'])}
+      author={entry.getIn(['data', 'author'])}
       tags={entry.getIn(['data', 'tags'])}
       title={entry.getIn(['data', 'title'])}
       slug={entry.getIn(['data', 'slug'])}

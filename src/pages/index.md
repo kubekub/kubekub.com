@@ -1,6 +1,6 @@
 ---
 templateKey: 'home-page'
-title: Kubekub
+title: Kubekub. A conceptual project about Kubernetes, DevOps and Cloud
 meta_title: Home | Kubekub
 meta_description: >-
   Cum sociis natoque penatibus et magnis dis parturient montes, nascetur

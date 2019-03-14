@@ -22,6 +22,8 @@ const PostCard = ({posts}) => {
             <p>
               {post.excerpt}
               <br />
+              <cite> - {post.frontmatter.author}</cite>
+              
               <br />
               <Link className='button is-small' to={post.fields.slug}>
                                 Keep Reading →

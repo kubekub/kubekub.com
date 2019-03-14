@@ -16,6 +16,7 @@ const ArticlePage = ({data}) => {
         meta_title={post.frontmatter.meta_title}
         meta_desc={post.frontmatter.meta_description}
         cover={post.frontmatter.cover}
+        author={post.frontmatter.author}
         slug={post.fields.slug}
       />
       <div className='container content'>
@@ -27,6 +28,7 @@ const ArticlePage = ({data}) => {
               cover={post.frontmatter.cover}
               meta_title={post.frontmatter.meta_title}
               meta_desc={post.frontmatter.meta_description}
+              author={post.frontmatter.author}
               tags={post.frontmatter.tags}
               title={post.frontmatter.title}
             />
@@ -69,6 +71,7 @@ export const pageQuery = graphql`
         cover
         meta_title
         meta_description
+        author
         tags
       }
     }

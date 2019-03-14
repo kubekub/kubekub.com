@@ -9,6 +9,7 @@ const ArticleTemplate = ({
   cover,
   meta_title,
   meta_desc,
+  author,
   tags,
   title,
 }) => {
@@ -34,6 +35,7 @@ const ArticleTemplate = ({
         </ul>
       </div>
       <hr />
+      <cite> – {author}</cite>
     </div>
   )
 }
