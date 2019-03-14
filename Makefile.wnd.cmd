@@ -13,8 +13,14 @@ goto :eof
 
 :build
 CMD /C npm run build
-xcopy /s build docs
+xcopy /s public docs
 xcopy /Y CNAME docs
+goto :eof
+
+:clean
+rmdir /S /Q .cache
+rmdir /S /Q docs
+rmdir /S /Q public
 goto :eof
 
 :serve

@@ -1,0 +1,64 @@
+## Created with gatsby-plugin-netlify
+
+/*
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block
+  X-Content-Type-Options: nosniff
+/static/*
+  Cache-Control: public, max-age=31536000, immutable
+/sw.js
+  Cache-Control: no-cache
+/offline-plugin-app-shell-fallback/
+  Link: </webpack-runtime-79859760a949c8a1bf08.js>; rel=preload; as=script
+  Link: </component---node-modules-gatsby-plugin-offline-app-shell-js-5afde8adc24146571735.js>; rel=preload; as=script
+/blog
+  Link: </webpack-runtime-79859760a949c8a1bf08.js>; rel=preload; as=script
+  Link: </component---src-templates-blog-js-80f602fdad1d5fd48c9f.js>; rel=preload; as=script
+/blog/2
+  Link: </webpack-runtime-79859760a949c8a1bf08.js>; rel=preload; as=script
+  Link: </component---src-templates-blog-js-80f602fdad1d5fd48c9f.js>; rel=preload; as=script
+/
+  Link: </webpack-runtime-79859760a949c8a1bf08.js>; rel=preload; as=script
+  Link: </component---src-templates-home-page-js-a7ef30e596bc129ce17f.js>; rel=preload; as=script
+/pricing/
+  Link: </webpack-runtime-79859760a949c8a1bf08.js>; rel=preload; as=script
+  Link: </component---src-templates-pricing-page-js-0526959d66139c3570e2.js>; rel=preload; as=script
+/contact/
+  Link: </webpack-runtime-79859760a949c8a1bf08.js>; rel=preload; as=script
+  Link: </component---src-templates-contact-page-js-783dfa1430471330e70e.js>; rel=preload; as=script
+/about/
+  Link: </webpack-runtime-79859760a949c8a1bf08.js>; rel=preload; as=script
+  Link: </component---src-templates-about-page-js-781d758770f2310d53d2.js>; rel=preload; as=script
+/technologies/
+  Link: </webpack-runtime-79859760a949c8a1bf08.js>; rel=preload; as=script
+  Link: </component---src-templates-technologies-page-js-0cd8538f5a279b7c64e4.js>; rel=preload; as=script
+/blog/terraform-aws-wso2-esb-docker-sample/
+  Link: </webpack-runtime-79859760a949c8a1bf08.js>; rel=preload; as=script
+  Link: </0-1edd48b1ee2fc9d64f4b.js>; rel=preload; as=script
+/blog/wso2-in-docker-registry/
+  Link: </webpack-runtime-79859760a949c8a1bf08.js>; rel=preload; as=script
+  Link: </0-1edd48b1ee2fc9d64f4b.js>; rel=preload; as=script
+/tags/terraform/
+  Link: </webpack-runtime-79859760a949c8a1bf08.js>; rel=preload; as=script
+  Link: </component---src-templates-tags-js-539da3d7076e964a1ac5.js>; rel=preload; as=script
+/tags/docker/
+  Link: </webpack-runtime-79859760a949c8a1bf08.js>; rel=preload; as=script
+  Link: </component---src-templates-tags-js-539da3d7076e964a1ac5.js>; rel=preload; as=script
+/tags/wso-2/
+  Link: </webpack-runtime-79859760a949c8a1bf08.js>; rel=preload; as=script
+  Link: </component---src-templates-tags-js-539da3d7076e964a1ac5.js>; rel=preload; as=script
+/tags/esb/
+  Link: </webpack-runtime-79859760a949c8a1bf08.js>; rel=preload; as=script
+  Link: </component---src-templates-tags-js-539da3d7076e964a1ac5.js>; rel=preload; as=script
+/tags/aws/
+  Link: </webpack-runtime-79859760a949c8a1bf08.js>; rel=preload; as=script
+  Link: </component---src-templates-tags-js-539da3d7076e964a1ac5.js>; rel=preload; as=script
+/404/
+  Link: </webpack-runtime-79859760a949c8a1bf08.js>; rel=preload; as=script
+  Link: </component---src-pages-404-js-0044e62737a9116cd441.js>; rel=preload; as=script
+/tags/
+  Link: </webpack-runtime-79859760a949c8a1bf08.js>; rel=preload; as=script
+  Link: </0-1edd48b1ee2fc9d64f4b.js>; rel=preload; as=script
+/404.html
+  Link: </webpack-runtime-79859760a949c8a1bf08.js>; rel=preload; as=script
+  Link: </component---src-pages-404-js-0044e62737a9116cd441.js>; rel=preload; as=script
