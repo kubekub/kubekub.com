@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Using Docker registry for WSO2 images</title>
+  <meta name="author" content="" />
+
+  
+  <meta name="keywords" content="devows, hugo, go">	
+  
+
+  
+  <meta name="description" content="kubekub site">	
+  
+
+  <meta name="generator" content="Hugo 0.55.6" />
+
+  <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="/css/animate.css" rel="stylesheet">
+
+  
+  
+    <link href="/css/style.default.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+
+  
+  <link href="/css/custom.css" rel="stylesheet">
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+  
+
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
+
+  <link rel="alternate" href="https://www.kubekub.com/index.xml" type="application/rss+xml" title="kubekub">
+
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@GoHugoIO">
+  <meta name="twitter:title" content="Using Docker registry for WSO2 images">
+  <meta name="twitter:image" content="https://www.kubekub.com/img/imported/algeciras-boat-2.jpg">
+  <meta name="twitter:description" content="kubekub site">
+
+  
+  <meta property="og:title" content="Using Docker registry for WSO2 images" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.kubekub.com/blog/2015/08/10/wso2-in-docker-registry-en//" />
+  <meta property="og:image" content="img/logo.png" />
+
+</head>
+
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="https://www.kubekub.com/">
+                    <img src="https://www.kubekub.com/img/logo.png" alt="Using Docker registry for WSO2 images logo" class="hidden-xs hidden-sm">
+                    <img src="https://www.kubekub.com/img/logo-small.png" alt="Using Docker registry for WSO2 images logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Using Docker registry for WSO2 images - go to homepage</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">Toggle Navigation</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">Home</a>
+                    
+                  </li>
+                  
+                  
+                  <li class="dropdown active">
+                    
+                    <a href="/blog/">Blog</a>
+                    
+                  </li>
+                  
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/technologies/">Technologies</a>
+                    
+                  </li>
+                  
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">Contact</a>
+                    
+                  </li>
+                  
+                </ul>
+            </div>
+            
+
+            <div class="collapse clearfix" id="search">
+
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+
+                </span>
+                    </div>
+                </form>
+
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Using Docker registry for WSO2 images</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+
+                        <p class="text-muted text-uppercase mb-small text-right">By <a href="#">Juan Carlos Garcia Pelaez</a> | August 10, 2015</p>
+
+                        <div id="post-content">
+                          
+
+<h2 id="introduction">Introduction</h2>
+
+<p>Once we know <a href="https://itscenario.wordpress.com/2014/11/09/dockerizing-wso2-esb/">how to create a Docker image</a>, if we want to share this image with the team, or use it in different environments, it´s possible to export it to a tar file, or use the <a href="https://docs.docker.com/reference/builder/">Dockerfile</a> to build the image on each of the docker hosts where it will be used.
+Having to <strong>rebuild the image</strong> on the pc of each of the components of your team is not very practical. Would not it be better if we could download images ready to use? To resolve this problem Docker has a solution called registry, which can raise and download our images.</p>
+
+<p>One of the great advantages is to be able to test different versions of a product only changing the version of the image to download.</p>
+
+<p>We can install a private registry or use the <a href="https://registry.hub.docker.com/">public registry available in Docker</a>. This registry can be used by any user, and has a search function to see if another user has added the image we want.</p>
+
+<p><img src="/img/posts/wso2-in-docker-registry/search-docker-registry.png" alt="Registration docker" /></p>
+
+<p>If you use an image uploaded by another user is recommended to use the marked with &ldquo;automatic building&rdquo;. In these images we can see how it has been created with the <a href="https://docs.docker.com/reference/builder/">Dockerfile</a>, if the image has been uploaded directly by a user whe should not trust it, because the image can contain malicious software.</p>
+
+<p>For the use in production of Docker it is recommended to write our own images, as the images of the registry can be deleted by the user. It is also recommended to use images marked as official, these have been developed either by the vendor, by the Docker team, or by popular users in the docker registry.</p>
+
+<p><img src="/img/posts/wso2-in-docker-registry/docker-official-repo.png" alt="Registration docker" /></p>
+
+<p>In this post we will explain how to upload images of WSO2 in the Docker regitry.</p>
+
+<h2 id="creating-images-in-the-public-registry-of-docker">Creating images in the public registry of Docker</h2>
+
+<p>First we create a public repository on github or bitbucket or <a href="https://github.com/jgpelaez/docker-wso2-esb.git">fork an existing one</a>.</p>
+
+<p>In this repository we add the <a href="https://docs.docker.com/reference/builder/">Dockerfile</a>:</p>
+
+<pre><code class="language-docker">FROM java:openjdk-7
+
+MAINTAINER juancarlosgpelaez@gmail.com
+
+ENV WSO2_URL=https://s3-us-west-2.amazonaws.com/wso2-stratos
+ENV WSO2_SOFT_VER=4.8.1
+RUN  \
+	mkdir -p /opt &amp;&amp; \
+	wget -P /opt $WSO2_URL/wso2esb-$WSO2_SOFT_VER.zip &amp;&amp; \
+    unzip /opt/wso2esb-$WSO2_SOFT_VER.zip -d /opt &amp;&amp; \
+    rm /opt/wso2esb-$WSO2_SOFT_VER.zip
+
+# ESB https port
+EXPOSE 9443
+# ESB http pass-through transport port
+EXPOSE 8280
+# ESB https pass-through transport port
+EXPOSE 8243
+
+ENV JAVA_HOME=/usr
+CMD [&quot;/opt/wso2esb-4.8.1/bin/wso2server.sh&quot;]
+</code></pre>
+
+<p>Create a user in the <a href="https://registry.hub.docker.com/">docker registry</a></p>
+
+<p><img src="/img/posts/wso2-in-docker-registry/docker-registry-signup.png" alt="registry in docker" /></p>
+
+<p>We can use our GitHub user for registration.</p>
+
+<p>Once we have our account we can create a new repository with <em>automatic build</em>, the registry will read our <a href="https://docs.docker.com/reference/builder/">Dockerfile</a> and automatically perform the build:</p>
+
+<p><img src="/img/posts/wso2-in-docker-registry/docker-registry-repositories.png" alt="docker registry" /></p>
+
+<p>It is possible to chose our bitbucket account or github:</p>
+
+<p><img src="/img/posts/wso2-in-docker-registry/docker-registry-git-source.png" alt="docker registry" /></p>
+
+<p>And select the repository where the <a href="https://docs.docker.com/reference/builder/">Dockerfile</a> is:</p>
+
+<p><img src="/img/posts/wso2-in-docker-registry/docker-registry-git-source-repository.png" alt="docker registry" /></p>
+
+<p>We can select the path of the <a href="https://docs.docker.com/reference/builder/">Dockerfile</a>. In this case will add several  <a href="https://docs.docker.com/reference/builder/">Dockerfile</a> for different versions of the WSO2 ESB.
+We can also change the name of the repository, the convention used for the git repository is <strong>docker-[vendor]-[app]</strong> and for the registry <strong>[vendor]-[app]</strong>.</p>
+
+<p><img src="/img/posts/wso2-in-docker-registry/docker-registry-repository-creation.png" alt="Repository creation" /></p>
+
+<p>The build can be executed manually, but normally will not be necessary, as when we change a file in our repository for git, the docker build runs automatically.</p>
+
+<p><img src="/img/posts/wso2-in-docker-registry/docker-registry-repository-build-details.png" alt="docker registry" /></p>
+
+<h2 id="using-the-public-docker-registry">Using the public Docker registry</h2>
+
+<p>Once the images have bee created or we want to test a new image uploaded by another user we can do it with the run command, for example:</p>
+
+<pre><code>docker run -p 19443:9443 jgpelaez/wso2-esb
+</code></pre>
+
+<p>This command runs an instance indicating the image name <strong>(jgpelaez/wso2-esb)</strong>, the container port <strong>9443</strong> will be exposed to the host on port 19443 and the tag used will&rsquo;latest&rsquo;. To see more execution parameters we can execute the command <strong>&lsquo;docker &ndash;help&rsquo;</strong>.</p>
+
+<p>In this case we see the <strong>WSO2 ESB management console</strong> with the URL in your browser:</p>
+
+<pre><code>https://localhost:19443/carbon/admin/login.jsp
+</code></pre>
+
+<p><img src="/img/posts/wso2-in-docker-registry/docker-wso2-esb-admin.png" alt="docker registry" /></p>
+
+<p>The host to set in the url depends on the operating system in which docker is executed. If it has natively docker (ubuntu, redhat, etc) will be localhost, if it&rsquo;s use boot2docker (Windows / Mac), will be the IP of the virtual machine created by <a href="http://boot2docker.io/">boot2docker</a> (by defect usually 192.168.59.103).</p>
+
+<p>Among other options we could try the wso2 samples with the command:</p>
+
+<pre><code>docker run -p 19443:9443 jgpelaez/wso2-esb/opt/wso2esb-4.8.1/bin/wso2esb-samples.sh -sn [sample number]
+</code></pre>
+
+<p>A <strong>great advantage</strong> provided by using docker is to run different instances of the same image in the same machine,s modifying the port, always using one available, or with the &lsquo;-P&rsquo; argument to automatically assign an available port. It&rsquo;s possible to see the running containers with  the instruction:</p>
+
+<pre><code>docker ps
+</code></pre>
+
+<pre><code>CONTAINER ID        IMAGE               COMMAND                CREATED             STATUS              PORTS                                        NAMES
+dbfa29da863f        jgpelaez/wso2-esb   &quot;/opt/wso2esb-4.8.1/  44 minutes ago      Up 44 minutes       8243/tcp, 8280/tcp, 0.0.0.0:9443-&gt;9443/tcp   happy_goodall      
+</code></pre>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>The use of Linux containers (in this case Docker) and an the a image registry can help us a lot to get isolated and repeatable environments.
+Docker registry or a private registry will help us in development for all team members to work with the same configuration.
+From a DevOps perspective, if we use Docker images for development, test and production with a registry, we test in a very similar environment in all phases of project / product, and will minify configuration errors that could reach production.</p>
+
+<h2 id="resources">Resources</h2>
+
+<ul>
+<li>Source code in <a href="https://github.com/jgpelaez/docker-wso2-esb.git">github/jgpelaez</a>.</li>
+<li>Image of the WSO2 ESB <a href="https://registry.hub.docker.com/u/jgpelaez/wso2-esb/">Docker repository</a></li>
+</ul>
+
+<h2 id="thanks-contributions">Thanks / Contributions</h2>
+
+<ul>
+<li>You can contribute to the Docker registry: <a href="https://github.com/jgpelaez/docker-wso2-esb">https://github.com/jgpelaez/docker-wso2-esb</a> creating &ldquo;pull requests&rdquo;</li>
+<li>If it seems useful code you can favourite it in:
+<a href="https://github.com/jgpelaez/docker-wso2-esb/stargazers">GitHub</a>
+<a href="https://registry.hub.docker.com/u/jgpelaez/wso2-esb/">Docker Registry</a></li>
+</ul>
+
+                        </div>
+                        
+                        
+                        <div id="comments">
+                            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "kubekub" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                        </div>
+                        
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Search</h3>
+    </div>
+
+    <div class="panel-body">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" role="search">
+            <div class="input-group">
+                <input type="search" name="q" class="form-control" placeholder="Search">
+                <input type="hidden" name="sitesearch" value="https://www.kubekub.com/">
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="https://www.kubekub.com/categories/docker">docker (2)</a>
+            </li>
+            
+            <li><a href="https://www.kubekub.com/categories/terraform">terraform (1)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">Tags</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="https://www.kubekub.com/tags/aws"><i class="fa fa-tags"></i> aws</a>
+            </li>
+            
+            <li><a href="https://www.kubekub.com/tags/docker"><i class="fa fa-tags"></i> docker</a>
+            </li>
+            
+            <li><a href="https://www.kubekub.com/tags/esb"><i class="fa fa-tags"></i> esb</a>
+            </li>
+            
+            <li><a href="https://www.kubekub.com/tags/terraform"><i class="fa fa-tags"></i> terraform</a>
+            </li>
+            
+            <li><a href="https://www.kubekub.com/tags/wso2"><i class="fa fa-tags"></i> wso2</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <footer id="footer">
+    <div class="container">
+
+        
+        <div class="col-md-4 col-sm-6">
+            <h4>About us</h4>
+
+            kubekub site.
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+        <div class="col-md-4 col-sm-6">
+
+             
+            <h4>Recent posts</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="https://www.kubekub.com/blog/2015/08/22/terraform-aws-wso2-esb-docker-sample/">
+                          
+                            <img src="https://www.kubekub.com/img/imported/plane-clouds.jpg" class="img-responsive" alt="Infrastructure as code with Terraform and docker">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="https://www.kubekub.com/blog/2015/08/22/terraform-aws-wso2-esb-docker-sample/">Infrastructure as code with Terraform and docker</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="https://www.kubekub.com/blog/2015/08/10/wso2-in-docker-registry-en/">
+                          
+                            <img src="https://www.kubekub.com/img/imported/algeciras-boat-2.jpg" class="img-responsive" alt="Using Docker registry for WSO2 images">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="https://www.kubekub.com/blog/2015/08/10/wso2-in-docker-registry-en/">Using Docker registry for WSO2 images</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg">
+             
+
+        </div>
+        
+
+        
+        <div class="col-md-4 col-sm-6">
+
+          <h4>Contact</h4>
+
+            <strong>kubekub.</strong>
+        <br>Calle del Barco
+        <br>Madrid
+        <br>28004
+        <br>
+        <strong>Spain</strong>
+
+            <a href="/contact" class="btn btn-small btn-template-main">Go to contact page</a>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright (c) 2019, kubekub; all rights reserved.</p>
+            
+            <p class="pull-right">
+              Template by <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+
+              Ported to Hugo by <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    
+<script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+
+<script src="//maps.googleapis.com/maps/api/js?key=AIzaSyCr3RKvfa2Nd2790A-QSyjqJEtx2-vEjWU&v=3.exp"></script>
+
+<script src="https://www.kubekub.com/js/hpneo.gmaps.js"></script>
+<script src="https://www.kubekub.com/js/gmaps.init.js"></script>
+<script src="https://www.kubekub.com/js/front.js"></script>
+
+
+<script src="https://www.kubekub.com/js/owl.carousel.min.js"></script>
+
+
+  </body>
+</html>

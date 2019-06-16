@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Infrastructure as code with Terraform and docker</title>
+  <meta name="author" content="" />
+
+  
+  <meta name="keywords" content="devows, hugo, go">	
+  
+
+  
+  <meta name="description" content="kubekub site">	
+  
+
+  <meta name="generator" content="Hugo 0.55.6" />
+
+  <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="/css/animate.css" rel="stylesheet">
+
+  
+  
+    <link href="/css/style.default.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+
+  
+  <link href="/css/custom.css" rel="stylesheet">
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+  
+
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
+
+  <link rel="alternate" href="https://www.kubekub.com/index.xml" type="application/rss+xml" title="kubekub">
+
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@GoHugoIO">
+  <meta name="twitter:title" content="Infrastructure as code with Terraform and docker">
+  <meta name="twitter:image" content="https://www.kubekub.com/img/imported/plane-clouds.jpg">
+  <meta name="twitter:description" content="kubekub site">
+
+  
+  <meta property="og:title" content="Infrastructure as code with Terraform and docker" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.kubekub.com/blog/2015/08/22/terraform-aws-wso2-esb-docker-sample//" />
+  <meta property="og:image" content="img/logo.png" />
+
+</head>
+
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="https://www.kubekub.com/">
+                    <img src="https://www.kubekub.com/img/logo.png" alt="Infrastructure as code with Terraform and docker logo" class="hidden-xs hidden-sm">
+                    <img src="https://www.kubekub.com/img/logo-small.png" alt="Infrastructure as code with Terraform and docker logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Infrastructure as code with Terraform and docker - go to homepage</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">Toggle Navigation</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">Home</a>
+                    
+                  </li>
+                  
+                  
+                  <li class="dropdown active">
+                    
+                    <a href="/blog/">Blog</a>
+                    
+                  </li>
+                  
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/technologies/">Technologies</a>
+                    
+                  </li>
+                  
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">Contact</a>
+                    
+                  </li>
+                  
+                </ul>
+            </div>
+            
+
+            <div class="collapse clearfix" id="search">
+
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+
+                </span>
+                    </div>
+                </form>
+
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Infrastructure as code with Terraform and docker</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+
+                        <p class="text-muted text-uppercase mb-small text-right">By <a href="#">Juan Carlos Garcia Pelaez</a> | August 22, 2015</p>
+
+                        <div id="post-content">
+                          
+
+<p>One of the good practices in a data center or a cloud infrastructure is to manage the <a href="http://www.thoughtworks.com/es/insights/blog/infrastructure-code-reason-smile">infrastructure as code</a>.
+There are many different options in the market as <strong><a href="https://aws.amazon.com/cloudformation/">CloudFormation</a></strong>, <strong><a href="https://wiki.openstack.org/wiki/Heat">Heat</a></strong>, <strong><a href="https://terraform.io/">terraform</a></strong>, etc. to create and provision the infrastructure and code.
+On Internet we can find different comparisons for the tools:</p>
+
+<ul>
+<li><a href="http://www.thoughtworks.com/es/insights/blog/choosing-right-tool-provision-aws-infrastructure">thoughtworks.com</a></li>
+<li><a href="https://ypoonawala.wordpress.com/2014/12/14/terraform-vs-cloudformation-a-comparison-of-infra-management-tools/">ypoonawala.wordpress.com</a></li>
+<li><a href="https://www.terraform.io/intro/vs/index.html">www.terraform.io</a></li>
+</ul>
+
+<p><strong><a href="https://aws.amazon.com/cloudformation/">CloudFormation</a></strong> and <strong><a href="https://wiki.openstack.org/wiki/Heat">Heat</a></strong> are specific for AWS and OpenStack, and <strong><a href="https://terraform.io/">Terraform</a></strong> can be used for multiple cloud providers.
+In this article it&rsquo;s going to be explained how to create a simple infrastructure in <a href="https://aws.amazon.com/">AWS</a> with <strong><a href="https://terraform.io/">Terraform</a></strong> and <a href="https://www.docker.com/">Docker</a>.</p>
+
+<p>The sample application will have an <a href="https://aws.amazon.com/elasticloadbalancing/">Elastic Load Balancer</a>, an EC2 instance with a <a href="http://wso2.com/products/enterprise-service-bus/">WSO2 ESB</a>, and an <a href="http://axis.apache.org/axis2/java/core/">axis server</a> with a sample service. This sample is based in the <a href="https://www.terraform.io/intro/examples/aws.html">BASIC TWO-TIER AWS ARCHITECTURE</a> from <a href="https://terraform.io/">Terraform</a> samples and the WSO2 ESB samples.</p>
+
+<h1 id="aws-account">AWS account</h1>
+
+<p>The sample can be executed in the <a href="http://aws.amazon.com/free/">AWS free tier</a> without cost.</p>
+
+<p>First it&rsquo;s necessary to create an account in AWS or use an existing one.</p>
+
+<p>Once we have our AWS account, it&rsquo;s necessary to <strong><a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html">create a secret key</a></strong> on aws.</p>
+
+<p><img src="/img/posts/terraform-aws-wso2-esb-docker-sample/aws-iam-create-access-key.png" alt="Create secret key" /></p>
+
+<p>This secret key and password will allow to access AWS with the <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Welcome.html">Amazon EC2 API</a>, and internally <a href="https://terraform.io/">Terraform</a> uses it.</p>
+
+<h1 id="use-of-terraform">Use of terraform</h1>
+
+<p><a href="https://terraform.io/">Terraform</a> can be installed <a href="https://www.terraform.io/intro/getting-started/install.html">following the instructions</a>, but we can avoid it using a <a href="https://www.docker.com/">Docker</a> image doing a search in the <strong><a href="https://hub.docker.com/">Docker Hub</a></strong>. Using a <a href="https://hub.docker.com/r/uzyexe/terraform/">docker image</a> it&rsquo;s not needed to install additional software in your computer, and it also allows to use <a href="https://terraform.io/">Terraform</a> in unsupported operating systems. In a team everybody will use the same version of <a href="https://terraform.io/">Terraform</a> if we specify it in the execution scripts.</p>
+
+<p>To obtain the <a href="https://www.docker.com/">Docker</a> image, we can pull it, in this case:</p>
+
+<pre><code class="language-sh">docker pull uzyexe/terraform
+</code></pre>
+
+<h2 id="terraform-project">Terraform project</h2>
+
+<p>Terraform uses text files to describe infrastructure and to set variables. These text files are called Terraform configurations and end in .tf. We can create the <a href="https://terraform.io/">Terraform</a> files, using the <a href="https://www.terraform.io/docs/configuration/syntax.html">terraform dsl or in JSON format</a> (all the <strong>.tf</strong> files will be executed in parallel if there is no dependency between instructions). In this sample the configuration files will be:</p>
+
+<h3 id="outputs-tf"><strong>outputs.tf</strong>:</h3>
+
+<p>Outputs define values that will be highlighted to the user when Terraform applies:</p>
+
+<pre><code class="language-json">output &quot;ebs_address&quot; {
+  value = &quot;${aws_elb.web.dns_name}&quot;
+}
+
+output &quot;ec_address&quot; {
+  value = &quot;${aws_instance.web.dns_name}&quot;
+}
+
+</code></pre>
+
+<h3 id="variables-tf"><strong>variables.tf</strong>:</h3>
+
+<p>Definition for some input variables as the region, instance type and region, the keys, and passwords will be parameterized.</p>
+
+<pre><code class="language-json">variable &quot;key_name&quot; {
+    description = &quot;Name of the SSH keypair to use in AWS.&quot;
+}
+
+variable &quot;key_path&quot; {
+    description = &quot;Path to the private portion of the SSH key specified.&quot;
+}
+
+variable &quot;access_key&quot; {}
+variable &quot;secret_key&quot; {}
+
+variable &quot;aws_region&quot; {
+    description = &quot;AWS region to launch servers.&quot;
+    default = &quot;eu-west-1&quot;
+}
+
+# Ubuntu Server 14.04 LTS (x64)
+variable &quot;aws_amis&quot; {
+    default = {
+        eu-west-1 = &quot;ami-5da23a2a&quot;
+    }
+}
+
+</code></pre>
+
+<h3 id="terraform-tfvars"><strong>terraform.tfvars</strong>:</h3>
+
+<p>Replacement for the variables, in this file we put the user data information, for example the user key and password. This file should be added as ignored in the public git repository. We can store this files in private repositories (in bitbucket we can have <strong><a href="https://bitbucket.org/plans">unlimited private repositories for free</a></strong>)</p>
+
+<h3 id="main-tf"><strong>main.tf</strong>:</h3>
+
+<p>Main file with our code for the creation.</p>
+
+<p>In this file it&rsquo;s created an AWS security group, <a href="https://aws.amazon.com/elasticloadbalancing/">Elastic Load Balancer</a> and an AWS EC2 instance.</p>
+
+<p><a href="http://www.cloudcomputingpatterns.org/Elastic_Load_Balancer">Elastic Load Balance Pattern</a>:
+<img src="/img/posts/terraform-aws-wso2-esb-docker-sample/elastic-load-balancer-pattern.png" alt="Elastic Load Balance Pattern" /></p>
+
+<p>With the <a href="https://aws.amazon.com/elasticloadbalancing/">Elastic Load Balancer</a> we would have in the future the possibility to dynamically add more services to our infrastructure.
+The instance is provisioned with simple shell scripts installing <a href="https://www.docker.com/">Docker</a> images. The instance can be also provisioned with a <a href="https://aws.amazon.com/marketplace/help/200940360">custom Amazon Machine Image (AMI)</a> or with a provisioner like <strong><a href="https://www.packer.io/">Packer</a></strong>, <strong><a href="http://www.ansible.com/home">Ansible</a></strong>, <strong><a href="https://www.chef.io/">Chef</a></strong>, <strong><a href="https://puppetlabs.com/">Puppet</a></strong>&hellip;</p>
+
+<pre><code class="language-json"># Specify the provider and access details
+provider &quot;aws&quot; {
+    access_key = &quot;${var.access_key}&quot;
+    secret_key = &quot;${var.secret_key}&quot;
+    region = &quot;${var.aws_region}&quot;
+}
+
+# Our default security group to access
+# the instances over SSH and HTTP
+resource &quot;aws_security_group&quot; &quot;default&quot; {
+    name = &quot;terraform_example&quot;
+    description = &quot;Used in the terraform&quot;
+
+    # SSH access from anywhere
+    ingress {
+        from_port = 22
+        to_port = 22
+        protocol = &quot;tcp&quot;
+        cidr_blocks = [&quot;0.0.0.0/0&quot;]
+    }
+
+    # HTTP access from anywhere
+    ingress {
+        from_port = 443
+        to_port = 443
+        protocol = &quot;tcp&quot;
+        cidr_blocks = [&quot;0.0.0.0/0&quot;]
+    }
+    
+    # HTTP access from anywhere
+    ingress {
+        from_port = 80
+        to_port = 80
+        protocol = &quot;tcp&quot;
+        cidr_blocks = [&quot;0.0.0.0/0&quot;]
+    }
+
+    # outbound internet access
+    egress {
+        from_port = 0
+        to_port = 0
+        protocol = &quot;-1&quot;
+        cidr_blocks = [&quot;0.0.0.0/0&quot;]
+    }
+}
+
+
+resource &quot;aws_elb&quot; &quot;web&quot; {
+  name = &quot;terraform-example-elb&quot;
+
+  # The same availability zone as our instance
+  availability_zones = [&quot;${aws_instance.web.availability_zone}&quot;]
+
+  listener {
+    instance_port = 80
+    instance_protocol = &quot;http&quot;
+    lb_port = 80
+    lb_protocol = &quot;http&quot;
+  }
+  
+  # The instance is registered automatically
+  instances = [&quot;${aws_instance.web.id}&quot;]
+}
+
+resource &quot;aws_instance&quot; &quot;web&quot; {
+  # The connection block tells our provisioner how to
+  # communicate with the resource (instance)
+  connection {
+    # The default username for our AMI
+    user = &quot;ubuntu&quot;
+
+    # The path to your keyfile
+    key_file = &quot;${var.key_path}&quot;
+  }
+
+  instance_type = &quot;t1.micro&quot;
+
+  # Lookup the correct AMI based on the region
+  # we specified
+  ami = &quot;${lookup(var.aws_amis, var.aws_region)}&quot;
+
+  # The name of our SSH keypair you've created and downloaded
+  # from the AWS console.
+  #
+  # https://console.aws.amazon.com/ec2/v2/home?region=us-west-2#KeyPairs:
+  #
+  key_name = &quot;${var.key_name}&quot;
+
+  # Our Security group to allow HTTP and SSH access
+  security_groups = [&quot;${aws_security_group.default.name}&quot;]
+
+  # We run a remote provisioner on the instance after creating it.
+  provisioner &quot;file&quot; {
+      source = &quot;./wso2-esb/&quot;
+      destination = &quot;/tmp/&quot;
+  }	
+provisioner &quot;remote-exec&quot; {
+   inline = [
+        &quot;sh /tmp/install-docker.sh&quot;,
+        &quot;sh /tmp/download-docker-images.sh&quot;,        
+        &quot;sh /tmp/run-axis-server.sh&quot;,
+        &quot;sh /tmp/run-esb.sh&quot;
+    ]
+  }
+}
+</code></pre>
+
+<p>The shell scripts for provision the machine are simple scripts, creating an axis service and using the <a href="http://wso2.com/products/enterprise-service-bus/">WSO2 ESB</a> as a proxy.
+The idea of is to create an stateless instance, the ESB will proxy all the connections and do a logging (in the sample only in the log file, but can be in a remote statefull service, like a database or a <a href="https://aws.amazon.com/s3/">S3 bucket</a>). Following the <a href="(http://www.cloudcomputingpatterns.org/Stateless_Component)">stateless machine pattern</a> we can add an remove dynamically instances depending on the traffic. To provision new services and escalate will be really simple.</p>
+
+<p><img src="/img/posts/terraform-aws-wso2-esb-docker-sample//Stateless_component_sketch.png" alt="Stateless Pattern" /></p>
+
+<p>The shell script files are:</p>
+
+<ul>
+<li><strong>install-docker.sh</strong>:</li>
+</ul>
+
+<pre><code class="language-sh">#!/bin/sh
+curl -sSL https://get.docker.com/ | sh
+sudo usermod -aG docker ubuntu
+echo added user to docker group
+</code></pre>
+
+<p>This script executes the installation of <a href="https://www.docker.com/">Docker</a> and adds the user in the <a href="https://www.docker.com/">Docker</a> group.</p>
+
+<ul>
+<li><strong>run-axis-server.sh</strong>:</li>
+</ul>
+
+<pre><code class="language-sh">#!/bin/sh
+. /tmp/set-env.sh
+
+sudo docker rm -f $AXIS_SERVER_NAME
+sudo docker rm -f wso2-esb-samples-as
+
+#Creates a container 
+sudo docker run -d --name wso2-esb-samples-as -v $WSO2_ESB_PATH \
+ jgpelaez/wso2-esb /bin/bash
+
+mkdir -p target
+
+axis_server_pid=$(sudo docker run \
+  -d  \
+  --volumes-from wso2-esb-samples-as \
+  --name $AXIS_SERVER_NAME \
+  webratio/ant sh $WSO2_ESB_SAMPLES_PATH/axis2Server/axis2server.sh -name $AXIS_SERVER_NAME)
+  
+echo &quot;container id&quot;. $axis_server_pid
+sudo docker exec -d $axis_server_pid ant -f $WSO2_ESB_SAMPLES_PATH/axis2Server/src/SimpleStockQuoteService/build.xml
+</code></pre>
+
+<p>This script executes a <a href="https://www.docker.com/">Docker</a> container with ant executing an axis server. The execution code is in a volume with the <a href="http://wso2.com/products/enterprise-service-bus/">WSO2 ESB</a> samples.</p>
+
+<ul>
+<li><strong>run-axis-server.sh</strong>:</li>
+</ul>
+
+<pre><code class="language-sh">#!/bin/sh
+. /tmp/set-env.sh
+
+sudo docker rm -f wso2-esb-samples
+
+sudo docker build -t jgpelaez/wso2-esb-samples ../utils/esb/
+
+sudo docker run  \
+	-d  \
+	-p 443:9443 -p 80:8280 \
+	-v $WSO2_ESB_PATH \
+	--link wso2-esb-samples-axis-server:wso2-esb-samples-axis-server \
+	--name wso2-esb-samples \
+	jgpelaez/wso2-esb $WSO2_ESB_PATH/bin/wso2esb-samples.sh -sn 0
+</code></pre>
+
+<p>Runs a <a href="https://www.docker.com/">Docker</a> container with a <a href="http://wso2.com/products/enterprise-service-bus/">WSO2 ESB</a> configured with the sample number 0. The https 9443 port will be exposed outside through the standar 443, and the execution port 8280 with the 80 port.
+The &ndash;link will create a link with the axis server, and the axis server port doesn&rsquo;t needs to expose the ports outside <a href="https://www.docker.com/">Docker</a>.</p>
+
+<h2 id="terraform-execution">Terraform execution</h2>
+
+<p>Before the execution, as it&rsquo;s necessary ssh access to the EC2 instance we need to <strong>create a key pai</strong>r in the AWS console, going to <strong>EC2 dashboard</strong>, <strong>Network &amp; security</strong>:
+<img src="/img/posts/terraform-aws-wso2-esb-docker-sample/aws-create-key-pair.png" alt="Create key pair" /></p>
+
+<p>Will create a &ldquo;.pem&rdquo; file, this file will allow to access <a href="https://terraform.io/">Terraform</a> through ssh.</p>
+
+<h3 id="execution-plan">Execution plan:</h3>
+
+<p>The <a href="https://terraform.io/">Terraform</a> plan command is used to create an execution plan. Our first execution will be:</p>
+
+<pre><code class="language-sh">docker run \
+	--rm \
+	-v $(pwd):/data \
+	-v /home/jgpelaez/git/ec2-instance/data/:/data-ssl \
+    uzyexe/terraform plan \
+    -var 'key_name=keypar2' -var 'key_path=/data-ssl/keypar2.pem'
+</code></pre>
+
+<p>With -v it´s sharing the host folders with the container, the /data for the .tf files and the /data-ssl for the key ar previously created.
+The execution will create an initial plan file called <strong>terraform.tfstate</strong></p>
+
+<p>After the creation of the plan, can be applied and create the real infrastructure with the instruction apply:</p>
+
+<pre><code class="language-sh">docker run \
+	--rm \
+	-v $(pwd):/data \
+	-v /home/jgpelaez/git/ec2-instance/data/:/data-ssl \
+    uzyexe/terraform apply \
+    -var 'key_name=keypar2' -var 'key_path=/data-ssl/keypar2.pem'
+</code></pre>
+
+<p>Will create the infrasctructure in the AWS, and print the ouput variables:</p>
+
+<p><img src="/img/posts/terraform-aws-wso2-esb-docker-sample/terraform-apply-finised.png" alt="terraform-apply-finised.png" /></p>
+
+<p>In the AWS console will appear all the structure defined in the <strong>.tf</strong> files, a new running instance, one volume, a new Load Balancer and a new group:</p>
+
+<p><img src="/img/posts/terraform-aws-wso2-esb-docker-sample/aws-instances.png" alt="aws-instances.png" /></p>
+
+<p>Checking the instance detail can obtain the public DNS, the <a href="http://wso2.com/products/enterprise-service-bus/">WSO2 ESB</a> management console is not exposed through the load balancer, and normally it should be restricted to be acceded from an specific ip in a security group.</p>
+
+<p><img src="/img/posts/terraform-aws-wso2-esb-docker-sample/aws-instance-detail.png" alt="aws-instances.png" /></p>
+
+<p>We can see in detail the security group created:</p>
+
+<p><img src="/img/posts/terraform-aws-wso2-esb-docker-sample/aws-security-groups.png" alt="aws-security-groups.png" /></p>
+
+<p>We can see in detail the Elastic Load Balancer:</p>
+
+<p><img src="/img/posts/terraform-aws-wso2-esb-docker-sample/aws-elb.png" alt="aws-elb.png" /></p>
+
+<p>Using the public DNS for the ec2 instance we can check if the <a href="http://wso2.com/products/enterprise-service-bus/">WSO2 ESB</a> admin console is running (user and password are the default admin/admin)</p>
+
+<p><img src="/img/posts/terraform-aws-wso2-esb-docker-sample/wso2-esb-console.png" alt="logs" /></p>
+
+<h3 id="execute-a-client-for-the-service">Execute a client for the service:</h3>
+
+<p>As we are using the <strong><a href="https://docs.wso2.com/display/ESB481/Samples">samples</a></strong> from WSO2 ESB, it&rsquo;s possible to use the <strong><a href="https://docs.wso2.com/display/ESB481/Using+the+Sample+Clients">sample client</a></strong>. It can be executed in our local system, and will demonstrate if all the infrastructure is correctly working.</p>
+
+<p>In local can be also executed with <a href="https://www.docker.com/">Docker</a>, using the script <strong>/wso2-esb/run-client.sh</strong>:</p>
+
+<pre><code class="language-sh">#!/bin/sh
+. ./set-env.sh
+
+WSO_ESB_SAMPLES_SERVER_NAME=$1
+
+export CLIENT_ARGUMENTS=&quot;-Daddurl=http://$AXIS_SERVER_NAME:9000/services/SimpleStockQuoteService \
+   -Dtrpurl=http://$WSO_ESB_SAMPLES_SERVER_NAME/&quot;
+   	
+echo Running wso2 client sample with arguments: $CLIENT_ARGUMENTS
+
+docker rm -f wso2-esb-samples-client
+#Creates a container 
+docker run -d --name wso2-esb-samples-client -v $WSO2_ESB_PATH \
+ jgpelaez/wso2-esb /bin/bash
+
+docker run \
+  --volumes-from wso2-esb-samples-client \
+  webratio/ant ant stockquote -f $WSO2_ESB_SAMPLES_ClIENT_BUILD \
+   $CLIENT_ARGUMENTS
+</code></pre>
+
+<p>The address will be the public DNS of the Elastic Load Balancer:</p>
+
+<pre><code class="language-sh">sh run-client.sh terraform-example-elb-1103743156.eu-west-1.elb.amazonaws.com
+</code></pre>
+
+<p>This command will send a SOAP request to the Elastic Load Balancer, the ELB will proxy the request to an instance (in this case there is only one in execution), the WSO2 ESB will log the input and ouput, and proxy to the Axis Server, and return the results to the client. In the WSO2 ESB management console we can see the logs:</p>
+
+<p><img src="/img/posts/terraform-aws-wso2-esb-docker-sample/wso2-esb-logs.png" alt="logs" /></p>
+
+<h3 id="remove-resources">Remove resources:</h3>
+
+<p>For avoid charges in our AWS account, finally we can destroy the resources created, first we can ask to the plan what is going to be destroyed:</p>
+
+<pre><code class="language-sh">docker run \
+	--rm \
+	-v $(pwd):/data \
+	-v /home/jgpelaez/git/ec2-instance/data/:/data-ssl \
+    uzyexe/terraform plan -destroy \
+    -var 'key_name=keypar2' -var 'key_path=/data-ssl/keypar2.pem'
+</code></pre>
+
+<p>And remove everything with the destroy instruction, using <a href="https://www.docker.com/">Docker</a> it&rsquo;s necessary to add the -force flag.</p>
+
+<pre><code class="language-sh">docker run \
+	--rm \
+	-v $(pwd):/data \
+	-v /home/jgpelaez/git/ec2-instance/data/:/data-ssl \
+    uzyexe/terraform destroy \
+    -var 'key_name=keypar2' -var 'key_path=/data-ssl/keypar2.pem' \
+    -force
+</code></pre>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<p>This is a very simple example of the use of <a href="https://terraform.io/">Terraform</a> and <a href="https://www.docker.com/">Docker</a> as infrastructure as code, in a real project it will be more complex and use other layers as database, etc. We can also use other interesting features like autoscale, or use terraform with other providers, or have the infrastucture using different providers at the same time.</p>
+
+<p>Terraform will also allow to do modifications using the concept of <a href="https://terraform.io/docs/state/index.html">state</a>. The infrastructure as code will simplify our future changes, and gives and easy way to see our infrasctructure, and know wich resources we are using.</p>
+
+<p>With the stateless instances concept using <a href="https://www.docker.com/">Docker</a> will be more simple to escalate our infrastructure simply adding new services in a very simple way.</p>
+
+<h2 id="resources">Resources</h2>
+
+<ul>
+<li>Source code in <a href="https://github.com/jgpelaez/terraform-aws-wso2-esb-docker-sample">github/jgpelaez</a>.</li>
+</ul>
+
+<h2 id="thanks-contributions">Thanks / Contributions</h2>
+
+<ul>
+<li>If it&rsquo;s useful code you can favourite it in:
+<a href="https://github.com/jgpelaez/terraform-aws-wso2-esb-docker-sample/stargazers">GitHub</a></li>
+</ul>
+
+                        </div>
+                        
+                        
+                        <div id="comments">
+                            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "kubekub" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                        </div>
+                        
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Search</h3>
+    </div>
+
+    <div class="panel-body">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" role="search">
+            <div class="input-group">
+                <input type="search" name="q" class="form-control" placeholder="Search">
+                <input type="hidden" name="sitesearch" value="https://www.kubekub.com/">
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="https://www.kubekub.com/categories/docker">docker (2)</a>
+            </li>
+            
+            <li><a href="https://www.kubekub.com/categories/terraform">terraform (1)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">Tags</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="https://www.kubekub.com/tags/aws"><i class="fa fa-tags"></i> aws</a>
+            </li>
+            
+            <li><a href="https://www.kubekub.com/tags/docker"><i class="fa fa-tags"></i> docker</a>
+            </li>
+            
+            <li><a href="https://www.kubekub.com/tags/esb"><i class="fa fa-tags"></i> esb</a>
+            </li>
+            
+            <li><a href="https://www.kubekub.com/tags/terraform"><i class="fa fa-tags"></i> terraform</a>
+            </li>
+            
+            <li><a href="https://www.kubekub.com/tags/wso2"><i class="fa fa-tags"></i> wso2</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <footer id="footer">
+    <div class="container">
+
+        
+        <div class="col-md-4 col-sm-6">
+            <h4>About us</h4>
+
+            kubekub site.
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+        <div class="col-md-4 col-sm-6">
+
+             
+            <h4>Recent posts</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="https://www.kubekub.com/blog/2015/08/22/terraform-aws-wso2-esb-docker-sample/">
+                          
+                            <img src="https://www.kubekub.com/img/imported/plane-clouds.jpg" class="img-responsive" alt="Infrastructure as code with Terraform and docker">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="https://www.kubekub.com/blog/2015/08/22/terraform-aws-wso2-esb-docker-sample/">Infrastructure as code with Terraform and docker</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="https://www.kubekub.com/blog/2015/08/10/wso2-in-docker-registry-en/">
+                          
+                            <img src="https://www.kubekub.com/img/imported/algeciras-boat-2.jpg" class="img-responsive" alt="Using Docker registry for WSO2 images">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="https://www.kubekub.com/blog/2015/08/10/wso2-in-docker-registry-en/">Using Docker registry for WSO2 images</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg">
+             
+
+        </div>
+        
+
+        
+        <div class="col-md-4 col-sm-6">
+
+          <h4>Contact</h4>
+
+            <strong>kubekub.</strong>
+        <br>Calle del Barco
+        <br>Madrid
+        <br>28004
+        <br>
+        <strong>Spain</strong>
+
+            <a href="/contact" class="btn btn-small btn-template-main">Go to contact page</a>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright (c) 2019, kubekub; all rights reserved.</p>
+            
+            <p class="pull-right">
+              Template by <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+
+              Ported to Hugo by <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    
+<script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+
+<script src="//maps.googleapis.com/maps/api/js?key=AIzaSyCr3RKvfa2Nd2790A-QSyjqJEtx2-vEjWU&v=3.exp"></script>
+
+<script src="https://www.kubekub.com/js/hpneo.gmaps.js"></script>
+<script src="https://www.kubekub.com/js/gmaps.init.js"></script>
+<script src="https://www.kubekub.com/js/front.js"></script>
+
+
+<script src="https://www.kubekub.com/js/owl.carousel.min.js"></script>
+
+
+  </body>
+</html>

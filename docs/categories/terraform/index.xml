@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>terraform on kubekub</title>
+    <link>https://www.kubekub.com/categories/terraform/</link>
+    <description>Recent content in terraform on kubekub</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 10 Aug 2015 13:50:46 +0200</lastBuildDate>
+    
+	<atom:link href="https://www.kubekub.com/categories/terraform/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Using Docker registry for WSO2 images</title>
+      <link>https://www.kubekub.com/blog/2015/08/10/wso2-in-docker-registry-en/</link>
+      <pubDate>Mon, 10 Aug 2015 13:50:46 +0200</pubDate>
+      
+      <guid>https://www.kubekub.com/blog/2015/08/10/wso2-in-docker-registry-en/</guid>
+      <description>Introduction Once we know how to create a Docker image, if we want to share this image with the team, or use it in different environments, it´s possible to export it to a tar file, or use the Dockerfile to build the image on each of the docker hosts where it will be used. Having to rebuild the image on the pc of each of the components of your team is not very practical.</description>
+    </item>
+    
+  </channel>
+</rss>
