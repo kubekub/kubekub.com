@@ -14,8 +14,7 @@ goto :eof
 
 
 :build
-CMD /C npm run build
-xcopy /s public docs
+CMD /C hugo -d docs
 xcopy /Y CNAME docs
 goto :eof
 
