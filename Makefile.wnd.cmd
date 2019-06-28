@@ -13,7 +13,7 @@ git submodule add https://github.com/devcows/hugo-universal-theme.git themes/hug
 goto :eof
 
 
-:build
+:publish
 CMD /C hugo -d docs
 xcopy /Y CNAME docs
 goto :eof

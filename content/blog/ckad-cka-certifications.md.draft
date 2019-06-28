@@ -1,0 +1,65 @@
++++
+title = "Kubernetes certificates, my path to obtain CKA and CKAD "
+date = "2019-06-28T13:50:46+02:00"
+tags = ["kubernetes","ckad","cka","certification","docker"]
+categories = ["kubernetes","ckad","cka"]
+banner = "/img/posts/ckad-cka-certifications/cka_ckad.gif"
+author = "Juan Carlos Garcia Pelaez"
++++
+
+<center>
+<img class="special-img-class" width="35%" src="/img/posts/ckad-cka-certifications/ckad.png"><img class="special-img-class" width="37%" src="/img/posts/ckad-cka-certifications/cka.png">
+</center>
+
+In the last week I passed both exams of the CNCF for Kubernetes, first the CKAD (Certified Kubernetes Application Developer) and finally the CKA (Certified Kubernetes Administrator).
+
+I've been working with Kubernetes and OpenShift for the last 4 years, and I wanted to challenge my knowledge throught the certifications.
+
+First I went for the CKAD, even I'm working in the last years very close to system administrators I still fill closer to the Development. 
+
+The preparation for the CKAD in my case was to practice the speed with the kubectl command line. I use a lot more modern tools like helm, and I'm not really use to manually create pods and deployments.
+
+## Some tips
+
+For avoid time consume first create an alias in the console for the kubectl
+
+```bash
+alias k=/usr/bin/kubectl
+```
+
+It is very useful to use the "create" option redirecting the output to a yaml file. 
+
+```bash
+kubectl create deployment my-dep --image=busybox --dry-run -o yaml > <exerciseNumber>.yaml
+```
+
+Reuse the files from previous exercises. For example if in exercise 3 uses a pod and in 7, you can do something like
+
+```bash
+cp 3-pod.yaml 7-pod.yaml
+```
+And edit the files. It is also a good way to go back to an exercise if cannot be completed at the first and we have some time for review.
+
+
+
+
+
+## Certifications
+
+## Training
+
+### CKAD
+
+### CKA
+
+## References
+
+https://medium.com/@ContinoHQ/the-ultimate-guide-to-passing-the-cka-exam-1ee8c0fd44cd
+
+https://medium.com/@ikaboubi/my-feedback-about-cka-and-ckad-e82a35585fe9
+
+https://cka-exam.blog/
+
+https://github.com/mmumshad/kubernetes-the-hard-way
+
+https://www.udemy.com/certified-kubernetes-administrator-with-practice-tests
