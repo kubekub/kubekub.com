@@ -1,4 +1,4 @@
-baseurl = "https://www.kubekub.com/"
+baseurl = "https://kubekub.com/"
 title = "kubekub"
 theme = "hugo-universal-theme"
 themesDir = "./themes"

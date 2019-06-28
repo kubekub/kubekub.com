@@ -2,57 +2,57 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on kubekub</title>
-    <link>https://www.kubekub.com/tags/</link>
+    <link>https://kubekub.com/tags/</link>
     <description>Recent content in Tags on kubekub</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 22 Aug 2015 13:50:46 +0200</lastBuildDate>
     
-	<atom:link href="https://www.kubekub.com/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://kubekub.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>aws</title>
-      <link>https://www.kubekub.com/tags/aws/</link>
+      <link>https://kubekub.com/tags/aws/</link>
       <pubDate>Sat, 22 Aug 2015 13:50:46 +0200</pubDate>
       
-      <guid>https://www.kubekub.com/tags/aws/</guid>
+      <guid>https://kubekub.com/tags/aws/</guid>
       <description></description>
     </item>
     
     <item>
       <title>docker</title>
-      <link>https://www.kubekub.com/tags/docker/</link>
+      <link>https://kubekub.com/tags/docker/</link>
       <pubDate>Sat, 22 Aug 2015 13:50:46 +0200</pubDate>
       
-      <guid>https://www.kubekub.com/tags/docker/</guid>
+      <guid>https://kubekub.com/tags/docker/</guid>
       <description></description>
     </item>
     
     <item>
       <title>esb</title>
-      <link>https://www.kubekub.com/tags/esb/</link>
+      <link>https://kubekub.com/tags/esb/</link>
       <pubDate>Sat, 22 Aug 2015 13:50:46 +0200</pubDate>
       
-      <guid>https://www.kubekub.com/tags/esb/</guid>
+      <guid>https://kubekub.com/tags/esb/</guid>
       <description></description>
     </item>
     
     <item>
       <title>terraform</title>
-      <link>https://www.kubekub.com/tags/terraform/</link>
+      <link>https://kubekub.com/tags/terraform/</link>
       <pubDate>Sat, 22 Aug 2015 13:50:46 +0200</pubDate>
       
-      <guid>https://www.kubekub.com/tags/terraform/</guid>
+      <guid>https://kubekub.com/tags/terraform/</guid>
       <description></description>
     </item>
     
     <item>
       <title>wso2</title>
-      <link>https://www.kubekub.com/tags/wso2/</link>
+      <link>https://kubekub.com/tags/wso2/</link>
       <pubDate>Sat, 22 Aug 2015 13:50:46 +0200</pubDate>
       
-      <guid>https://www.kubekub.com/tags/wso2/</guid>
+      <guid>https://kubekub.com/tags/wso2/</guid>
       <description></description>
     </item>
     

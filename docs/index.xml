@@ -2,49 +2,49 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>kubekub</title>
-    <link>https://www.kubekub.com/</link>
+    <link>https://kubekub.com/</link>
     <description>Recent content on kubekub</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 22 Aug 2015 13:50:46 +0200</lastBuildDate>
     
-	<atom:link href="https://www.kubekub.com/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://kubekub.com/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Infrastructure as code with Terraform and docker</title>
-      <link>https://www.kubekub.com/blog/2015/08/22/terraform-aws-wso2-esb-docker-sample/</link>
+      <link>https://kubekub.com/blog/2015/08/22/terraform-aws-wso2-esb-docker-sample/</link>
       <pubDate>Sat, 22 Aug 2015 13:50:46 +0200</pubDate>
       
-      <guid>https://www.kubekub.com/blog/2015/08/22/terraform-aws-wso2-esb-docker-sample/</guid>
+      <guid>https://kubekub.com/blog/2015/08/22/terraform-aws-wso2-esb-docker-sample/</guid>
       <description>One of the good practices in a data center or a cloud infrastructure is to manage the infrastructure as code. There are many different options in the market as CloudFormation, Heat, terraform, etc. to create and provision the infrastructure and code. On Internet we can find different comparisons for the tools:
  thoughtworks.com ypoonawala.wordpress.com www.terraform.io  CloudFormation and Heat are specific for AWS and OpenStack, and Terraform can be used for multiple cloud providers.</description>
     </item>
     
     <item>
       <title>Using Docker registry for WSO2 images</title>
-      <link>https://www.kubekub.com/blog/2015/08/10/wso2-in-docker-registry-en/</link>
+      <link>https://kubekub.com/blog/2015/08/10/wso2-in-docker-registry-en/</link>
       <pubDate>Mon, 10 Aug 2015 13:50:46 +0200</pubDate>
       
-      <guid>https://www.kubekub.com/blog/2015/08/10/wso2-in-docker-registry-en/</guid>
+      <guid>https://kubekub.com/blog/2015/08/10/wso2-in-docker-registry-en/</guid>
       <description>Introduction Once we know how to create a Docker image, if we want to share this image with the team, or use it in different environments, it´s possible to export it to a tar file, or use the Dockerfile to build the image on each of the docker hosts where it will be used. Having to rebuild the image on the pc of each of the components of your team is not very practical.</description>
     </item>
     
     <item>
       <title>Contact</title>
-      <link>https://www.kubekub.com/contact/</link>
+      <link>https://kubekub.com/contact/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://www.kubekub.com/contact/</guid>
+      <guid>https://kubekub.com/contact/</guid>
       <description>Contact us We&amp;rsquo;d Love To Help You, Feel Free To Drop A Mail</description>
     </item>
     
     <item>
       <title>Technologies</title>
-      <link>https://www.kubekub.com/technologies/</link>
+      <link>https://kubekub.com/technologies/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://www.kubekub.com/technologies/</guid>
+      <guid>https://kubekub.com/technologies/</guid>
       <description>We are always learning and improving. Some of the technologies we are experts at: OpenShift, Kubernetes, Docker, Amazon Web Services, Azure Kubernetes and Jenkins.</description>
     </item>
     
