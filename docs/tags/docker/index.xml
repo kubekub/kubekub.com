@@ -22,6 +22,17 @@
     </item>
     
     <item>
+      <title>OpenShift trainings</title>
+      <link>https://kubekub.com/trainings/</link>
+      <pubDate>Sat, 22 Aug 2015 13:50:46 +0200</pubDate>
+      
+      <guid>https://kubekub.com/trainings/</guid>
+      <description>3 days Kubernetes training Learn the basics of Kubernetes. Understand the architecture of Kubernetes itself, and the important concepts like Pod, Deployment or Horizontal Autoscaling.
+ 
+3 days OpenShift training Learn the basics of OpenShift. Understand the architecture of OpenShift itself, and the important concepts like Pod, Deployment or Horizontal Autoscaling.</description>
+    </item>
+    
+    <item>
       <title>Using Docker registry for WSO2 images</title>
       <link>https://kubekub.com/blog/2015/08/10/wso2-in-docker-registry-en/</link>
       <pubDate>Mon, 10 Aug 2015 13:50:46 +0200</pubDate>
