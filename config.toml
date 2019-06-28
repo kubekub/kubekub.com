@@ -70,7 +70,7 @@ paginate = 10
 [params]
     viewMorePostLink = "/blog/"
     author = "kubekub"
-    defaultKeywords = ["devows", "hugo", "go"]
+    defaultKeywords = ["kubernetes", "devops", "openshift", "jenkins"]
     defaultDescription = "kubekub site"
 
     # Twitter
