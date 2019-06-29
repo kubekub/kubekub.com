@@ -1,5 +1,6 @@
 +++
-title = "Kubernetes certificates, my path to obtain CKA and CKAD "
+title = "Kubernetes certificates, my path to obtain CKA and CKAD."
+subtitle= "My path to obtain CKA and CKAD."
 date = "2019-06-29T11:50:46+02:00"
 tags = ["kubernetes","ckad","cka","certification","docker","udemy","kubectl"]
 categories = ["kubernetes","ckad","cka"]
@@ -41,7 +42,9 @@ I could not have time to finish the exam, and finally I passed with a 74% (minim
 Once I got confirmation from the CNFC of my CKAD was passed I started to prepare the CKA. There i was feeling less comfortable, as I'm used to administer Openshift distributions of Kubernetes and the last version I've worked is 3.11 (with kubernetes 1.11).
 
 The CKA and CKAD exams are now based on **Kubernetes 1.14**, in the developer side doesn't change a lot from previous versions, but the administration part has changed a lot with a totally different installation of the components.
+
 As I was not feeling confident I started to look for an online training and I found in Udemy the **course [Certified Kubernetes Administrator (CKA) with Practice Tests](https://www.udemy.com/certified-kubernetes-administrator-with-practice-tests) made by Mumshad Mannambeth**.
+
 It's a really **complete** course with **videos** and **practical exercises**, some of them with good difficulty. Luckily, I could skip all parts about the use of Kubernetes and I focused on the administration lessons.
 
 Once I got the course finisehd for the administration I registered for the exam (with a **big mistake** I wanted to do it at **12 in the afternoon** and checked it out at **12 am**, so I had to do during the night, finishing at 3 am).
@@ -114,3 +117,7 @@ https://github.com/mmumshad/kubernetes-the-hard-way
 https://www.udemy.com/certified-kubernetes-administrator-with-practice-tests
 
 https://github.com/arush-sal/cka-practice-environment
+
+## Medium
+
+The article can also be viewed on [kubekub medium blog](https://medium.com/kubekub/kubernetes-certificates-f22649263023)

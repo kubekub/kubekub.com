@@ -32,25 +32,25 @@
   </url>
   
   <url>
-    <loc>https://kubekub.com/tags/cka/</loc>
-    <lastmod>2019-06-29T11:50:46+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://kubekub.com/categories/cka/</loc>
     <lastmod>2019-06-29T11:50:46+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kubekub.com/tags/ckad/</loc>
+    <loc>https://kubekub.com/tags/cka/</loc>
     <lastmod>2019-06-29T11:50:46+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://kubekub.com/categories/ckad/</loc>
+    <lastmod>2019-06-29T11:50:46+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kubekub.com/tags/ckad/</loc>
     <lastmod>2019-06-29T11:50:46+02:00</lastmod>
     <priority>0</priority>
   </url>
@@ -74,13 +74,13 @@
   </url>
   
   <url>
-    <loc>https://kubekub.com/tags/kubernetes/</loc>
+    <loc>https://kubekub.com/categories/kubernetes/</loc>
     <lastmod>2019-06-29T11:50:46+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://kubekub.com/categories/kubernetes/</loc>
+    <loc>https://kubekub.com/tags/kubernetes/</loc>
     <lastmod>2019-06-29T11:50:46+02:00</lastmod>
     <priority>0</priority>
   </url>
