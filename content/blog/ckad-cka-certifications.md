@@ -1,12 +1,11 @@
 +++
 title = "Kubernetes certificates, my path to obtain CKA and CKAD "
-date = "2019-06-28T13:50:46+02:00"
-tags = ["kubernetes","ckad","cka","certification","docker"]
+date = "2019-06-29T11:50:46+02:00"
+tags = ["kubernetes","ckad","cka","certification","docker","udemy","kubectl"]
 categories = ["kubernetes","ckad","cka"]
-banner = "/img/posts/ckad-cka-certifications/cka_ckad.gif"
+banner = "img/icons/logo_cka_ckad-small.png"
 author = "Juan Carlos Garcia Pelaez"
 +++
-**DRAFT**
 
 <center>
 <img class="special-img-class" width="35%" src="/img/posts/ckad-cka-certifications/ckad.png"><img class="special-img-class" width="37%" src="/img/posts/ckad-cka-certifications/cka.png">
@@ -17,9 +16,10 @@ In the last week I **passed both exams** of the CNCF for Kubernetes, first the *
 I've been working with Kubernetes and OpenShift for the **last 4 years**, and I wanted to challenge my knowledge through the certifications.
 
 ### The CKAD exam
+
 First I went for the CKAD, even I'm working in the last years very close to system administrators I still fill **closer to the Development**. 
 
-The preparation for the CKAD in my case was to **practice the speed** with the kubectl command line. I normally use a more **modern tools** like helm, and I'm not really use to manually create pods and deployments. 
+The preparation for the CKAD in my case was to **practice the speed** with the **kubectl** command line. I normally use a more **modern tools** like helm, and I'm not really use to manually create pods and deployments. 
 
 I also followed the **tips** from different blog posts like: 
 
@@ -38,8 +38,9 @@ I could not have time to finish the exam, and finally I passed with a 74% (minim
 
 ### The CKA exam
 
-Once I got confirmation from the CNFC of my CKAD was passed I started to prepare the CKA. There i was feeling less comfortable, as I'm used to administer Openshift distributions of Kubernetes and the last version I've worked is 3.11.
-The CKA and CKAD exams are now based on **Kubernetes 1.14**, for the developer side doesn't change a lot from previous versions, but the administration part has changed a lot with a totally different installation of the components.
+Once I got confirmation from the CNFC of my CKAD was passed I started to prepare the CKA. There i was feeling less comfortable, as I'm used to administer Openshift distributions of Kubernetes and the last version I've worked is 3.11 (with kubernetes 1.11).
+
+The CKA and CKAD exams are now based on **Kubernetes 1.14**, in the developer side doesn't change a lot from previous versions, but the administration part has changed a lot with a totally different installation of the components.
 As I was not feeling confident I started to look for an online training and I found in Udemy the **course [Certified Kubernetes Administrator (CKA) with Practice Tests](https://www.udemy.com/certified-kubernetes-administrator-with-practice-tests) made by Mumshad Mannambeth**.
 It's a really **complete** course with **videos** and **practical exercises**, some of them with good difficulty. Luckily, I could skip all parts about the use of Kubernetes and I focused on the administration lessons.
 
@@ -47,6 +48,8 @@ Once I got the course finisehd for the administration I registered for the exam 
 Finally after my mistake I **could pass the CKA exam**. 
 
 Having **three hours** let you **more time** for do a **review** of the questions, and I also was more trained with the CKAD exam and the udemy course.
+
+I passed the CKA with a 80% (minimum is 74%).
 
 
 ## Some tips

@@ -6,10 +6,21 @@
     <description>Recent content in docker on kubekub</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 22 Aug 2015 13:50:46 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 29 Jun 2019 11:50:46 +0200</lastBuildDate>
     
 	<atom:link href="https://kubekub.com/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Kubernetes certificates, my path to obtain CKA and CKAD </title>
+      <link>https://kubekub.com/blog/2019/06/29/ckad-cka-certifications/</link>
+      <pubDate>Sat, 29 Jun 2019 11:50:46 +0200</pubDate>
+      
+      <guid>https://kubekub.com/blog/2019/06/29/ckad-cka-certifications/</guid>
+      <description>In the last week I passed both exams of the CNCF for Kubernetes, first the CKAD (Certified Kubernetes Application Developer) and finally the CKA (Certified Kubernetes Administrator).
+I&amp;rsquo;ve been working with Kubernetes and OpenShift for the last 4 years, and I wanted to challenge my knowledge through the certifications.
+The CKAD exam First I went for the CKAD, even I&amp;rsquo;m working in the last years very close to system administrators I still fill closer to the Development.</description>
+    </item>
     
     <item>
       <title>Infrastructure as code with Terraform and docker</title>
