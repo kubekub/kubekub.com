@@ -7,13 +7,14 @@ goto %1
 echo DEFAULT
 goto :eof
 
-:install
-npm install -g npx
+:install-themes
+git init
+git submodule add https://github.com/devcows/hugo-universal-theme.git themes/hugo-universal-theme
 goto :eof
 
-:build
-CMD /C npm run build
-xcopy /s public docs
+
+:publish
+CMD /C hugo -d docs
 xcopy /Y CNAME docs
 goto :eof
 

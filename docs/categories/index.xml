@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on kubekub</title>
+    <link>https://kubekub.com/categories/</link>
+    <description>Recent content in Categories on kubekub</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 29 Jun 2019 11:50:46 +0200</lastBuildDate>
+    
+	<atom:link href="https://kubekub.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>cka</title>
+      <link>https://kubekub.com/categories/cka/</link>
+      <pubDate>Sat, 29 Jun 2019 11:50:46 +0200</pubDate>
+      
+      <guid>https://kubekub.com/categories/cka/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ckad</title>
+      <link>https://kubekub.com/categories/ckad/</link>
+      <pubDate>Sat, 29 Jun 2019 11:50:46 +0200</pubDate>
+      
+      <guid>https://kubekub.com/categories/ckad/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kubernetes</title>
+      <link>https://kubekub.com/categories/kubernetes/</link>
+      <pubDate>Sat, 29 Jun 2019 11:50:46 +0200</pubDate>
+      
+      <guid>https://kubekub.com/categories/kubernetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>docker</title>
+      <link>https://kubekub.com/categories/docker/</link>
+      <pubDate>Sat, 22 Aug 2015 13:50:46 +0200</pubDate>
+      
+      <guid>https://kubekub.com/categories/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>terraform</title>
+      <link>https://kubekub.com/categories/terraform/</link>
+      <pubDate>Mon, 10 Aug 2015 13:50:46 +0200</pubDate>
+      
+      <guid>https://kubekub.com/categories/terraform/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

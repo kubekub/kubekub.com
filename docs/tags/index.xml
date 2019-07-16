@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on kubekub</title>
+    <link>https://kubekub.com/tags/</link>
+    <description>Recent content in Tags on kubekub</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 29 Jun 2019 11:50:46 +0200</lastBuildDate>
+    
+	<atom:link href="https://kubekub.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>certification</title>
+      <link>https://kubekub.com/tags/certification/</link>
+      <pubDate>Sat, 29 Jun 2019 11:50:46 +0200</pubDate>
+      
+      <guid>https://kubekub.com/tags/certification/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cka</title>
+      <link>https://kubekub.com/tags/cka/</link>
+      <pubDate>Sat, 29 Jun 2019 11:50:46 +0200</pubDate>
+      
+      <guid>https://kubekub.com/tags/cka/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ckad</title>
+      <link>https://kubekub.com/tags/ckad/</link>
+      <pubDate>Sat, 29 Jun 2019 11:50:46 +0200</pubDate>
+      
+      <guid>https://kubekub.com/tags/ckad/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>docker</title>
+      <link>https://kubekub.com/tags/docker/</link>
+      <pubDate>Sat, 29 Jun 2019 11:50:46 +0200</pubDate>
+      
+      <guid>https://kubekub.com/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kubectl</title>
+      <link>https://kubekub.com/tags/kubectl/</link>
+      <pubDate>Sat, 29 Jun 2019 11:50:46 +0200</pubDate>
+      
+      <guid>https://kubekub.com/tags/kubectl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kubernetes</title>
+      <link>https://kubekub.com/tags/kubernetes/</link>
+      <pubDate>Sat, 29 Jun 2019 11:50:46 +0200</pubDate>
+      
+      <guid>https://kubekub.com/tags/kubernetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>udemy</title>
+      <link>https://kubekub.com/tags/udemy/</link>
+      <pubDate>Sat, 29 Jun 2019 11:50:46 +0200</pubDate>
+      
+      <guid>https://kubekub.com/tags/udemy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>aws</title>
+      <link>https://kubekub.com/tags/aws/</link>
+      <pubDate>Sat, 22 Aug 2015 13:50:46 +0200</pubDate>
+      
+      <guid>https://kubekub.com/tags/aws/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>esb</title>
+      <link>https://kubekub.com/tags/esb/</link>
+      <pubDate>Sat, 22 Aug 2015 13:50:46 +0200</pubDate>
+      
+      <guid>https://kubekub.com/tags/esb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>terraform</title>
+      <link>https://kubekub.com/tags/terraform/</link>
+      <pubDate>Sat, 22 Aug 2015 13:50:46 +0200</pubDate>
+      
+      <guid>https://kubekub.com/tags/terraform/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>wso2</title>
+      <link>https://kubekub.com/tags/wso2/</link>
+      <pubDate>Sat, 22 Aug 2015 13:50:46 +0200</pubDate>
+      
+      <guid>https://kubekub.com/tags/wso2/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
