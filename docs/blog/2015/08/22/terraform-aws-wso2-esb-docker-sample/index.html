@@ -386,7 +386,7 @@ resource &quot;aws_instance&quot; &quot;web&quot; {
   provisioner &quot;file&quot; {
       source = &quot;./wso2-esb/&quot;
       destination = &quot;/tmp/&quot;
-  }	
+  } 
 provisioner &quot;remote-exec&quot; {
    inline = [
         &quot;sh /tmp/install-docker.sh&quot;,
@@ -457,12 +457,12 @@ sudo docker rm -f wso2-esb-samples
 sudo docker build -t jgpelaez/wso2-esb-samples ../utils/esb/
 
 sudo docker run  \
-	-d  \
-	-p 443:9443 -p 80:8280 \
-	-v $WSO2_ESB_PATH \
-	--link wso2-esb-samples-axis-server:wso2-esb-samples-axis-server \
-	--name wso2-esb-samples \
-	jgpelaez/wso2-esb $WSO2_ESB_PATH/bin/wso2esb-samples.sh -sn 0
+    -d  \
+    -p 443:9443 -p 80:8280 \
+    -v $WSO2_ESB_PATH \
+    --link wso2-esb-samples-axis-server:wso2-esb-samples-axis-server \
+    --name wso2-esb-samples \
+    jgpelaez/wso2-esb $WSO2_ESB_PATH/bin/wso2esb-samples.sh -sn 0
 </code></pre>
 
 <p>Runs a <a href="https://www.docker.com/">Docker</a> container with a <a href="http://wso2.com/products/enterprise-service-bus/">WSO2 ESB</a> configured with the sample number 0. The https 9443 port will be exposed outside through the standar 443, and the execution port 8280 with the 80 port.
@@ -480,9 +480,9 @@ The &ndash;link will create a link with the axis server, and the axis server por
 <p>The <a href="https://terraform.io/">Terraform</a> plan command is used to create an execution plan. Our first execution will be:</p>
 
 <pre><code class="language-sh">docker run \
-	--rm \
-	-v $(pwd):/data \
-	-v /home/jgpelaez/git/ec2-instance/data/:/data-ssl \
+    --rm \
+    -v $(pwd):/data \
+    -v /home/jgpelaez/git/ec2-instance/data/:/data-ssl \
     uzyexe/terraform plan \
     -var 'key_name=keypar2' -var 'key_path=/data-ssl/keypar2.pem'
 </code></pre>
@@ -493,9 +493,9 @@ The execution will create an initial plan file called <strong>terraform.tfstate<
 <p>After the creation of the plan, can be applied and create the real infrastructure with the instruction apply:</p>
 
 <pre><code class="language-sh">docker run \
-	--rm \
-	-v $(pwd):/data \
-	-v /home/jgpelaez/git/ec2-instance/data/:/data-ssl \
+    --rm \
+    -v $(pwd):/data \
+    -v /home/jgpelaez/git/ec2-instance/data/:/data-ssl \
     uzyexe/terraform apply \
     -var 'key_name=keypar2' -var 'key_path=/data-ssl/keypar2.pem'
 </code></pre>
@@ -537,7 +537,7 @@ WSO_ESB_SAMPLES_SERVER_NAME=$1
 
 export CLIENT_ARGUMENTS=&quot;-Daddurl=http://$AXIS_SERVER_NAME:9000/services/SimpleStockQuoteService \
    -Dtrpurl=http://$WSO_ESB_SAMPLES_SERVER_NAME/&quot;
-   	
+    
 echo Running wso2 client sample with arguments: $CLIENT_ARGUMENTS
 
 docker rm -f wso2-esb-samples-client
@@ -565,9 +565,9 @@ docker run \
 <p>For avoid charges in our AWS account, finally we can destroy the resources created, first we can ask to the plan what is going to be destroyed:</p>
 
 <pre><code class="language-sh">docker run \
-	--rm \
-	-v $(pwd):/data \
-	-v /home/jgpelaez/git/ec2-instance/data/:/data-ssl \
+    --rm \
+    -v $(pwd):/data \
+    -v /home/jgpelaez/git/ec2-instance/data/:/data-ssl \
     uzyexe/terraform plan -destroy \
     -var 'key_name=keypar2' -var 'key_path=/data-ssl/keypar2.pem'
 </code></pre>
@@ -575,9 +575,9 @@ docker run \
 <p>And remove everything with the destroy instruction, using <a href="https://www.docker.com/">Docker</a> it&rsquo;s necessary to add the -force flag.</p>
 
 <pre><code class="language-sh">docker run \
-	--rm \
-	-v $(pwd):/data \
-	-v /home/jgpelaez/git/ec2-instance/data/:/data-ssl \
+    --rm \
+    -v $(pwd):/data \
+    -v /home/jgpelaez/git/ec2-instance/data/:/data-ssl \
     uzyexe/terraform destroy \
     -var 'key_name=keypar2' -var 'key_path=/data-ssl/keypar2.pem' \
     -force
@@ -678,6 +678,9 @@ docker run \
     <div class="panel-body">
         <ul class="nav nav-pills nav-stacked">
             
+            <li><a href="https://kubekub.com/categories/anthos">anthos (1)</a>
+            </li>
+            
             <li><a href="https://kubekub.com/categories/cka">cka (1)</a>
             </li>
             
@@ -687,7 +690,13 @@ docker run \
             <li><a href="https://kubekub.com/categories/docker">docker (3)</a>
             </li>
             
-            <li><a href="https://kubekub.com/categories/kubernetes">kubernetes (1)</a>
+            <li><a href="https://kubekub.com/categories/gke">gke (1)</a>
+            </li>
+            
+            <li><a href="https://kubekub.com/categories/istio">istio (1)</a>
+            </li>
+            
+            <li><a href="https://kubekub.com/categories/kubernetes">kubernetes (2)</a>
             </li>
             
             <li><a href="https://kubekub.com/categories/terraform">terraform (1)</a>
@@ -712,6 +721,9 @@ docker run \
     <div class="panel-body">
         <ul class="tag-cloud">
             
+            <li><a href="https://kubekub.com/tags/anthos"><i class="fa fa-tags"></i> anthos</a>
+            </li>
+            
             <li><a href="https://kubekub.com/tags/aws"><i class="fa fa-tags"></i> aws</a>
             </li>
             
@@ -730,10 +742,31 @@ docker run \
             <li><a href="https://kubekub.com/tags/esb"><i class="fa fa-tags"></i> esb</a>
             </li>
             
+            <li><a href="https://kubekub.com/tags/gke"><i class="fa fa-tags"></i> gke</a>
+            </li>
+            
+            <li><a href="https://kubekub.com/tags/google-cloud"><i class="fa fa-tags"></i> google-cloud</a>
+            </li>
+            
+            <li><a href="https://kubekub.com/tags/istio"><i class="fa fa-tags"></i> istio</a>
+            </li>
+            
+            <li><a href="https://kubekub.com/tags/kiali"><i class="fa fa-tags"></i> kiali</a>
+            </li>
+            
             <li><a href="https://kubekub.com/tags/kubectl"><i class="fa fa-tags"></i> kubectl</a>
             </li>
             
             <li><a href="https://kubekub.com/tags/kubernetes"><i class="fa fa-tags"></i> kubernetes</a>
+            </li>
+            
+            <li><a href="https://kubekub.com/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
+            </li>
+            
+            <li><a href="https://kubekub.com/tags/pulumi"><i class="fa fa-tags"></i> pulumi</a>
+            </li>
+            
+            <li><a href="https://kubekub.com/tags/service-mesh"><i class="fa fa-tags"></i> service-mesh</a>
             </li>
             
             <li><a href="https://kubekub.com/tags/terraform"><i class="fa fa-tags"></i> terraform</a>
@@ -793,6 +826,19 @@ docker run \
                 
                 <div class="item same-height-row clearfix">
                     <div class="image same-height-always">
+                        <a href="https://kubekub.com/blog/2019/07/22/managed-istio-on-gke/">
+                          
+                            <img src="https://kubekub.com/img/posts/istio-gke.png" class="img-responsive" alt="Istio on GKE, the managed service mesh on Google Cloud">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="https://kubekub.com/blog/2019/07/22/managed-istio-on-gke/">Istio on GKE, the managed service mesh on Google Cloud</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
                         <a href="https://kubekub.com/blog/2019/06/29/ckad-cka-certifications/">
                           
                             <img src="https://kubekub.com/img/icons/logo_cka_ckad-small.png" class="img-responsive" alt="Kubernetes certificates, my path to obtain CKA and CKAD.">
@@ -814,19 +860,6 @@ docker run \
                     </div>
                     <div class="name same-height-always">
                         <h5><a href="https://kubekub.com/blog/2015/08/22/terraform-aws-wso2-esb-docker-sample/">Infrastructure as code with Terraform and docker</a></h5>
-                    </div>
-                </div>
-                
-                <div class="item same-height-row clearfix">
-                    <div class="image same-height-always">
-                        <a href="https://kubekub.com/blog/2015/08/10/wso2-in-docker-registry-en/">
-                          
-                            <img src="https://kubekub.com/img/imported/algeciras-boat-2.jpg" class="img-responsive" alt="Using Docker registry for WSO2 images">
-                          
-                        </a>
-                    </div>
-                    <div class="name same-height-always">
-                        <h5><a href="https://kubekub.com/blog/2015/08/10/wso2-in-docker-registry-en/">Using Docker registry for WSO2 images</a></h5>
                     </div>
                 </div>
                 

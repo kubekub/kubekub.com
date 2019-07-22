@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Istio on GKE, the managed service mesh on Google Cloud</title>
+  <meta name="author" content="" />
+
+  
+  <meta name="keywords" content="kubernetes, devops, openshift, jenkins">	
+  
+
+  
+  <meta name="description" content="kubekub site">	
+  
+
+  <meta name="generator" content="Hugo 0.55.6" />
+
+  <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="/css/animate.css" rel="stylesheet">
+
+  
+  
+    <link href="/css/style.default.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+
+  
+  <link href="/css/custom.css" rel="stylesheet">
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+  
+
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
+
+  <link rel="alternate" href="https://kubekub.com/index.xml" type="application/rss+xml" title="kubekub">
+
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@GoHugoIO">
+  <meta name="twitter:title" content="Istio on GKE, the managed service mesh on Google Cloud">
+  <meta name="twitter:image" content="https://kubekub.com/img/posts/istio-gke.png">
+  <meta name="twitter:description" content="kubekub site">
+
+  
+  <meta property="og:title" content="Istio on GKE, the managed service mesh on Google Cloud" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://kubekub.com/blog/2019/07/22/managed-istio-on-gke//" />
+  <meta property="og:image" content="img/logo.png" />
+
+</head>
+
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="https://kubekub.com/">
+                    <img src="https://kubekub.com/img/logo.png" alt="Istio on GKE, the managed service mesh on Google Cloud logo" class="hidden-xs hidden-sm">
+                    <img src="https://kubekub.com/img/logo-small.png" alt="Istio on GKE, the managed service mesh on Google Cloud logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Istio on GKE, the managed service mesh on Google Cloud - go to homepage</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">Toggle Navigation</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">Home</a>
+                    
+                  </li>
+                  
+                  
+                  <li class="dropdown active">
+                    
+                    <a href="/blog/">Blog</a>
+                    
+                  </li>
+                  
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/technologies/">Technologies</a>
+                    
+                  </li>
+                  
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/trainings/">Trainings</a>
+                    
+                  </li>
+                  
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">Contact</a>
+                    
+                  </li>
+                  
+                </ul>
+            </div>
+            
+
+            <div class="collapse clearfix" id="search">
+
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+
+                </span>
+                    </div>
+                </form>
+
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Istio on GKE, the managed service mesh on Google Cloud</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+
+                        <p class="text-muted text-uppercase mb-small text-right">By <a href="#">Juan Carlos Garcia Pelaez</a> | July 22, 2019</p>
+
+                        <div id="post-content">
+                          
+
+<p>Istio is becoming one of the standards in the service mesh scenario. It is being developed and pushed by some of the giants of the industry like <a href="https://www.zdnet.com/article/ibm-google-red-hat-push-istio-to-1-0-release/">IBM, Google or RedHat</a> and now version 1.0 is going to celebrate its <a href="https://istio.io/about/notes/1.0/">first anniversary</a>.</p>
+
+<p>All major cloud providers are including a service mesh in their managed services, like AWS with it&rsquo;s <a href="https://aws.amazon.com/app-mesh/">App Service Mesh</a>, <a href="https://cloud.ibm.com/docs/containers?topic=containers-istio">IBM with the managed Istio add-on</a> or Google Cloud with <a href="https://cloud.google.com/istio/docs/istio-on-gke/overview">Istio on GKE</a>.</p>
+
+<p>The <a href="https://cloud.google.com/istio/docs/istio-on-gke/overview">Istio on GKE</a> is still on beta and it&rsquo;s last release is marked <a href="https://cloud.google.com/istio/docs/istio-on-gke/release-notes">1.1.7-gke.0</a>. The name convention for the istio on gke is to follow the version of istio plus a gke sufix and version.</p>
+
+<h2 id="installation">Installation</h2>
+
+<p>As it is a managed service the installation is pretty straightforward, in the &ldquo;create GKE&rdquo; menu of the console there is a new submenu for <a href="https://cloud.google.com/anthos/docs/concepts/overview?hl=es-419">Anthos</a> (The hybrid cloud solution of Google Cloud), and there we can enable Istio in our GKE cluster. There is only one possible action, the activation of the mTLS, with the options of permissive or Strict, with Strict mTLS will be enforced by default.
+<br/><br/>
+<center>
+<img class="special-img-class" width="100%" src="/img/posts/managed-istio-on-gke/create-gke-cluster-console.png">
+</center>
+<br/><br/>
+In order to facilitate the reinstallations and new environment creation, we have used for the demo the Infrastructure as Code software <a href="https://www.pulumi.com/docs/index.html">Pulumi</a>, this tool uses the same approach for resource creation than terraform but with real code.</p>
+
+<p>The GKE provider of Pulumi also allows the activation of Istio on GKE with the addonsConfig parameter:</p>
+
+<pre><code class="language-Javascript">import * as gcp from &quot;@pulumi/gcp&quot;;
+import * as k8s from &quot;@pulumi/kubernetes&quot;;
+import * as pulumi from &quot;@pulumi/pulumi&quot;;
+import { nodeCount, nodeMachineType, password, username, installManagedIstio } from &quot;./config&quot;;
+
+// Find the latest engine version.
+const engineVersion = gcp.container.getEngineVersions().then(v =&gt; v.latestMasterVersion);
+
+// Create the GKE cluster and export it.
+var istioConfigDisabled = !installManagedIstio
+export const addonsConfig = {
+    istioConfig: {        
+        disabled: istioConfigDisabled
+    }, 
+    networkPolicyConfig: {
+        disabled: false        
+    }
+}
+
+export const k8sCluster = new gcp.container.Cluster(&quot;gke-cluster&quot;, {
+    initialNodeCount: nodeCount,
+    nodeVersion: engineVersion,
+    minMasterVersion: engineVersion,
+    masterAuth: { username, password },
+    addonsConfig: addonsConfig,
+    nodeConfig: {
+        machineType: nodeMachineType,
+        oauthScopes: [
+            &quot;https://www.googleapis.com/auth/compute&quot;,
+            &quot;https://www.googleapis.com/auth/devstorage.read_only&quot;,
+            &quot;https://www.googleapis.com/auth/logging.write&quot;,
+            &quot;https://www.googleapis.com/auth/monitoring&quot;
+        ],
+    },
+});
+</code></pre>
+
+<p>Adding this addonsConfig code to the example provided by pulumi (<a href="https://github.com/pulumi/examples/tree/master/gcp-ts-gke">https://github.com/pulumi/examples/tree/master/gcp-ts-gke</a>) we can spin up and of rapidly GKE environments (only we need to wait for the creation of the cluster in GCP). Running the <code>pulumi up</code> instruction we can create a GKE with Istio on it.</p>
+
+<p><center>
+<img class="special-img-class" width="100%" src="/img/posts/managed-istio-on-gke/gke-pulumi-up.png">
+</center>
+<br/><br/>
+Once the cluster is up and running, we can check that there is a namespace called &ldquo;istio-system&rdquo; which is the standard namespace for istio. In this namespace can be found all the control plane components needed for istio such citadel, pilot, policy, etc.</p>
+
+<p><center>
+<img class="special-img-class" width="100%" src="/img/posts/managed-istio-on-gke/gke-istio-namespace.png">
+</center>
+<br/><br/>
+The Istio on GKE managed service is particular in the sense as we are able to access to the containers and the namespace, in other managed services, such Cloud SQL or the GKE service, it is not possible to access to the servers, in this case as we get admin access, we can delete everything on it&hellip;
+So the firsth this we did was to delete the deployments using <code>kubectl delete deploy --all -n istio-system</code>.</p>
+
+<p><center>
+<img class="special-img-class" width="100%" src="/img/posts/managed-istio-on-gke/gke-delete-istio-deployments.png">
+</center></p>
+
+<p>And all the deployment and pods get erased. The same for the namespace, with <code>kubectl delete ns istio-system</code> the namespace got deleted, and the istio disapeared from the cluster&hellip;</p>
+
+<p>&hellip;but, in less than one minute the <strong>istio-system was back</strong> with all the deployments and configuration, that makes it a real managed service as it can <strong>recover itself</strong>.</p>
+
+<h2 id="pricing">Pricing</h2>
+
+<p>The istio on GKE does not come directly with extra charge from Google Cloud, but the workloads are executed on your cluster, that means that will need compute and memory for it, and that will be the price of using the Istio on GKE, as more namespaces uses istio, more memory and cpu will need the istio control plane from the cluster.</p>
+
+<h2 id="use-of-istio-on-gke">Use of istio on GKE</h2>
+
+<p>Once installed Istio, the first test we always do is to try the Istio examples, in concrete the book info example. Downloading the <a href="https://github.com/istio/istio/tree/release-1.2">istio package from Github</a> and with the execution the playbooks for the installation.</p>
+
+<pre><code>kubectl label namespace default istio-injection=enabled
+kubectl apply -f istio/samples/bookinfo/platform/kube/bookinfo.yaml
+kubectl apply -f istio/samples/bookinfo/networking/bookinfo-gateway.yaml
+</code></pre>
+
+<p><center>
+<img class="special-img-class" width="100%" src="/img/posts/managed-istio-on-gke/bookinfo-in-gke.png">
+</center></p>
+
+<p>All the bookinfo microservices where deployed, and every pod of the bookinfo had the envoy started as a sidecar container in every pod. After some checks and test, we can say that everything was running smoothly in the cluster for the Istio.</p>
+
+<p><center>
+<img class="special-img-class" width="100%" src="/img/posts/managed-istio-on-gke/bookinfo-in-gke-homepage.png">
+</center></p>
+
+<h3 id="service-mesh-visualization-kiali">Service mesh visualization: kiali</h3>
+
+<p>Once we have Istio installed, we will need to be able to monitor and have a good UI for the service Mesh. It&rsquo;s a very complex system and we need to have a human readable data for it. There is where <strong>Kiali</strong> comes out, it is a tool for Service mesh observability and configuration and an OpenSource project.</p>
+
+<p>It is not yet part of the Istio on GKE offering, that means we need to do a manual installation of it in the GKE. We followed the installation instruction in the <a href="https://www.kiali.io/documentation/getting-started/#_advanced_install_operator_only">kiali documentation website</a>.</p>
+
+<pre><code>bash &lt;(curl -L https://git.io/getLatestKialiOperator)
+</code></pre>
+
+<p>The installer will prompt for installing kiali without authentication or with, and the administrator user name and password.
+The installation without authentication can be used for example for <strong>adding a proxy server</strong> with an authentication such an oauth proxy.
+This script creates a new namespace called &ldquo;kiali-operator&rdquo;, and once the operator is installed it manages the installation and upgrades of kiali. Kiali will be automatically installed in the &ldquo;istio-system&rdquo; namespace.</p>
+
+<p><center>
+<img class="special-img-class" width="100%" src="/img/posts/managed-istio-on-gke/kiali-operator-installation.png">
+</center></p>
+
+<p>Once kiali is installed, the quickest way to access the console is to create a tunnel using the <code>port-forward</code> feature of kubectl.</p>
+
+<pre><code class="language-bash">kubectl port-forward kiali 2000 -n istio-system
+</code></pre>
+
+<p><center>
+<table><tr><td>
+<img class="special-img-class" width="99%" src="/img/posts/managed-istio-on-gke/kiali-port-forward.png">
+</td><td>
+<img class="special-img-class" width="99%" src="/img/posts/managed-istio-on-gke/kiali-error-prometheus.png">
+</td></tr></table>
+</center></p>
+
+<p>The kiali console shows an error for the <strong>Prometheus</strong> installation. In Istio on GKE is not installed by default. The Istio on GKE official documentation explains <a href="https://cloud.google.com/istio/docs/istio-on-gke/installing#adding_prometheus">how to add Prometheus to Istio</a> with the command <code>curl https://storage.googleapis.com/gke-release/istio/release/istio-version/patches/install-prometheus.yaml
+ | kubectl apply -n istio-system -f -</code>`.</p>
+
+<p>This is really a missing point in the Beta, as this installation is <strong>not part of the managed service</strong>, and if it fails we will not now it. We hope there will be an option to automatically install Prometheus as part of the managed service (as well Kiali).</p>
+
+<p>Once it is installed we can enter the console and see the applications running on the cluster.</p>
+
+<p>For testing the traffic on the application we run an script in our makefile with a couple of calls to the apis in an infinite loop:</p>
+
+<pre><code class="language-makefile">call-app: ## install-prometheus
+    @echo  $(INGRESS_HOST)
+    curl -s http://${GATEWAY_URL}/api/v1/products
+    curl -s http://${GATEWAY_URL}/productpage | grep -o &quot;&lt;title&gt;.*&lt;/title&gt;&quot; &amp;&amp; $(MAKE) call-app     
+</code></pre>
+
+<p>And we go to one of the most interesting parts of kiali, were traffic can be seen on real time for every microservice, the graph menu:</p>
+
+<p><table><tr><td>
+<img class="special-img-class" width="99%" src="/img/posts/managed-istio-on-gke/kiali-error-no-display-relations.png">
+</td><td>
+<img class="special-img-class" width="99%" src="/img/posts/managed-istio-on-gke/kiali-istio-version-error.png">
+</td></tr></table>
+</center></p>
+
+<p>The is no data between the relations (even waiting 5 minutes) and we can observe the error &ldquo;Unknow istio implementation version&rdquo;. This error makes almost Kiali unusable, as the only feature that can be used is the edition of yaml files of Istio, as its editor works fine.</p>
+
+<h3 id="installing-istio-with-helm">Installing Istio with helm</h3>
+
+<p>Once tested the managed service of Istio with Kiali, we have tested the Istio Opensource version installation (not managed) on GKE to check if Kiali can work with the Opensource version. Following Istio installation instructions:</p>
+
+<pre><code class="language-bash">helm repo add istio.io https://storage.googleapis.com/istio-release/releases/1.2.2/charts/
+kubectl apply -f install/kubernetes/helm/helm-service-account.yaml
+helm init --service-account tiller
+helm install install/kubernetes/helm/istio-init --name istio-init --namespace istio-system
+helm install install/kubernetes/helm/istio --name istio --namespace istio-system --set kiali.enabled=true
+</code></pre>
+
+<p>We can have running Istio on GKE, without being a managed service, but with all components directly installed. This script install all Istio components with Prometheus and Kiali. We had to adjust the requested cpu from the Istio components written by default in the Helm chart, as the requeriments where quite high.</p>
+
+<p>Doing the same operations as before, installing the bookinfo app, everything works smoothly, and we get in kiali all traffic and features working in GKE, but losing the managed service.</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/UKrOYrjf3LA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h3 id="used-versions">Used versions</h3>
+
+<ul>
+<li>Gke on istio with Prometheus tested with version <a href="https://storage.googleapis.com/gke-release/istio/release/1.0.3-gke.3/patches/install-prometheus.yaml">1.0.6-gke.3</a> and <a href="https://storage.googleapis.com/gke-release/istio/release/1.0.6-gke.3/patches/install-prometheus.yaml">1.1.3-gke.0</a></li>
+<li>Kubernetes 1.13.7-gke.8 and 1.12.8-gke.10</li>
+<li><a href="https://github.com/istio/istio/tree/release-1.2">Istio opensource 1.2</a></li>
+</ul>
+
+<h2 id="conclusions">Conclusions</h2>
+
+<p>It&rsquo;s really good that the big cloud providers are hardly working on <strong>managed Service mesh</strong> systems. The number of components of a service mesh and <strong>complexity</strong> is really high, and companies doesn&rsquo;t want to deal with this complexity and really focus on their bussiness and that microservices are just working well and to have the tools to manage this complexity.
+The Istio on GKE is still on beta and still missing features like a managed Prometheus and Kiali, but it is a good start point to use Istio.</p>
+
+<p>As we consider a totally necesary to have a visualization of the mesh, we would <strong>not use yet the manaked Istio on production</strong>, ando would use the OpenSource to get all the power of Kiali visualizations, and hoping it will come soon in the next releases.</p>
+
+<h2 id="references">References</h2>
+
+<ul>
+<li><a href="https://cloud.google.com/istio/docs/istio-on-gke/overview">https://cloud.google.com/istio/docs/istio-on-gke/overview</a></li>
+<li><a href="https://www.kiali.io/documentation/getting-started/#_install_kiali_via_istio_or_maistra">https://www.kiali.io/documentation/getting-started/#_install_kiali_via_istio_or_maistra</a></li>
+<li><a href="https://istio.io/docs/">https://istio.io/docs/</a></li>
+</ul>
+
+<h2 id="thanks-contributions">Thanks / Contributions</h2>
+
+<h3 id="medium">Medium</h3>
+
+<p>The article can also be viewed on <a href="https://medium.com/@juancarlosgpelaez/istio-on-gke-the-managed-service-mesh-on-google-cloud-c069a5c11a11">kubekub medium blog</a></p>
+
+<h3 id="github">Github</h3>
+
+<ul>
+<li>The source code of the article is in github repo: git@github.com:kubekub/kubekub-gke-managed-istio.git</li>
+<li>The article is also in a github repo <a href="https://github.com/kubekub/kubekub.com">https://github.com/kubekub/kubekub.com</a></li>
+<li>You can contribute to the github repo: git@github.com:kubekub/kubekub-gke-managed-istio.git creating &ldquo;pull requests&rdquo;.</li>
+<li>If it seems useful code you can favourite it in <a href="git@github.com:kubekub/kubekub-gke-managed-istio.git">GitHub</a></li>
+<li>Or visit me on my linkedin page: <a href="https://www.linkedin.com/in/juancarlosgpelaez/">https://www.linkedin.com/in/juancarlosgpelaez/</a></li>
+</ul>
+
+                        </div>
+                        
+                        
+                        <div id="comments">
+                            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "kubekub" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                        </div>
+                        
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Search</h3>
+    </div>
+
+    <div class="panel-body">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" role="search">
+            <div class="input-group">
+                <input type="search" name="q" class="form-control" placeholder="Search">
+                <input type="hidden" name="sitesearch" value="https://kubekub.com/">
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="https://kubekub.com/categories/anthos">anthos (1)</a>
+            </li>
+            
+            <li><a href="https://kubekub.com/categories/cka">cka (1)</a>
+            </li>
+            
+            <li><a href="https://kubekub.com/categories/ckad">ckad (1)</a>
+            </li>
+            
+            <li><a href="https://kubekub.com/categories/docker">docker (3)</a>
+            </li>
+            
+            <li><a href="https://kubekub.com/categories/gke">gke (1)</a>
+            </li>
+            
+            <li><a href="https://kubekub.com/categories/istio">istio (1)</a>
+            </li>
+            
+            <li><a href="https://kubekub.com/categories/kubernetes">kubernetes (2)</a>
+            </li>
+            
+            <li><a href="https://kubekub.com/categories/terraform">terraform (1)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">Tags</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="https://kubekub.com/tags/anthos"><i class="fa fa-tags"></i> anthos</a>
+            </li>
+            
+            <li><a href="https://kubekub.com/tags/aws"><i class="fa fa-tags"></i> aws</a>
+            </li>
+            
+            <li><a href="https://kubekub.com/tags/certification"><i class="fa fa-tags"></i> certification</a>
+            </li>
+            
+            <li><a href="https://kubekub.com/tags/cka"><i class="fa fa-tags"></i> cka</a>
+            </li>
+            
+            <li><a href="https://kubekub.com/tags/ckad"><i class="fa fa-tags"></i> ckad</a>
+            </li>
+            
+            <li><a href="https://kubekub.com/tags/docker"><i class="fa fa-tags"></i> docker</a>
+            </li>
+            
+            <li><a href="https://kubekub.com/tags/esb"><i class="fa fa-tags"></i> esb</a>
+            </li>
+            
+            <li><a href="https://kubekub.com/tags/gke"><i class="fa fa-tags"></i> gke</a>
+            </li>
+            
+            <li><a href="https://kubekub.com/tags/google-cloud"><i class="fa fa-tags"></i> google-cloud</a>
+            </li>
+            
+            <li><a href="https://kubekub.com/tags/istio"><i class="fa fa-tags"></i> istio</a>
+            </li>
+            
+            <li><a href="https://kubekub.com/tags/kiali"><i class="fa fa-tags"></i> kiali</a>
+            </li>
+            
+            <li><a href="https://kubekub.com/tags/kubectl"><i class="fa fa-tags"></i> kubectl</a>
+            </li>
+            
+            <li><a href="https://kubekub.com/tags/kubernetes"><i class="fa fa-tags"></i> kubernetes</a>
+            </li>
+            
+            <li><a href="https://kubekub.com/tags/prometheus"><i class="fa fa-tags"></i> prometheus</a>
+            </li>
+            
+            <li><a href="https://kubekub.com/tags/pulumi"><i class="fa fa-tags"></i> pulumi</a>
+            </li>
+            
+            <li><a href="https://kubekub.com/tags/service-mesh"><i class="fa fa-tags"></i> service-mesh</a>
+            </li>
+            
+            <li><a href="https://kubekub.com/tags/terraform"><i class="fa fa-tags"></i> terraform</a>
+            </li>
+            
+            <li><a href="https://kubekub.com/tags/udemy"><i class="fa fa-tags"></i> udemy</a>
+            </li>
+            
+            <li><a href="https://kubekub.com/tags/wso2"><i class="fa fa-tags"></i> wso2</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <footer id="footer">
+    <div class="container">
+
+        
+        <div class="col-md-4 col-sm-6">
+            <h4>About us</h4>
+
+            kubekub site.
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+        <div class="col-md-4 col-sm-6">
+
+             
+            <h4>Recent posts</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="https://kubekub.com/blog/2019/07/22/managed-istio-on-gke/">
+                          
+                            <img src="https://kubekub.com/img/posts/istio-gke.png" class="img-responsive" alt="Istio on GKE, the managed service mesh on Google Cloud">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="https://kubekub.com/blog/2019/07/22/managed-istio-on-gke/">Istio on GKE, the managed service mesh on Google Cloud</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="https://kubekub.com/blog/2019/06/29/ckad-cka-certifications/">
+                          
+                            <img src="https://kubekub.com/img/icons/logo_cka_ckad-small.png" class="img-responsive" alt="Kubernetes certificates, my path to obtain CKA and CKAD.">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="https://kubekub.com/blog/2019/06/29/ckad-cka-certifications/">Kubernetes certificates, my path to obtain CKA and CKAD.</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="https://kubekub.com/blog/2015/08/22/terraform-aws-wso2-esb-docker-sample/">
+                          
+                            <img src="https://kubekub.com/img/imported/plane-clouds.jpg" class="img-responsive" alt="Infrastructure as code with Terraform and docker">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="https://kubekub.com/blog/2015/08/22/terraform-aws-wso2-esb-docker-sample/">Infrastructure as code with Terraform and docker</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg">
+             
+
+        </div>
+        
+
+        
+        <div class="col-md-4 col-sm-6">
+
+          <h4>Contact</h4>
+
+            <strong>kubekub.</strong>
+        <br>Calle del Barco
+        <br>Madrid
+        <br>28004
+        <br>
+        <strong>Spain</strong>
+
+            <a href="/contact" class="btn btn-small btn-template-main">Go to contact page</a>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright (c) 2019, kubekub; all rights reserved.</p>
+            
+            <p class="pull-right">
+              Template by <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+
+              Ported to Hugo by <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-143001477-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+<script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+
+<script src="//maps.googleapis.com/maps/api/js?key=AIzaSyCr3RKvfa2Nd2790A-QSyjqJEtx2-vEjWU&v=3.exp"></script>
+
+<script src="https://kubekub.com/js/hpneo.gmaps.js"></script>
+<script src="https://kubekub.com/js/gmaps.init.js"></script>
+<script src="https://kubekub.com/js/front.js"></script>
+
+
+<script src="https://kubekub.com/js/owl.carousel.min.js"></script>
+
+
+  </body>
+</html>
