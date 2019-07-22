@@ -1,7 +1,7 @@
 +++
 title = "Istio on GKE, the managed service mesh on Google Cloud"
 subtitle= "Review of the beta version."
-date = "2019-07-16T10:50:46+02:00"
+date = "2019-07-22T10:50:46+02:00"
 tags = ["kubernetes","istio","gke","google cloud","anthos","service mesh","kiali","Prometheus","pulumi"]
 categories = ["kubernetes","istio","gke","anthos"]
 banner = "img/posts/istio-gke.png"
