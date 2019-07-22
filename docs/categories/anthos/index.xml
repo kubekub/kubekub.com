@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>anthos on kubekub</title>
+    <link>https://kubekub.com/categories/anthos/</link>
+    <description>Recent content in anthos on kubekub</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 16 Jul 2019 10:50:46 +0200</lastBuildDate>
+    
+	<atom:link href="https://kubekub.com/categories/anthos/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Istio on GKE, the managed service mesh on Google Cloud</title>
+      <link>https://kubekub.com/blog/2019/07/16/managed-istio-on-gke/</link>
+      <pubDate>Tue, 16 Jul 2019 10:50:46 +0200</pubDate>
+      
+      <guid>https://kubekub.com/blog/2019/07/16/managed-istio-on-gke/</guid>
+      <description>Istio is becoming one of the standards in the service mesh scenario. It is being developed and pushed by some of the giants of the industry like IBM, Google or RedHat and now version 1.0 is going to celebrate its first anniversary.
+All major cloud providers are including a service mesh in their managed services, like AWS with it&amp;rsquo;s App Service Mesh, IBM with the managed Istio add-on or Google Cloud with Istio on GKE.</description>
+    </item>
+    
+  </channel>
+</rss>
