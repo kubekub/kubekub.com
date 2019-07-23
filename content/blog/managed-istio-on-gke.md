@@ -2,7 +2,7 @@
 title = "Istio on GKE, the managed service mesh on Google Cloud"
 subtitle= "Review of the beta version."
 date = "2019-07-22T10:50:46+02:00"
-tags = ["kubernetes","istio","gke","google cloud","anthos","service mesh","kiali","Prometheus","pulumi"]
+tags = ["kubernetes","istio","gke","google cloud","anthos","service mesh","Kiali","Prometheus","pulumi"]
 categories = ["kubernetes","istio","gke","anthos"]
 banner = "img/posts/istio-gke.png"
 author = "Juan Carlos Garcia Pelaez"
@@ -16,13 +16,13 @@ The [Istio on GKE] (https://cloud.google.com/istio/docs/istio-on-gke/overview) i
 
 ## Installation
 
-As it is a managed service the installation is pretty straightforward, in the "create GKE" menu of the console there is a new submenu for [Anthos] (https://cloud.google.com/anthos/docs/concepts/overview?hl=es-419) (The hybrid cloud solution of Google Cloud), and there we can enable Istio in our GKE cluster. There is only one possible action, the activation of the mTLS, with the options of permissive or Strict, with Strict mTLS will be enforced by default.
+As it is a managed service the installation is pretty straightforward, in the "create GKE" menu of the console there is a new sub-menu for [Anthos] (https://cloud.google.com/anthos/docs/concepts/overview?hl=es-419) (The hybrid cloud solution of Google Cloud), and there we can enable Istio in our GKE cluster. There is only one possible action, the activation of the mTLS, with the options of permissive or Strict, with Strict mTLS will be enforced by default.
 <br/><br/>
 <center>
 <img class="special-img-class" width="100%" src="/img/posts/managed-istio-on-gke/create-gke-cluster-console.png">
 </center>
 <br/><br/>
-In order to facilitate the reinstallations and new environment creation, we have used for the demo the Infrastructure as Code software [Pulumi] (https://www.pulumi.com/docs/index.html), this tool uses the same approach for resource creation than terraform but with real code.
+In order to facilitate the re-installations and new environment creation, we have used for the demo the Infrastructure as Code software [Pulumi] (https://www.pulumi.com/docs/index.html), this tool uses the same approach for resource creation than Terraform but with real code.
 
 The GKE provider of Pulumi also allows the activation of Istio on GKE with the addonsConfig parameter:
 
@@ -112,24 +112,24 @@ All the bookinfo microservices where deployed, and every pod of the bookinfo had
 </center>
 
 
-### Service mesh visualization: kiali
+### Service mesh visualization: Kiali
 
 Once we have Istio installed, we will need to be able to monitor and have a good UI for the service Mesh. It's a very complex system and we need to have a human readable data for it. There is where **Kiali** comes out, it is a tool for Service mesh observability and configuration and an OpenSource project.
 
-It is not yet part of the Istio on GKE offering, that means we need to do a manual installation of it in the GKE. We followed the installation instruction in the [kiali documentation website] (https://www.kiali.io/documentation/getting-started/#_advanced_install_operator_only).
+It is not yet part of the Istio on GKE offering, that means we need to do a manual installation of it in the GKE. We followed the installation instruction in the [Kiali documentation website] (https://www.kiali.io/documentation/getting-started/#_advanced_install_operator_only).
 
 ```
 bash <(curl -L https://git.io/getLatestKialiOperator)
 ```
-The installer will prompt for installing kiali without authentication or with, and the administrator user name and password. 
+The installer will prompt for installing Kiali without authentication or with, and the administrator user name and password. 
 The installation without authentication can be used for example for **adding a proxy server** with an authentication such an oauth proxy.
-This script creates a new namespace called "kiali-operator", and once the operator is installed it manages the installation and upgrades of kiali. Kiali will be automatically installed in the "istio-system" namespace.  
+This script creates a new namespace called "kiali-operator", and once the operator is installed it manages the installation and upgrades of Kiali. Kiali will be automatically installed in the "istio-system" namespace.  
 
 <center>
 <img class="special-img-class" width="100%" src="/img/posts/managed-istio-on-gke/kiali-operator-installation.png">
 </center>
 
-Once kiali is installed, the quickest way to access the console is to create a tunnel using the ```port-forward``` feature of kubectl.
+Once Kiali is installed, the quickest way to access the console is to create a tunnel using the ```port-forward``` feature of kubectl.
 
 ```bash
 kubectl port-forward kiali 2000 -n istio-system
@@ -143,7 +143,7 @@ kubectl port-forward kiali 2000 -n istio-system
 </td></tr></table>
 </center>
 
-The kiali console shows an error for the **Prometheus** installation. In Istio on GKE is not installed by default. The Istio on GKE official documentation explains [how to add Prometheus to Istio] (https://cloud.google.com/istio/docs/istio-on-gke/installing#adding_prometheus) with the command ```curl https://storage.googleapis.com/gke-release/istio/release/istio-version/patches/install-prometheus.yaml
+The Kiali console shows an error for the **Prometheus** installation. In Istio on GKE is not installed by default. The Istio on GKE official documentation explains [how to add Prometheus to Istio] (https://cloud.google.com/istio/docs/istio-on-gke/installing#adding_prometheus) with the command ```curl https://storage.googleapis.com/gke-release/istio/release/istio-version/patches/install-prometheus.yaml
  | kubectl apply -n istio-system -f -````.
 
 This is really a missing point in the Beta, as this installation is **not part of the managed service**, and if it fails we will not now it. We hope there will be an option to automatically install Prometheus as part of the managed service (as well Kiali).
@@ -160,7 +160,7 @@ call-app: ## install-prometheus
 	curl -s http://${GATEWAY_URL}/productpage | grep -o "<title>.*</title>" && $(MAKE) call-app 	
 ```
 
-And we go to one of the most interesting parts of kiali, were traffic can be seen on real time for every microservice, the graph menu:
+And we go to one of the most interesting parts of Kiali, were traffic can be seen on real time for every microservice, the graph menu:
 
 <table><tr><td>
 <img class="special-img-class" width="99%" src="/img/posts/managed-istio-on-gke/kiali-error-no-display-relations.png">

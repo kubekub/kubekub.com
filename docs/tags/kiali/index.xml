@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>kiali on kubekub</title>
+    <title>Kiali on kubekub</title>
     <link>https://kubekub.com/tags/kiali/</link>
-    <description>Recent content in kiali on kubekub</description>
+    <description>Recent content in Kiali on kubekub</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 22 Jul 2019 10:50:46 +0200</lastBuildDate>

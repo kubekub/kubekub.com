@@ -20,6 +20,12 @@
   </url>
   
   <url>
+    <loc>https://kubekub.com/tags/kiali/</loc>
+    <lastmod>2019-07-22T10:50:46+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://kubekub.com/tags/prometheus/</loc>
     <lastmod>2019-07-22T10:50:46+02:00</lastmod>
     <priority>0</priority>
@@ -69,12 +75,6 @@
   
   <url>
     <loc>https://kubekub.com/tags/istio/</loc>
-    <lastmod>2019-07-22T10:50:46+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://kubekub.com/tags/kiali/</loc>
     <lastmod>2019-07-22T10:50:46+02:00</lastmod>
     <priority>0</priority>
   </url>
