@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Kiali</title>
+      <link>https://kubekub.com/tags/kiali/</link>
+      <pubDate>Mon, 22 Jul 2019 10:50:46 +0200</pubDate>
+      
+      <guid>https://kubekub.com/tags/kiali/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Prometheus</title>
       <link>https://kubekub.com/tags/prometheus/</link>
       <pubDate>Mon, 22 Jul 2019 10:50:46 +0200</pubDate>
@@ -53,15 +62,6 @@
       <pubDate>Mon, 22 Jul 2019 10:50:46 +0200</pubDate>
       
       <guid>https://kubekub.com/tags/istio/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>kiali</title>
-      <link>https://kubekub.com/tags/kiali/</link>
-      <pubDate>Mon, 22 Jul 2019 10:50:46 +0200</pubDate>
-      
-      <guid>https://kubekub.com/tags/kiali/</guid>
       <description></description>
     </item>
     
