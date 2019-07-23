@@ -214,7 +214,7 @@ As we consider a totally necesary to have a visualization of the mesh, we would 
 
 ### Medium
 
-The article can also be viewed on [kubekub medium blog](https://medium.com/@juancarlosgpelaez/istio-on-gke-the-managed-service-mesh-on-google-cloud-c069a5c11a11)
+The article can also be viewed on [kubekub medium blog](https://medium.com/kubekub/istio-on-gke-the-managed-service-mesh-on-google-cloud-7d83597e0d88)
 
 ### Github
 
