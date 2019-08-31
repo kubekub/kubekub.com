@@ -4,13 +4,60 @@
   
   <url>
     <loc>https://kubekub.com/blog/</loc>
-    <lastmod>2019-07-22T10:50:46+02:00</lastmod>
+    <lastmod>2019-08-31T16:30:46+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://kubekub.com/categories/</loc>
-    <lastmod>2019-07-22T10:50:46+02:00</lastmod>
+    <lastmod>2019-08-31T16:30:46+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kubekub.com/categories/kubernetes/</loc>
+    <lastmod>2019-08-31T16:30:46+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kubekub.com/tags/kubernetes/</loc>
+    <lastmod>2019-08-31T16:30:46+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kubekub.com/categories/openshift/</loc>
+    <lastmod>2019-08-31T16:30:46+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kubekub.com/tags/openshift/</loc>
+    <lastmod>2019-08-31T16:30:46+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kubekub.com/tags/red-hat/</loc>
+    <lastmod>2019-08-31T16:30:46+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kubekub.com/blog/2019/08/31/openshift-4-local/</loc>
+    <lastmod>2019-08-31T16:30:46+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kubekub.com/tags/</loc>
+    <lastmod>2019-08-31T16:30:46+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kubekub.com/</loc>
+    <lastmod>2019-08-31T16:30:46+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -27,12 +74,6 @@
   
   <url>
     <loc>https://kubekub.com/tags/prometheus/</loc>
-    <lastmod>2019-07-22T10:50:46+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://kubekub.com/tags/</loc>
     <lastmod>2019-07-22T10:50:46+02:00</lastmod>
     <priority>0</priority>
   </url>
@@ -75,24 +116,6 @@
   
   <url>
     <loc>https://kubekub.com/tags/istio/</loc>
-    <lastmod>2019-07-22T10:50:46+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://kubekub.com/</loc>
-    <lastmod>2019-07-22T10:50:46+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://kubekub.com/categories/kubernetes/</loc>
-    <lastmod>2019-07-22T10:50:46+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://kubekub.com/tags/kubernetes/</loc>
     <lastmod>2019-07-22T10:50:46+02:00</lastmod>
     <priority>0</priority>
   </url>
