@@ -20,7 +20,7 @@ crc setup
 crc start
 ```
 
-The command will require access to a download token, with a free RedHat developer suscription you can have it.
+The command will require access to a download token, with a free RedHat developer subscription you can have it.
 
 Once started, the cluster will be accessible on https://console-openshift-console.apps-crc.testing
 
