@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>kubernetes on kubekub</title>
+    <title>Kubernetes on kubekub</title>
     <link>https://kubekub.com/categories/kubernetes/</link>
-    <description>Recent content in kubernetes on kubekub</description>
+    <description>Recent content in Kubernetes on kubekub</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 22 Jul 2019 10:50:46 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 31 Aug 2019 16:30:46 +0200</lastBuildDate>
     
 	<atom:link href="https://kubekub.com/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Run OpenShift 4.x locally</title>
+      <link>https://kubekub.com/blog/2019/08/31/openshift-4-local/</link>
+      <pubDate>Sat, 31 Aug 2019 16:30:46 +0200</pubDate>
+      
+      <guid>https://kubekub.com/blog/2019/08/31/openshift-4-local/</guid>
+      <description>After some finding and waiting, we can have a way of locally test OpenShift 4 in our local machines. Thanks to an update to the post in the great article about the differences between OpenShift and Kubernetes we discovered that there is a replacement for Minishift and the &amp;ldquo;oc cluster up&amp;rdquo; command, not working for OpenShift 4. The only ways to test OpenShift 4 was with an installation in the cloud or the OpenShift online testing version (only free for a month).</description>
+    </item>
     
     <item>
       <title>Istio on GKE, the managed service mesh on Google Cloud</title>
