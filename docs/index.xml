@@ -6,10 +6,19 @@
     <description>Recent content on kubekub</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 31 Aug 2019 16:30:46 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 11 Mar 2020 11:50:46 +0200</lastBuildDate>
     
 	<atom:link href="https://kubekub.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>DevOps platform in Kubernetes production</title>
+      <link>https://kubekub.com/blog/2020/03/11/devops-platform-i-gitlab/</link>
+      <pubDate>Wed, 11 Mar 2020 11:50:46 +0200</pubDate>
+      
+      <guid>https://kubekub.com/blog/2020/03/11/devops-platform-i-gitlab/</guid>
+      <description> References </description>
+    </item>
     
     <item>
       <title>Run OpenShift 4.x locally</title>
