@@ -12,15 +12,6 @@
     
     
     <item>
-      <title>Kubernetes</title>
-      <link>https://kubekub.com/tags/kubernetes/</link>
-      <pubDate>Sat, 31 Aug 2019 16:30:46 +0200</pubDate>
-      
-      <guid>https://kubekub.com/tags/kubernetes/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>OpenShift</title>
       <link>https://kubekub.com/tags/openshift/</link>
       <pubDate>Sat, 31 Aug 2019 16:30:46 +0200</pubDate>
@@ -35,6 +26,15 @@
       <pubDate>Sat, 31 Aug 2019 16:30:46 +0200</pubDate>
       
       <guid>https://kubekub.com/tags/red-hat/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kubernetes</title>
+      <link>https://kubekub.com/tags/kubernetes/</link>
+      <pubDate>Sat, 31 Aug 2019 16:30:46 +0200</pubDate>
+      
+      <guid>https://kubekub.com/tags/kubernetes/</guid>
       <description></description>
     </item>
     
