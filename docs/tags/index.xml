@@ -6,10 +6,55 @@
     <description>Recent content in Tags on kubekub</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 31 Aug 2019 16:30:46 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 11 Mar 2020 11:50:46 +0200</lastBuildDate>
     
 	<atom:link href="https://kubekub.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>cloud</title>
+      <link>https://kubekub.com/tags/cloud/</link>
+      <pubDate>Wed, 11 Mar 2020 11:50:46 +0200</pubDate>
+      
+      <guid>https://kubekub.com/tags/cloud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gitlab</title>
+      <link>https://kubekub.com/tags/gitlab/</link>
+      <pubDate>Wed, 11 Mar 2020 11:50:46 +0200</pubDate>
+      
+      <guid>https://kubekub.com/tags/gitlab/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>knative</title>
+      <link>https://kubekub.com/tags/knative/</link>
+      <pubDate>Wed, 11 Mar 2020 11:50:46 +0200</pubDate>
+      
+      <guid>https://kubekub.com/tags/knative/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kubernetes</title>
+      <link>https://kubekub.com/tags/kubernetes/</link>
+      <pubDate>Wed, 11 Mar 2020 11:50:46 +0200</pubDate>
+      
+      <guid>https://kubekub.com/tags/kubernetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vmware</title>
+      <link>https://kubekub.com/tags/vmware/</link>
+      <pubDate>Wed, 11 Mar 2020 11:50:46 +0200</pubDate>
+      
+      <guid>https://kubekub.com/tags/vmware/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>OpenShift</title>
@@ -26,15 +71,6 @@
       <pubDate>Sat, 31 Aug 2019 16:30:46 +0200</pubDate>
       
       <guid>https://kubekub.com/tags/red-hat/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>kubernetes</title>
-      <link>https://kubekub.com/tags/kubernetes/</link>
-      <pubDate>Sat, 31 Aug 2019 16:30:46 +0200</pubDate>
-      
-      <guid>https://kubekub.com/tags/kubernetes/</guid>
       <description></description>
     </item>
     
