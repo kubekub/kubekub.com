@@ -1,9 +1,14 @@
 ---
 import { SITE } from 'astrowind:config';
+const kubekubLogo = '~/assets/images/kubekub-logo.png';
+import Image from '~/components/common/Image.astro';
 ---
 
-<span
-  class="self-center ml-2 rtl:ml-0 rtl:mr-2 text-2xl md:text-xl font-bold text-gray-900 whitespace-nowrap dark:text-white"
->
-  🚀 {SITE?.name}
-</span>
+<div class="flex items-center gap-2">
+  <Image src={kubekubLogo} alt="KubeKub Logo" width={30} />
+  <span
+    class="text-2xl md:text-xl font-bold text-gray-900 whitespace-nowrap dark:text-white"
+  >
+    {SITE?.name}
+  </span>
+</div>
