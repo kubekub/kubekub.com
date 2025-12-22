@@ -1,4 +1,0 @@
-User-agent: *
-Disallow:
-
-Sitemap: https://kubekub.vercel.app/sitemap-index.xml
