@@ -5,7 +5,7 @@ import Button from '~/components/ui/Button.astro';
 const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } = Astro.props;
 ---
 
-<form>
+<form id="contactForm">
   {
     inputs &&
       inputs.map(
@@ -85,3 +85,28 @@ const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } 
     )
   }
 </form>
+
+<script>
+  const form = document.getElementById('contactForm');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      // Get form values
+      const formData = new FormData(form);
+      const name = formData.get('name') || 'No name';
+      const email = formData.get('email') || '';
+      const message = formData.get('message') || '';
+      
+      // Create formatted email body
+      const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+      
+      // Create mailto link with subject and body
+      const subject = `New Contact Form Submission from ${name}`;
+      const mailtoLink = `mailto:hello@kubekub.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      
+      // Open email client
+      window.location.href = mailtoLink;
+    });
+  }
+</script>
