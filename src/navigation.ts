@@ -7,11 +7,11 @@ export const headerData = {
       text: 'Home',
       href: '/',
     },
-    {
-      text: 'Services',
-      href: getPermalink('/services'),
+    // {
+    //   text: 'Services',
+    //   href: getPermalink('/services'),
   
-    },
+    // },
     {
       text: 'Contact',
       href: getPermalink('/contact'),
