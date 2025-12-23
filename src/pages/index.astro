@@ -1,0 +1,292 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Hero from '~/components/widgets/Hero.astro';
+import Note from '~/components/widgets/Note.astro';
+import Features from '~/components/widgets/Features.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Content from '~/components/widgets/Content.astro';
+import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = {
+  title: 'Kubekub — Cloud Native AI Platform Engineering',
+  ignoreTitleTemplate: true,
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Schedule a Consultation',
+        href: '/contact',
+        icon: 'tabler:message-circle',
+      },
+      { text: 'Learn More', href: '#about' },
+    ]}
+  >
+    <Fragment slot="title">
+      Production-Grade <span class="text-accent dark:text-white highlight">AI Infrastructure</span> on Kubernetes
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      <span class="font-semibold">Beyond running LLMs:</span> build the secure, scalable platform layer with 
+      <span class="font-semibold">API gateways, governance, multi-tenancy, and enterprise controls</span> that transforms experimental models into compliant, production-ready services.
+    </Fragment>
+  </Hero>
+
+  <!-- Note Widget ******************* -->
+
+  <Note>
+    Independent Freelance AI Platform Engineer specializing in short-term, high-impact strategic engagements (part-time contracts)
+  </Note>
+
+  <!-- Features Widget *************** -->
+
+  <Features
+    id="about"
+    tagline="Expertise"
+    title="Cloud Native AI Platform Stack"
+    subtitle="Building production-ready AI infrastructure using cutting-edge Cloud Native technologies"
+    items={[
+      {
+        title: 'Model Serving & Inference',
+        description:
+          'KServe for standardized model deployment, autoscaling, and multi-framework support (TensorFlow, PyTorch, vLLM, Hugging Face).',
+        icon: 'tabler:box-model',
+      },
+      {
+        title: 'API Gateway & Traffic Management',
+        description:
+          'Gateway API with Inference Extensions for intelligent routing, load balancing, and request orchestration across AI endpoints.',
+        icon: 'tabler:route',
+      },
+      {
+        title: 'AI Agent Orchestration',
+        description:
+          'KAgent and Model Context Protocol (MCP) for Kubernetes-native control plane and governance of intelligent AI workloads.',
+        icon: 'tabler:robot',
+      },
+      {
+        title: 'Platform Engineering',
+        description:
+          'Internal Developer Platforms (IDP) with ArgoCD, Crossplane, Backstage, and GitOps workflows for self-service AI infrastructure.',
+        icon: 'tabler:hexagon-3d',
+      },
+      {
+        title: 'Observability',
+        description:
+          'Grafana, and OpenTelemetry for end-to-end ML lifecycle management and monitoring.',
+        icon: 'tabler:chart-dots',
+      },
+      {
+        title: 'Security & Compliance',
+        description:
+          'Istio service mesh, Kyverno policies, OPA/Gatekeeper, and external-secrets for enterprise-grade governance and compliance.',
+        icon: 'tabler:building',
+      },
+    ]}
+  />
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isReversed
+    tagline="The Challenge"
+    title="Platform Engineering for Kubernetes-Native AI"
+    items={[
+      {
+        title: 'Standardized Workload Management',
+        description:
+          'Move beyond ad-hoc AI deployments to standardized Kubernetes workloads with proper resource management, autoscaling, and lifecycle governance.',
+      },
+      {
+        title: 'Enterprise Security & Compliance',
+        description:
+          'Implement zero-trust networking, RBAC, network policies, and compliance controls without vendor lock-in using open standards (Istio, Kyverno, OPA).',
+      },
+      {
+        title: 'Multi-Tenancy & Isolation',
+        description:
+          'Design platform layers that enable multiple teams and workloads to coexist safely, with proper resource quotas, namespace isolation, and governance.',
+      },
+      {
+        title: 'Open Standards, Not Vendor Lock-In',
+        description:
+          'Build on Kubernetes-native patterns (KServe, Gateway API, MCP) that remain portable across cloud providers and on-premises infrastructure.',
+      },
+    ]}
+
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Building Platform Layers, Not Just AI Deployments
+      </h3>
+      The difference between a scattered AI infrastructure and a production-grade platform is intentional architecture. I design the specialized platform layer that enables Kubernetes to serve as the control plane for your entire AI ecosystem.
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Stats Widget ****************** -->
+
+  <Stats
+    stats={[
+      { title: 'Years Experience', amount: '25' },
+      { title: 'Cloud Native Focus', amount: '10+' },
+      { title: 'Certifications', amount: 'CKA, CKAD, AWS, GCP' },
+    ]}
+  />
+
+  <!-- Steps Widget ****************** -->
+
+  <Steps
+    title="Hands-On Implementation"
+    items={[
+      {
+        title: '<span class="font-medium">Assess & Diagnose</span>',
+        description:
+          'Deep-dive into existing infrastructure, identify bottlenecks, and understand real problems blocking production AI deployment.',
+        icon: 'tabler:stethoscope',
+      },
+      {
+        title: '<span class="font-medium">Build & Fix</span>',
+        description:
+          'Roll up sleeves and implement solutions directly—from Kubernetes manifests to CI/CD pipelines. No handoff, just hands-on execution.',
+        icon: 'tabler:tools',
+      },
+      {
+        title: '<span class="font-medium">Deploy & Validate</span>',
+        description:
+          'Get AI models running in production. Troubleshoot issues in real-time, optimize performance, and ensure reliability under load.',
+        icon: 'tabler:rocket',
+      },
+      {
+        title: '<span class="font-medium">Transfer Knowledge</span>',
+        description:
+          'Document what was built, why it works, and how to maintain it. Enable teams to operate independently after engagement.',
+        icon: 'tabler:school',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1616198814651-e71f960c3180?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
+      alt: 'Kubernetes Platform',
+    }}
+  />
+
+  <!-- Features2 Widget ************** -->
+
+  <Features2
+    title="Why Choose Kubekub"
+    subtitle="The discipline of a seasoned architect applied to the innovation of AI"
+    tagline="Value Proposition"
+    items={[
+      {
+        title: 'Battle-Tested Expertise',
+        description: 'Proven experience with Fortune 500 enterprises: Roche, Hexagon, European Commission.',
+        icon: 'tabler:award',
+      },
+      {
+        title: 'Certified Professional',
+        description: 'CKA, CKAD certified. Google Cloud and AWS certified architect.',
+        icon: 'tabler:certificate',
+      },
+      {
+        title: 'Bleeding-Edge Technology',
+        description: 'Specialized in KServe, Gateway API Inference Extension, KAgent, and KMCP.',
+        icon: 'tabler:atom',
+      },
+      {
+        title: 'Flexible Engagement',
+        description: 'Part-time, short-term strategic contracts designed for high-impact results.',
+        icon: 'tabler:calendar-check',
+      },
+      {
+        title: 'MLOps Focus',
+        description: 'Transform experimental models into compliant, production-ready AI services.',
+        icon: 'tabler:git-merge',
+      },
+      {
+        title: 'Strategic Leadership',
+        description: 'Fractional AI platform leadership to guide your long-term platform strategy.',
+        icon: 'tabler:bulb',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+
+  <!-- FAQs Widget ******************* -->
+
+  <FAQs
+    title="Frequently Asked Questions"
+    subtitle="Common questions about working with Kubekub"
+    tagline="FAQs"
+    classes={{ container: 'max-w-6xl' }}
+    items={[
+      {
+        title: 'What is Cloud Native AI Platform Engineering?',
+        description:
+          "It's the specialized practice of building production-grade infrastructure for AI/ML workloads on Kubernetes. This includes model serving, autoscaling, traffic management, governance, and compliance—transforming experimental AI into enterprise-ready services.",
+      },
+      {
+        title: 'What types of engagements do you accept?',
+        description:
+          'I focus on short-term, high-impact strategic engagements on a part-time basis. This includes platform architecture design, infrastructure implementation, team enablement, and fractional leadership for AI platform strategy.',
+      },
+      {
+        title: 'Do you work with startups or only enterprises?',
+        description:
+          "I work with organizations at any stage who are serious about operationalizing AI at scale. Whether you're a startup building your first production AI platform or an enterprise modernizing existing ML infrastructure, I can help.",
+      },
+      {
+        title: 'What makes your approach different?',
+        description:
+          "I bring 25 years of IT architecture discipline to the rapidly evolving AI space. Rather than just deploying tools, I architect the specialized layer that enables data science teams to succeed—focusing on standards like KServe, Gateway API, and Kubernetes-native patterns.",
+      },
+      {
+        title: 'What certifications and experience do you have?',
+        description:
+          'CKA (Certified Kubernetes Administrator), CKAD (Certified Kubernetes Application Developer), Google Cloud certified, AWS certified. 25 years in IT Architecture with 10+ years focused on Cloud Native platforms. Proven track record with Roche, Hexagon, and European Commission.',
+      },
+      {
+        title: 'How do I get started?',
+        description:
+          "Reach out via the contact form to schedule an initial consultation. We'll discuss your AI platform challenges, current infrastructure, and goals. From there, I'll propose a tailored engagement approach.",
+      },
+    ]}
+  />
+
+  <!-- CallToAction Widget *********** -->
+
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Get in Touch',
+        href: '/contact',
+        icon: 'tabler:message-circle',
+      },
+    ]}
+  >
+    <Fragment slot="title">
+      Ready to Transform Your AI Platform?
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      Looking for a fractional leader to set your AI platform strategy? Let's connect and discuss how Kubekub can accelerate your journey to production-ready AI infrastructure.
+    </Fragment>
+  </CallToAction>
+
+</Layout>

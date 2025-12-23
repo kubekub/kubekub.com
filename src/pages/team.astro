@@ -1,0 +1,38 @@
+---
+
+import Hero from '~/components/widgets/Hero.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'Team',
+};
+---
+
+<Layout metadata={metadata}>
+
+
+  <!-- Team Widget ******************* -->
+
+  <Features2
+    title="Our Team"
+    subtitle="Expert-led AI Platform Engineering"
+    items={[
+      {
+        title: 'Juan Carlos Garcia Pelaez',
+        description: 'Founder & Cloud Native AI Platform Engineer with 25+ years of IT Architecture experience. Specializing in KServe, Gateway API, MLOps, and production AI infrastructure on Kubernetes. Certified Kubernetes Administrator (CKA) and AWS/GCP certified.',
+        icon: 'tabler:user',
+        callToAction: {
+          text: 'LinkedIn Profile',
+          href: 'https://www.linkedin.com/in/juancarlosgpelaez/',
+          target: '_blank',
+        },
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+
+</Layout>
