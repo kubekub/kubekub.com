@@ -15,9 +15,9 @@ metadata:
 
 [Kagent](https://github.com/kagent-dev/kagent) is a Kubernetes AI agent Platform that executes natural language requests on your cluster. This power requires careful access control and security.
 
-We built a fully automated, zero-trust authentication system using OAuth2 Proxy, Keycloak, and Crossplane. Everything is GitOps-managed - no manual admin console configuration.
+A fully automated, zero-trust authentication system using OAuth2 Proxy, Keycloak, and Crossplane is available. Everything is GitOps-managed - no manual admin console configuration.
 
-We have a [complete working example](https://github.com/kubekub/kagent-oauth2-proxy-example) ready to deploy.
+We have a [complete working example](https://github.com/kubekub/kagent-oauth2-proxy-example) integrating these tools and ready to deploy.
 
 ## Why Protection Matters
 
@@ -69,30 +69,13 @@ Users get access by assigning them the `kagent-user` role in Keycloak, or by def
 
 ## Actually Getting Started
 
-We didn't just talk about it - there's a **working example** you can actually use: [kubekub/kagent-oauth2-proxy-example](https://github.com/kubekub/kagent-oauth2-proxy-example).
+A **working example** is available: [kubekub/kagent-oauth2-proxy-example](https://github.com/kubekub/kagent-oauth2-proxy-example).
 
-It's got:
+It includes:
 - A Helm chart that's ready to go
 - All the Crossplane stuff for Keycloak
 - Gateway API wired up
 - OAuth2 Proxy configured
 - Docs and troubleshooting
 
-**The quick version:**
-
-```bash
-# Clone it
-git clone https://github.com/kubekub/kagent-oauth2-proxy-example
-cd kagent-oauth2-proxy-example
-
-# Deploy it
-helm install kagent-auth . --namespace kagent --create-namespace
-
-# Add some users and you're done
-```
-
 Head to the [README](https://github.com/kubekub/kagent-oauth2-proxy-example#readme) for all the details - setup, config, adding users, fixing stuff if it breaks, all of it.
-
----
-
-**Kubekub** - we build Kubernetes platforms that actually work, with a focus on AI tools and making ops simpler.
