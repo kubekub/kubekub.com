@@ -18,9 +18,6 @@ preview: ## Preview production build locally
 
 ## Build Commands
 
-build: ## Build for production
-	npm run build
-
 build-docs: ## Build documentation and prepare for deployment
 	npm run build
 	cp CNAME docs/CNAME
