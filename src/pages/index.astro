@@ -33,20 +33,16 @@ const metadata = {
     ]}
   >
     <Fragment slot="title">
-      Production-Grade <span class="text-accent dark:text-white highlight">AI Infrastructure</span> on Kubernetes
+      Architecting <span class="text-accent dark:text-white highlight">AI Platforms</span> on Kubernetes
     </Fragment>
 
     <Fragment slot="subtitle">
-      <span class="font-semibold">Beyond running LLMs:</span> build the secure, scalable platform layer with 
-      <span class="font-semibold">API gateways, governance, multi-tenancy, and enterprise controls</span> that transforms experimental models into compliant, production-ready services.
+      <span class="font-semibold">Beyond running LLMs:</span> architect secure, scalable platforms with <span class="font-semibold">open standards (Gateway API, Istio, KServe), zero-trust security, and multi-tenancy</span> that deliver production-ready AI services without vendor lock-in.
     </Fragment>
   </Hero>
 
   <!-- Note Widget ******************* -->
 
-  <Note>
-    Independent Freelance AI Platform Engineer specializing in short-term, high-impact strategic engagements (part-time contracts)
-  </Note>
 
   <!-- Features Widget *************** -->
 
@@ -57,9 +53,9 @@ const metadata = {
     subtitle="Building production-ready AI infrastructure using cutting-edge Cloud Native technologies"
     items={[
       {
-        title: 'Model Serving & Inference',
+        title: 'LLM Serving & Inference',
         description:
-          'KServe for standardized model deployment, autoscaling, and multi-framework support (TensorFlow, PyTorch, vLLM, Hugging Face).',
+          'KServe with vLLM and Hugging Face for high-performance LLM deployment, autoscaling, and production-grade inference at scale.',
         icon: 'tabler:box-model',
       },
       {
@@ -71,13 +67,19 @@ const metadata = {
       {
         title: 'AI Agent Orchestration',
         description:
-          'KAgent and Model Context Protocol (MCP) for Kubernetes-native control plane and governance of intelligent AI workloads.',
+          'KAgent, Model Context Protocol (MCP), and ToolHive for Kubernetes-native control plane and governance of intelligent AI workloads.',
         icon: 'tabler:robot',
+      },
+      {
+        title: 'AI-Powered DevOps & Automation',
+        description:
+          'AI-powered platform engineering and DevOps automation through intelligent Kubernetes operations and conversational workflows.',
+        icon: 'tabler:terminal-2',
       },
       {
         title: 'Platform Engineering',
         description:
-          'Internal Developer Platforms (IDP) with ArgoCD, Crossplane, Backstage, and GitOps workflows for self-service AI infrastructure.',
+          'Internal Developer Platforms (IDP) with ArgoCD, Crossplane, and GitOps workflows for self-service AI infrastructure.',
         icon: 'tabler:hexagon-3d',
       },
       {
@@ -89,7 +91,7 @@ const metadata = {
       {
         title: 'Security & Compliance',
         description:
-          'Istio service mesh, Kyverno policies, OPA/Gatekeeper, and external-secrets for enterprise-grade governance and compliance.',
+          'Istio service mesh, Kyverno policies, cert-manager and external-secrets for enterprise-grade governance and compliance.',
         icon: 'tabler:building',
       },
     ]}
@@ -110,7 +112,7 @@ const metadata = {
       {
         title: 'Enterprise Security & Compliance',
         description:
-          'Implement zero-trust networking, RBAC, network policies, and compliance controls without vendor lock-in using open standards (Istio, Kyverno, OPA).',
+          'Implement zero-trust networking, RBAC, network policies, and compliance controls without vendor lock-in using open standards (Istio, Kyverno, OpenFGA).',
       },
       {
         title: 'Multi-Tenancy & Isolation',
@@ -120,7 +122,7 @@ const metadata = {
       {
         title: 'Open Standards, Not Vendor Lock-In',
         description:
-          'Build on Kubernetes-native patterns (KServe, Gateway API, MCP) that remain portable across cloud providers and on-premises infrastructure.',
+          'Build on Kubernetes-native patterns (KServe, ToolHive, KGateway, Envoy AI Gateway, Gateway API, MCP) that remain portable across cloud providers and on-premises infrastructure.',
       },
     ]}
 
@@ -136,16 +138,6 @@ const metadata = {
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
   </Content>
-
-  <!-- Stats Widget ****************** -->
-
-  <Stats
-    stats={[
-      { title: 'Years Experience', amount: '25' },
-      { title: 'Cloud Native Focus', amount: '10+' },
-      { title: 'Certifications', amount: 'CKA, CKAD, AWS, GCP' },
-    ]}
-  />
 
   <!-- Steps Widget ****************** -->
 
@@ -192,13 +184,8 @@ const metadata = {
     items={[
       {
         title: 'Battle-Tested Expertise',
-        description: 'Proven experience with Fortune 500 enterprises: Roche, Hexagon, European Commission.',
+        description: 'Hands-on experience building and operating production Kubernetes platforms at scale.',
         icon: 'tabler:award',
-      },
-      {
-        title: 'Certified Professional',
-        description: 'CKA, CKAD certified. Google Cloud and AWS certified architect.',
-        icon: 'tabler:certificate',
       },
       {
         title: 'Bleeding-Edge Technology',
@@ -211,8 +198,8 @@ const metadata = {
         icon: 'tabler:calendar-check',
       },
       {
-        title: 'MLOps Focus',
-        description: 'Transform experimental models into compliant, production-ready AI services.',
+        title: 'LLM & Generative AI',
+        description: 'Operationalize generative AI and LLM applications at scale on Kubernetes.',
         icon: 'tabler:git-merge',
       },
       {
@@ -243,27 +230,22 @@ const metadata = {
       {
         title: 'What types of engagements do you accept?',
         description:
-          'I focus on short-term, high-impact strategic engagements on a part-time basis. This includes platform architecture design, infrastructure implementation, team enablement, and fractional leadership for AI platform strategy.',
+          'Kubekub focuses on short-term, high-impact strategic engagements on a part-time basis. This includes platform architecture design, infrastructure implementation, team enablement, and fractional leadership for AI platform strategy.',
       },
       {
         title: 'Do you work with startups or only enterprises?',
         description:
-          "I work with organizations at any stage who are serious about operationalizing AI at scale. Whether you're a startup building your first production AI platform or an enterprise modernizing existing ML infrastructure, I can help.",
+          "Kubekub works with organizations at any stage who are serious about operationalizing AI at scale. Whether you're a startup building your first production AI platform or an enterprise modernizing existing ML infrastructure, we can help.",
       },
       {
         title: 'What makes your approach different?',
         description:
-          "I bring 25 years of IT architecture discipline to the rapidly evolving AI space. Rather than just deploying tools, I architect the specialized layer that enables data science teams to succeed—focusing on standards like KServe, Gateway API, and Kubernetes-native patterns.",
-      },
-      {
-        title: 'What certifications and experience do you have?',
-        description:
-          'CKA (Certified Kubernetes Administrator), CKAD (Certified Kubernetes Application Developer), Google Cloud certified, AWS certified. 25 years in IT Architecture with 10+ years focused on Cloud Native platforms. Proven track record with Roche, Hexagon, and European Commission.',
+          "Kubekub focuses on specialization: we architect the platform layer that enables data science teams to succeed—not just deploying tools. We emphasize standards like KServe, Gateway API, and Kubernetes-native patterns for sustainable, production-ready AI infrastructure.",
       },
       {
         title: 'How do I get started?',
         description:
-          "Reach out via the contact form to schedule an initial consultation. We'll discuss your AI platform challenges, current infrastructure, and goals. From there, I'll propose a tailored engagement approach.",
+          "Reach out via the contact form to schedule an initial consultation. We'll discuss your AI platform challenges, current infrastructure, and goals. From there, we'll propose a tailored engagement approach.",
       },
     ]}
   />
