@@ -86,7 +86,7 @@ Was it the NetworkPolicy? DNS? Service mesh? Certificate issues? We needed visib
 
 ### Enter Calico's Debugging Tools
 
-Modern Calico (v3.27+) includes two powerful debugging features:
+Modern Calico (v3.30+) includes two powerful debugging features:
 
 - **[Goldmane](https://docs.tigera.io/calico/latest/operations/comms/policy-recommendations)**: Analyzes traffic flows and recommends NetworkPolicy changes
 - **[Whisker](https://docs.tigera.io/calico/latest/operations/comms/policy-tester)**: Tests whether specific traffic would be allowed or denied
@@ -122,7 +122,7 @@ We needed full control. Enter [Kubespray](https://github.com/kubernetes-sigs/kub
 
 Kubespray gives you a production-grade Kubernetes cluster with full control over:
 
-- **CNI choice and version** - We installed Calico v3.28 using the tigera-operator
+- **CNI choice and version** - We installed Calico v3.31 using the tigera-operator
 - **Component versions** - Pick Kubernetes version, etcd, container runtime
 - **Configuration flexibility** - Every setting is configurable
 - **Upgrade paths** - Documented, tested procedures for updates
@@ -131,23 +131,33 @@ The key difference: instead of being locked into static YAML manifests, we use t
 
 ### The Setup
 
-We deployed Kubespray on 3 physical machines (rigel, nebula, lynx) and installed Calico using the tigera-operator instead of static manifests.
+We deployed Kubespray on 3 physical machines and installed Calico using the tigera-operator instead of static manifests.
 
-Result: Full Kubernetes cluster with Calico v3.28, including Goldmane and Whisker debugging tools, with a clean upgrade path for future versions.
+Result: Full Kubernetes cluster with Calico v3.31, including Goldmane and Whisker debugging tools, with a clean upgrade path for future versions.
 
 ## Debugging Network Policies (Finally)
 
-With Calico v3.28, we could now use Goldmane and Whisker to debug properly.
+With Calico v3.31, we could now use Goldmane and Whisker to debug properly.
 
-**Goldmane** analyzed our traffic patterns and recommended the missing DNS rule immediately. **Whisker** let us test policies before deploying them.
+Kagent was failing to connect, logs showed timeouts but no clear indication of what was blocked:
 
-Problem identified in 2 minutes instead of 2 hours: We forgot to allow DNS traffic to kube-system.
+![Kagent logs showing connection failures](/src/assets/images/post/kubernetes-for-agentic-ai-installation/argocd-error.png)
+
+**Whisker** became our network policy testing tool. We could simulate connections before deploying policies, seeing exactly what would be allowed or denied. When Kagent couldn't reach the Kubernetes API, Whisker showed us precisely which rule was blocking it and on which port.
+
+![Whisker showing denied connection to Kubernetes API on port 8443](/src/assets/images/post/kubernetes-for-agentic-ai-installation/whisker-deny.png)
+
+The visualization made it clear: our NetworkPolicy was missing the egress rule to reach the Kubernetes API on port 8443. Without Whisker, we would have been guessing in the dark, trying different ports and protocols.
+
+**Goldmane** complemented this by analyzing actual traffic patterns and recommending NetworkPolicy rules based on observed behavior - eliminating the guesswork entirely.
+
+Problem identified in 2 minutes instead of 2 hours.
 
 ## The Development Setup: Minikube
 
 For single-machine development on macOS, we use Minikube with the **vfkit driver**. This gives us full control over networking configuration - no preset limitations like other drivers.
 
-We install the same tigera-operator and Calico v3.28, matching our production setup. Same NetworkPolicies, same debugging tools, same behavior - just on a laptop instead of three physical machines.
+We install the same tigera-operator and Calico v3.31, matching our production setup. Same NetworkPolicies, same debugging tools, same behavior - just on a laptop instead of three physical machines.
 
 ## Lessons Learned
 
