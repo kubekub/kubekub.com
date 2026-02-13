@@ -76,12 +76,29 @@ const App = () => {
           <div className="relative bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 md:p-8">
             <LayerHeader title="KubeKub Agentic" icon={Zap} color="text-rose-400" />
             
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <TechCard title="KAgent" icon={Cpu} subtext="Autonomous Orchestration" type="agent" />
               <TechCard title="Agent Gateway" icon={Network} subtext="Agent Protocol Handling" type="agent" />
               <TechCard title="Envoy AI Gateway" icon={Share2} subtext="LLM Traffic Management" type="agent" />
-              <TechCard title="OAuth2" icon={UserCheck} subtext="Authentication" type="agent" />
-              <TechCard title="Authzen + OpenFGA" icon={ShieldCheck} subtext="Authorization" type="agent" />
+            </div>
+            
+            <div className="absolute left-1/2 bottom-0 w-0.5 h-12 bg-gradient-to-b from-slate-700 to-transparent translate-y-full -translate-x-1/2 hidden md:block" />
+          </div>
+        </div>
+
+        {/* Authentication & Authorization Layer */}
+        <div 
+          className="relative group"
+          onMouseEnter={() => setActiveLayer('auth')}
+          onMouseLeave={() => setActiveLayer(null)}
+        >
+          <div className={`absolute -inset-4 bg-gradient-to-r from-amber-500/10 to-yellow-500/10 rounded-3xl blur-xl transition-opacity duration-500 ${activeLayer === 'auth' ? 'opacity-100' : 'opacity-0'}`} />
+          <div className="relative bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 md:p-8">
+            <LayerHeader title="KubeKub Identity" icon={ShieldCheck} color="text-amber-400" />
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <TechCard title="OAuth2" icon={UserCheck} subtext="Authentication" type="security" />
+              <TechCard title="Authzen + OpenFGA" icon={ShieldCheck} subtext="Authorization" type="security" />
             </div>
             
             <div className="absolute left-1/2 bottom-0 w-0.5 h-12 bg-gradient-to-b from-slate-700 to-transparent translate-y-full -translate-x-1/2 hidden md:block" />
