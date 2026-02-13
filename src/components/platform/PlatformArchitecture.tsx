@@ -18,7 +18,9 @@ import {
   Key,
   FileText,
   Radio,
-  Share2
+  Share2,
+  GitBranch,
+  RefreshCw
 } from 'lucide-react';
 
 const App = () => {
@@ -91,6 +93,17 @@ const App = () => {
           <div className="relative bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 md:p-8">
             <LayerHeader title="KubeKub Ops" icon={Layers} color="text-emerald-400" />
             
+            {/* GitOps Section */}
+            <div className="bg-slate-900/60 rounded-xl p-5 border border-slate-700/50 mb-6">
+              <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-4 flex items-center gap-2">
+                <GitBranch className="w-4 h-4" /> GitOps Framework
+              </h3>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                <TechCard title="ArgoCD" icon={GitBranch} subtext="Continuous Deployment" type="default" />
+                <TechCard title="Crossplane" icon={RefreshCw} subtext="Infrastructure Provisioning" type="default" />
+              </div>
+            </div>
+
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               
               {/* Networking & Security Sub-group */}
