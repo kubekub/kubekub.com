@@ -23,7 +23,10 @@ import {
   RefreshCw,
   FileCheck,
   UserCheck,
-  ShieldCheck
+  ShieldCheck,
+  AlertTriangle,
+  Bell,
+  HardDrive
 } from 'lucide-react';
 
 const App = () => {
@@ -136,6 +139,7 @@ const App = () => {
                 </h3>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                   <TechCard title="Kyverno" icon={FileCheck} subtext="Policy Engine" type="security" />
+                  <TechCard title="Falco" icon={AlertTriangle} subtext="Runtime Security" type="security" />
                   <TechCard title="Calico" icon={Activity} subtext="eBPF Dataplane" type="security" />
                   <TechCard title="Istio" icon={LayoutGrid} subtext="Ambient Mesh" type="security" />
                   <TechCard title="Cert Manager" icon={Lock} subtext="TLS Automation" type="security" />
@@ -151,10 +155,21 @@ const App = () => {
                 </h3>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                   <TechCard title="Prometheus" icon={Activity} subtext="Metrics Collection" type="obs" />
+                  <TechCard title="Alertmanager" icon={Bell} subtext="Alert Routing" type="obs" />
                   <TechCard title="Grafana Mimir" icon={Database} subtext="LT Metrics Storage" type="obs" />
                   <TechCard title="Loki" icon={FileText} subtext="Log Aggregation" type="obs" />
                   <TechCard title="Tempo" icon={Search} subtext="Distributed Tracing" type="obs" />
                   <TechCard title="OpenTelemetry" icon={Radio} subtext="Instrumentation" type="obs" />
+                </div>
+              </div>
+
+              {/* Backup & DR Sub-group */}
+              <div className="bg-slate-100 dark:bg-slate-900/60 rounded-xl p-5 border border-slate-300 dark:border-slate-700/50 lg:col-span-2">
+                <h3 className="text-sm font-bold text-slate-700 dark:text-slate-400 uppercase tracking-wider mb-4 flex items-center gap-2">
+                  <HardDrive className="w-4 h-4" /> Backup & Disaster Recovery
+                </h3>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                  <TechCard title="Velero" icon={HardDrive} subtext="Cluster Backup" type="default" />
                 </div>
               </div>
 
