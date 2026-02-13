@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import ReactFlow, {
   Background,
   Controls,
@@ -10,86 +10,101 @@ import ReactFlow, {
 import type { Node, Edge } from 'reactflow';
 import 'reactflow/dist/style.css';
 
+interface Technology {
+  name: string;
+  description: string;
+  category: string;
+  subcategory?: string;
+}
+
+interface Category {
+  description: string;
+  technologies: Technology[];
+}
+
+interface PlatformData {
+  platform: {
+    name: string;
+    description: string;
+    management: string;
+  };
+  categories: {
+    [key: string]: Category;
+  };
+}
+
+interface PlatformArchitectureProps {
+  platformData: PlatformData;
+}
+
 const nodeDefaults = {
   sourcePosition: Position.Bottom,
   targetPosition: Position.Top,
 };
 
-const initialNodes: Node[] = [
-  // Infrastructure Layer
-  {
+// Category styling configuration
+const categoryStyles: Record<string, { bg: string; border: string; label: string; emoji: string }> = {
+  ai: { bg: '#dbeafe', border: '#3b82f6', label: 'AI & ML', emoji: '🤖' },
+  security: { bg: '#fecaca', border: '#ef4444', label: 'Security', emoji: '🔒' },
+  istio: { bg: '#e0e7ff', border: '#6366f1', label: 'Service Mesh', emoji: '🕸️' },
+  ingress: { bg: '#d1fae5', border: '#10b981', label: 'Ingress & Networking', emoji: '🌐' },
+  monitoring: { bg: '#fef08a', border: '#eab308', label: 'Monitoring', emoji: '📊' },
+  base: { bg: '#e9d5ff', border: '#a855f7', label: 'Infrastructure', emoji: '☁️' },
+  gpu: { bg: '#fce7f3', border: '#ec4899', label: 'GPU', emoji: '⚡' },
+  serverless: { bg: '#ccfbf1', border: '#14b8a6', label: 'Serverless', emoji: '⚙️' },
+  crossplane: { bg: '#ddd6fe', border: '#8b5cf6', label: 'Crossplane', emoji: '🔗' },
+  database: { bg: '#fed7aa', border: '#f97316', label: 'Database', emoji: '💾' },
+};
+
+function generateNodesFromData(platformData: PlatformData): { nodes: Node[]; edges: Edge[] } {
+  const nodes: Node[] = [];
+  const edges: Edge[] = [];
+
+  // Infrastructure Layer (static)
+  nodes.push({
     id: 'infra-title',
     type: 'group',
     position: { x: 0, y: 0 },
     style: { width: 1400, height: 200, backgroundColor: '#f0f9ff', border: '2px solid #0ea5e9' },
     data: { label: 'Infrastructure Layer' },
-  },
-  {
-    id: 'aws',
-    position: { x: 50, y: 50 },
-    data: { label: '☁️ AWS' },
-    parentNode: 'infra-title',
-    extent: 'parent' as const,
-    style: { backgroundColor: '#ff9900', color: 'white', border: 'none', fontWeight: 'bold' },
-  },
-  {
-    id: 'azure',
-    position: { x: 250, y: 50 },
-    data: { label: '☁️ Azure' },
-    parentNode: 'infra-title',
-    extent: 'parent' as const,
-    style: { backgroundColor: '#0078d4', color: 'white', border: 'none', fontWeight: 'bold' },
-  },
-  {
-    id: 'gcp',
-    position: { x: 450, y: 50 },
-    data: { label: '☁️ GCP' },
-    parentNode: 'infra-title',
-    extent: 'parent' as const,
-    style: { backgroundColor: '#4285f4', color: 'white', border: 'none', fontWeight: 'bold' },
-  },
-  {
-    id: 'tencent',
-    position: { x: 650, y: 50 },
-    data: { label: '☁️ Tencent' },
-    parentNode: 'infra-title',
-    extent: 'parent' as const,
-    style: { backgroundColor: '#006eff', color: 'white', border: 'none', fontWeight: 'bold' },
-  },
-  {
-    id: 'baremetal',
-    position: { x: 850, y: 50 },
-    data: { label: '🖥️ Bare Metal' },
-    parentNode: 'infra-title',
-    extent: 'parent' as const,
-    style: { backgroundColor: '#64748b', color: 'white', border: 'none', fontWeight: 'bold' },
-  },
-  {
-    id: 'kubespray',
-    position: { x: 1050, y: 50 },
-    data: { label: '⚙️ Kubespray' },
-    parentNode: 'infra-title',
-    extent: 'parent' as const,
-    style: { backgroundColor: '#326ce5', color: 'white', border: 'none', fontWeight: 'bold' },
-  },
-  {
-    id: 'minikube',
-    position: { x: 1250, y: 50 },
-    data: { label: '💻 Minikube' },
-    parentNode: 'infra-title',
-    extent: 'parent' as const,
-    style: { backgroundColor: '#326ce5', color: 'white', border: 'none', fontWeight: 'bold' },
-  },
+  });
 
-  // Kubernetes Layer
-  {
+  const infraProviders = [
+    { id: 'aws', label: '☁️ AWS', color: '#ff9900' },
+    { id: 'azure', label: '☁️ Azure', color: '#0078d4' },
+    { id: 'gcp', label: '☁️ GCP', color: '#4285f4' },
+    { id: 'tencent', label: '☁️ Tencent', color: '#006eff' },
+    { id: 'baremetal', label: '🖥️ Bare Metal', color: '#64748b' },
+    { id: 'kubespray', label: '⚙️ Kubespray', color: '#326ce5' },
+    { id: 'minikube', label: '💻 Minikube', color: '#326ce5' },
+  ];
+
+  infraProviders.forEach((provider, idx) => {
+    nodes.push({
+      id: provider.id,
+      position: { x: 50 + idx * 200, y: 50 },
+      data: { label: provider.label },
+      parentNode: 'infra-title',
+      extent: 'parent' as const,
+      style: { backgroundColor: provider.color, color: 'white', border: 'none', fontWeight: 'bold' },
+    });
+    edges.push({
+      id: `${provider.id}-k8s`,
+      source: provider.id,
+      target: 'k8s-layer',
+      animated: true,
+    });
+  });
+
+  // Kubernetes Layer (static)
+  nodes.push({
     id: 'k8s-layer',
     position: { x: 0, y: 250 },
     data: { label: '⎈ Kubernetes Layer (Cloud Provider Managed)' },
-    style: { 
-      width: 1400, 
-      height: 100, 
-      backgroundColor: '#326ce5', 
+    style: {
+      width: 1400,
+      height: 100,
+      backgroundColor: '#326ce5',
       color: 'white',
       fontSize: '18px',
       fontWeight: 'bold',
@@ -97,129 +112,93 @@ const initialNodes: Node[] = [
       alignItems: 'center',
       justifyContent: 'center',
     },
-  },
+  });
 
-  // Kubekub-Ops Layer
-  {
+  edges.push({
+    id: 'k8s-ops',
+    source: 'k8s-layer',
+    target: 'ops-title',
+    animated: true,
+    style: { stroke: '#f59e0b', strokeWidth: 3 },
+  });
+
+  // Kubekub-Ops Layer (static container)
+  nodes.push({
     id: 'ops-title',
     type: 'group',
     position: { x: 0, y: 400 },
     style: { width: 1400, height: 650, backgroundColor: '#fef3c7', border: '2px solid #f59e0b' },
     data: { label: 'Kubekub-Ops Layer (GitOps Managed)' },
-  },
+  });
 
-  // AI & ML
-  {
-    id: 'ai-group',
-    type: 'group',
-    position: { x: 20, y: 50 },
-    parentNode: 'ops-title',
-    extent: 'parent' as const,
-    style: { width: 420, height: 250, backgroundColor: '#dbeafe', border: '2px solid #3b82f6' },
-    data: { label: '🤖 AI & ML' },
-  },
-  { id: 'ollama', position: { x: 10, y: 40 }, data: { label: 'Ollama' }, parentNode: 'ai-group', extent: 'parent' as const },
-  { id: 'kserve', position: { x: 110, y: 40 }, data: { label: 'KServe' }, parentNode: 'ai-group', extent: 'parent' as const },
-  { id: 'kagent', position: { x: 210, y: 40 }, data: { label: 'Kagent' }, parentNode: 'ai-group', extent: 'parent' as const },
-  { id: 'vllm', position: { x: 310, y: 40 }, data: { label: 'vLLM' }, parentNode: 'ai-group', extent: 'parent' as const },
-  { id: 'openwebui', position: { x: 10, y: 100 }, data: { label: 'Open WebUI' }, parentNode: 'ai-group', extent: 'parent' as const },
-  { id: 'k8sgpt', position: { x: 160, y: 100 }, data: { label: 'K8sGPT' }, parentNode: 'ai-group', extent: 'parent' as const },
-  { id: 'toolhive', position: { x: 260, y: 100 }, data: { label: 'ToolHive' }, parentNode: 'ai-group', extent: 'parent' as const },
+  // Generate category groups and technologies dynamically
+  const categories = Object.entries(platformData.categories);
+  const categoriesPerRow = 3;
+  const categoryWidth = 420;
+  const categoryHeight = 250;
+  const categorySpacing = 20;
 
-  // Security
-  {
-    id: 'security-group',
-    type: 'group',
-    position: { x: 460, y: 50 },
-    parentNode: 'ops-title',
-    extent: 'parent' as const,
-    style: { width: 420, height: 250, backgroundColor: '#fecaca', border: '2px solid #ef4444' },
-    data: { label: '🔒 Security' },
-  },
-  { id: 'kyverno', position: { x: 10, y: 40 }, data: { label: 'Kyverno' }, parentNode: 'security-group', extent: 'parent' as const },
-  { id: 'keycloak', position: { x: 110, y: 40 }, data: { label: 'Keycloak' }, parentNode: 'security-group', extent: 'parent' as const },
-  { id: 'ext-secrets', position: { x: 210, y: 40 }, data: { label: 'Ext Secrets' }, parentNode: 'security-group', extent: 'parent' as const },
-  { id: 'otterize', position: { x: 310, y: 40 }, data: { label: 'Otterize' }, parentNode: 'security-group', extent: 'parent' as const },
+  categories.forEach(([categoryKey, categoryData], idx) => {
+    const row = Math.floor(idx / categoriesPerRow);
+    const col = idx % categoriesPerRow;
+    const xPos = categorySpacing + col * (categoryWidth + categorySpacing);
+    const yPos = 50 + row * (categoryHeight + categorySpacing);
 
-  // Istio Service Mesh
-  {
-    id: 'istio-group',
-    type: 'group',
-    position: { x: 900, y: 50 },
-    parentNode: 'ops-title',
-    extent: 'parent' as const,
-    style: { width: 420, height: 250, backgroundColor: '#e0e7ff', border: '2px solid #6366f1' },
-    data: { label: '🕸️ Service Mesh' },
-  },
-  { id: 'istio-base', position: { x: 10, y: 40 }, data: { label: 'Istio Base' }, parentNode: 'istio-group', extent: 'parent' as const },
-  { id: 'istiod', position: { x: 120, y: 40 }, data: { label: 'Istiod' }, parentNode: 'istio-group', extent: 'parent' as const },
-  { id: 'ztunnel', position: { x: 230, y: 40 }, data: { label: 'Ztunnel' }, parentNode: 'istio-group', extent: 'parent' as const },
-  { id: 'kiali', position: { x: 340, y: 40 }, data: { label: 'Kiali' }, parentNode: 'istio-group', extent: 'parent' as const },
+    const style = categoryStyles[categoryKey] || {
+      bg: '#f3f4f6',
+      border: '#9ca3af',
+      label: categoryKey,
+      emoji: '📦',
+    };
 
-  // Ingress & Networking
-  {
-    id: 'ingress-group',
-    type: 'group',
-    position: { x: 20, y: 320 },
-    parentNode: 'ops-title',
-    extent: 'parent' as const,
-    style: { width: 420, height: 250, backgroundColor: '#d1fae5', border: '2px solid #10b981' },
-    data: { label: '🌐 Ingress & Networking' },
-  },
-  { id: 'gateway-api', position: { x: 10, y: 40 }, data: { label: 'Gateway API' }, parentNode: 'ingress-group', extent: 'parent' as const },
-  { id: 'envoy-gw', position: { x: 130, y: 40 }, data: { label: 'Envoy GW' }, parentNode: 'ingress-group', extent: 'parent' as const },
-  { id: 'metallb', position: { x: 250, y: 40 }, data: { label: 'MetalLB' }, parentNode: 'ingress-group', extent: 'parent' as const },
-  { id: 'cert-mgr', position: { x: 10, y: 100 }, data: { label: 'Cert Manager' }, parentNode: 'ingress-group', extent: 'parent' as const },
-  { id: 'ext-dns', position: { x: 130, y: 100 }, data: { label: 'External DNS' }, parentNode: 'ingress-group', extent: 'parent' as const },
-  { id: 'tailscale', position: { x: 270, y: 100 }, data: { label: 'Tailscale' }, parentNode: 'ingress-group', extent: 'parent' as const },
+    // Create category group
+    const groupId = `${categoryKey}-group`;
+    nodes.push({
+      id: groupId,
+      type: 'group',
+      position: { x: xPos, y: yPos },
+      parentNode: 'ops-title',
+      extent: 'parent' as const,
+      style: {
+        width: categoryWidth,
+        height: categoryHeight,
+        backgroundColor: style.bg,
+        border: `2px solid ${style.border}`,
+      },
+      data: { label: `${style.emoji} ${style.label}` },
+    });
 
-  // Monitoring
-  {
-    id: 'monitoring-group',
-    type: 'group',
-    position: { x: 460, y: 320 },
-    parentNode: 'ops-title',
-    extent: 'parent' as const,
-    style: { width: 420, height: 250, backgroundColor: '#fef08a', border: '2px solid #eab308' },
-    data: { label: '📊 Monitoring' },
-  },
-  { id: 'grafana', position: { x: 10, y: 40 }, data: { label: 'Grafana' }, parentNode: 'monitoring-group', extent: 'parent' as const },
-  { id: 'prometheus', position: { x: 110, y: 40 }, data: { label: 'Prometheus' }, parentNode: 'monitoring-group', extent: 'parent' as const },
-  { id: 'metrics-server', position: { x: 230, y: 40 }, data: { label: 'Metrics Server' }, parentNode: 'monitoring-group', extent: 'parent' as const },
+    // Add technologies within the group
+    const technologies = categoryData.technologies || [];
+    const techsPerRow = 3;
+    const techWidth = 120;
+    const techSpacing = 10;
 
-  // Infrastructure
-  {
-    id: 'infra-ops-group',
-    type: 'group',
-    position: { x: 900, y: 320 },
-    parentNode: 'ops-title',
-    extent: 'parent' as const,
-    style: { width: 420, height: 250, backgroundColor: '#e9d5ff', border: '2px solid #a855f7' },
-    data: { label: '☁️ Infrastructure' },
-  },
-  { id: 'crossplane', position: { x: 10, y: 40 }, data: { label: 'Crossplane' }, parentNode: 'infra-ops-group', extent: 'parent' as const },
-  { id: 'minio', position: { x: 120, y: 40 }, data: { label: 'MinIO' }, parentNode: 'infra-ops-group', extent: 'parent' as const },
-  { id: 'cloudnative-pg', position: { x: 210, y: 40 }, data: { label: 'CloudNativePG' }, parentNode: 'infra-ops-group', extent: 'parent' as const },
-  { id: 'openebs', position: { x: 10, y: 100 }, data: { label: 'OpenEBS' }, parentNode: 'infra-ops-group', extent: 'parent' as const },
-  { id: 'knative', position: { x: 110, y: 100 }, data: { label: 'Knative' }, parentNode: 'infra-ops-group', extent: 'parent' as const },
-  { id: 'gpu-ops', position: { x: 210, y: 100 }, data: { label: 'GPU Operators' }, parentNode: 'infra-ops-group', extent: 'parent' as const },
-];
+    technologies.forEach((tech, techIdx) => {
+      const techRow = Math.floor(techIdx / techsPerRow);
+      const techCol = techIdx % techsPerRow;
+      const techX = techSpacing + techCol * techWidth;
+      const techY = 40 + techRow * 60;
 
-const initialEdges: Edge[] = [
-  // Infrastructure to K8s
-  { id: 'aws-k8s', source: 'aws', target: 'k8s-layer', animated: true },
-  { id: 'azure-k8s', source: 'azure', target: 'k8s-layer', animated: true },
-  { id: 'gcp-k8s', source: 'gcp', target: 'k8s-layer', animated: true },
-  { id: 'tencent-k8s', source: 'tencent', target: 'k8s-layer', animated: true },
-  { id: 'baremetal-k8s', source: 'baremetal', target: 'k8s-layer', animated: true },
-  { id: 'kubespray-k8s', source: 'kubespray', target: 'k8s-layer', animated: true },
-  { id: 'minikube-k8s', source: 'minikube', target: 'k8s-layer', animated: true },
-  
-  // K8s to Ops Layer
-  { id: 'k8s-ops', source: 'k8s-layer', target: 'ops-title', animated: true, style: { stroke: '#f59e0b', strokeWidth: 3 } },
-];
+      nodes.push({
+        id: `${categoryKey}-${tech.name.toLowerCase().replace(/\s+/g, '-')}`,
+        position: { x: techX, y: techY },
+        data: { label: tech.name },
+        parentNode: groupId,
+        extent: 'parent' as const,
+      });
+    });
+  });
 
-export default function PlatformArchitecture() {
+  return { nodes, edges };
+}
+
+export default function PlatformArchitecture({ platformData }: PlatformArchitectureProps) {
+  const { nodes: initialNodes, edges: initialEdges } = useMemo(
+    () => generateNodesFromData(platformData),
+    [platformData]
+  );
+
   const [nodes, , onNodesChange] = useNodesState(initialNodes);
   const [edges, , onEdgesChange] = useEdgesState(initialEdges);
 
