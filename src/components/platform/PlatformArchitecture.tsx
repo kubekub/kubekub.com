@@ -20,7 +20,10 @@ import {
   Radio,
   Share2,
   GitBranch,
-  RefreshCw
+  RefreshCw,
+  FileCheck,
+  UserCheck,
+  ShieldCheck
 } from 'lucide-react';
 
 const App = () => {
@@ -73,10 +76,12 @@ const App = () => {
           <div className="relative bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 md:p-8">
             <LayerHeader title="KubeKub Agentic" icon={Zap} color="text-rose-400" />
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
               <TechCard title="KAgent" icon={Cpu} subtext="Autonomous Orchestration" type="agent" />
               <TechCard title="Agent Gateway" icon={Network} subtext="Agent Protocol Handling" type="agent" />
               <TechCard title="Envoy AI Gateway" icon={Share2} subtext="LLM Traffic Management" type="agent" />
+              <TechCard title="OAuth2" icon={UserCheck} subtext="Authentication" type="agent" />
+              <TechCard title="Authzen + OpenFGA" icon={ShieldCheck} subtext="Authorization" type="agent" />
             </div>
             
             <div className="absolute left-1/2 bottom-0 w-0.5 h-12 bg-gradient-to-b from-slate-700 to-transparent translate-y-full -translate-x-1/2 hidden md:block" />
@@ -93,14 +98,15 @@ const App = () => {
           <div className="relative bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 md:p-8">
             <LayerHeader title="KubeKub Ops" icon={Layers} color="text-emerald-400" />
             
-            {/* GitOps Section */}
-            <div className="bg-slate-900/60 rounded-xl p-5 border border-slate-700/50 mb-6">
-              <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-4 flex items-center gap-2">
-                <GitBranch className="w-4 h-4" /> GitOps Framework
+            {/* GitOps Section - Platform Management */}
+            <div className="bg-gradient-to-r from-indigo-900/40 to-purple-900/40 rounded-xl p-5 border-2 border-indigo-500/40 mb-6">
+              <h3 className="text-sm font-bold text-indigo-300 uppercase tracking-wider mb-2 flex items-center gap-2">
+                <GitBranch className="w-5 h-5" /> GitOps Platform Management
               </h3>
+              <p className="text-indigo-200/70 text-xs mb-4">Manages all Kubernetes resources, infrastructure, and platform components</p>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                 <TechCard title="ArgoCD" icon={GitBranch} subtext="Continuous Deployment" type="default" />
-                <TechCard title="Crossplane" icon={RefreshCw} subtext="Infrastructure Provisioning" type="default" />
+                <TechCard title="Crossplane" icon={RefreshCw} subtext="Infrastructure as Code" type="default" />
               </div>
             </div>
 
@@ -112,6 +118,7 @@ const App = () => {
                   <Shield className="w-4 h-4" /> Networking & Security
                 </h3>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                  <TechCard title="Kyverno" icon={FileCheck} subtext="Policy Engine" type="security" />
                   <TechCard title="Calico" icon={Activity} subtext="eBPF Dataplane" type="security" />
                   <TechCard title="Istio" icon={LayoutGrid} subtext="Ambient Mesh" type="security" />
                   <TechCard title="Cert Manager" icon={Lock} subtext="TLS Automation" type="security" />
