@@ -97,7 +97,7 @@ const App = () => {
             <LayerHeader title="KubeKub Identity" icon={ShieldCheck} color="text-amber-400" />
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <TechCard title="OAuth2" icon={UserCheck} subtext="Authentication" type="security" />
+              <TechCard title="OAuth2 (Keycloak)" icon={UserCheck} subtext="Authentication" type="security" />
               <TechCard title="Authzen + OpenFGA" icon={ShieldCheck} subtext="Authorization" type="security" />
             </div>
             
