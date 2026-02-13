@@ -2,7 +2,7 @@
 import Hero from '~/components/widgets/Hero.astro';
 import Content from '~/components/widgets/Content.astro';
 import Layout from '~/layouts/PageLayout.astro';
-import PlatformArchitecture from '~/components/platform/PlatformArchitecture';
+import PlatformArchitecture from '~/components/blueprint/PlatformArchitecture';
 import { readFileSync } from 'fs';
 import yaml from 'js-yaml';
 import { fileURLToPath } from 'url';
@@ -15,7 +15,7 @@ const metadata = {
 
 // Load platform technologies data
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const yamlPath = path.join(__dirname, '../data/platform/platform-technologies.yaml');
+const yamlPath = path.join(__dirname, '../data/blueprint/platform-technologies.yaml');
 const platformData = yaml.load(readFileSync(yamlPath, 'utf8'));
 ---
 

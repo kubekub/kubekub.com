@@ -12,8 +12,8 @@ export const headerData = {
       href: getPermalink('/team'),
     },
     {
-      text: 'Platform',
-      href: getPermalink('/platform'),
+      text: 'Blueprint',
+      href: getPermalink('/blueprint'),
     },
     
     // {
