@@ -1,0 +1,74 @@
+---
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import PlatformArchitecture from '~/components/platform/PlatformArchitecture';
+
+const metadata = {
+  title: 'Secure Agentic AI Platform: Reference Architecture',
+  description: 'Production-ready Kubernetes platform architecture for secure Agentic AI workloads with zero trust security, agent authorization, and comprehensive observability.',
+};
+---
+
+<Layout metadata={metadata}>
+
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    tagline="Reference Architecture"
+    title="Secure Agentic AI Platform"
+    subtitle="Production-ready Kubernetes platform architecture for secure Agentic AI workloads. Built with GitOps, zero trust security, and comprehensive observability."
+  >
+  </Hero>
+
+  <!-- Interactive Architecture Diagram ******************* -->
+  
+  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 lg:py-20 max-w-7xl">
+    <div class="mb-8 text-center">
+      <h2 class="text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
+        Platform Architecture
+      </h2>
+      <p class="text-xl text-muted dark:text-slate-400">
+        Multi-cloud Kubernetes platform with 70+ integrated technologies
+      </p>
+    </div>
+    
+    <PlatformArchitecture client:load />
+  </section>
+
+  <!-- Platform Architecture Overview ******************* -->
+
+  <Content
+    title="Architecture Layers"
+    subtitle="Three-tier architecture for maximum flexibility and security"
+    isReversed
+    items={[
+      {
+        title: 'Infrastructure Layer',
+        description: 'Multi-cloud (AWS, Azure, GCP, Tencent) and on-premises (Kubespray, Minikube, bare metal) deployment options.',
+        icon: 'tabler:server',
+      },
+      {
+        title: 'Kubernetes Layer',
+        description: 'Cloud provider managed Kubernetes ensuring consistent API across all environments.',
+        icon: 'tabler:brand-docker',
+      },
+      {
+        title: 'Kubekub-Ops Layer',
+        description: 'GitOps-managed platform components including AI/ML, security, networking, and observability tools.',
+        icon: 'tabler:git-merge',
+      },
+      {
+        title: 'Zero Trust Security',
+        description: 'Network policies, mutual TLS, and strict identity verification for all AI agent operations.',
+        icon: 'tabler:shield-lock',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+</Layout>
+

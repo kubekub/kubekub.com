@@ -1,0 +1,465 @@
+# Contains AI-generated edits for kubekub-ai-lab - 2026-02-13
+# Platform Technologies Catalog
+# GitOps-managed Kubernetes Platform for Agentic AI
+
+platform:
+  name: kubekub-ai-lab
+  description: Production-ready Kubernetes platform for secure Agentic AI workloads
+  management: ArgoCD GitOps
+
+categories:
+  
+  ai:
+    description: AI/ML inference and agentic AI runtime platforms
+    technologies:
+      - name: Ollama
+        description: Local LLM inference runtime supporting multiple open-source models
+        category: ai
+        subcategory: inference
+        use_cases:
+          - LLM inference
+          - Model serving
+          - Local AI development
+        repository: https://helm.otwld.com/
+        chart_version: 1.35.0
+        
+      - name: KServe
+        description: Kubernetes-native model serving framework with autoscaling and monitoring
+        category: ai
+        subcategory: inference
+        use_cases:
+          - Production model serving
+          - Multi-framework support
+          - Inference autoscaling
+        repository: https://kserve.github.io/charts/
+        
+      - name: Open WebUI
+        description: Self-hosted web interface for LLM interactions and agent management
+        category: ai
+        subcategory: ui
+        use_cases:
+          - LLM chat interface
+          - Agent interaction
+          - Prompt management
+          
+      - name: K8sGPT
+        description: Kubernetes cluster diagnostics and troubleshooting using AI
+        category: ai
+        subcategory: operations
+        use_cases:
+          - Cluster diagnostics
+          - Issue analysis
+          - Automated troubleshooting
+          
+      - name: Kagent
+        description: Custom agentic AI platform with security controls and telemetry
+        category: ai
+        subcategory: agentic-platform
+        use_cases:
+          - Agentic AI workflows
+          - Agent authorization
+          - Tool execution control
+        components:
+          - kagent-auth
+          - kagent-aire
+          - kagent-kubekub-aire
+          - kagent-inspektor-gadget
+          
+      - name: ToolHive Operator
+        description: Tool registry and management for AI agents
+        category: ai
+        subcategory: tools
+        use_cases:
+          - Tool discovery
+          - Tool versioning
+          - Agent tool access control
+          
+      - name: vLLM
+        description: High-throughput LLM inference with PagedAttention optimization
+        category: ai
+        subcategory: inference
+        use_cases:
+          - High-performance LLM serving
+          - Batch inference
+          - Low latency inference
+          
+      - name: Gateway API Inference Extension
+        description: Kubernetes Gateway API extensions for AI inference routing
+        category: ai
+        subcategory: networking
+        use_cases:
+          - Inference request routing
+          - Load balancing
+          - API versioning
+          
+      - name: dot.ai
+        description: AI workflow orchestration and automation
+        category: ai
+        subcategory: orchestration
+        use_cases:
+          - Workflow automation
+          - Agent orchestration
+          - Pipeline management
+
+  monitoring:
+    description: Observability, metrics, and monitoring stack
+    technologies:
+      - name: Grafana
+        description: Data visualization and monitoring dashboards
+        category: monitoring
+        subcategory: visualization
+        use_cases:
+          - Metrics visualization
+          - Dashboard creation
+          - Alerting
+        repository: https://grafana.github.io/helm-charts
+        chart_version: 10.3.0
+        
+      - name: Prometheus
+        description: Time-series metrics collection and storage
+        category: monitoring
+        subcategory: metrics
+        use_cases:
+          - Metrics scraping
+          - Time-series storage
+          - Alert rules
+        repository: https://prometheus-community.github.io/helm-charts
+        
+      - name: Metrics Server
+        description: Kubernetes resource metrics for HPA and kubectl top
+        category: monitoring
+        subcategory: metrics
+        use_cases:
+          - Pod/node metrics
+          - Horizontal Pod Autoscaling
+          - Resource monitoring
+
+  security:
+    description: Security, policy enforcement, secrets management, and identity
+    technologies:
+      - name: Kyverno
+        description: Kubernetes-native policy engine for security and compliance
+        category: security
+        subcategory: policy
+        use_cases:
+          - Policy enforcement
+          - Resource validation
+          - Mutation and generation
+        repository: https://kyverno.github.io/kyverno/
+        chart_version: 3.6.0
+        
+      - name: Kyverno Policies
+        description: Custom policy definitions for platform security
+        category: security
+        subcategory: policy
+        use_cases:
+          - Security policies
+          - Compliance rules
+          - Best practices enforcement
+          
+      - name: External Secrets
+        description: Kubernetes Secrets management from external providers
+        category: security
+        subcategory: secrets
+        use_cases:
+          - Secrets synchronization
+          - External vault integration
+          - Credential rotation
+          
+      - name: Keycloak
+        description: Identity and access management (IAM) platform
+        category: security
+        subcategory: identity
+        use_cases:
+          - User authentication
+          - SSO integration
+          - OAuth2/OIDC provider
+          
+      - name: Keycloak Operator
+        description: Kubernetes operator for Keycloak lifecycle management
+        category: security
+        subcategory: identity
+        use_cases:
+          - Keycloak deployment
+          - Realm management
+          - Client configuration
+          
+      - name: Otterize
+        description: Network policy automation and zero-trust security
+        category: security
+        subcategory: network-policy
+        use_cases:
+          - Automated network policies
+          - Zero-trust networking
+          - Service-to-service authorization
+
+  ingress:
+    description: Ingress controllers, load balancers, and traffic management
+    technologies:
+      - name: MetalLB
+        description: Bare-metal load balancer for Kubernetes
+        category: ingress
+        subcategory: load-balancer
+        use_cases:
+          - LoadBalancer service type
+          - IP address management
+          - Layer 2/BGP mode
+          
+      - name: Cert Manager
+        description: Automated TLS certificate management
+        category: ingress
+        subcategory: certificates
+        use_cases:
+          - TLS certificate automation
+          - Let's Encrypt integration
+          - Certificate renewal
+          
+      - name: External DNS
+        description: Automated DNS record management for Kubernetes resources
+        category: ingress
+        subcategory: dns
+        use_cases:
+          - DNS automation
+          - Cloud DNS integration
+          - Service discovery
+          
+      - name: Gateway API
+        description: Kubernetes Gateway API CRDs for modern traffic routing
+        category: ingress
+        subcategory: gateway
+        use_cases:
+          - Advanced routing
+          - Traffic splitting
+          - Multi-protocol support
+          
+      - name: Envoy Gateway
+        description: Envoy-based Kubernetes Gateway API implementation
+        category: ingress
+        subcategory: gateway
+        use_cases:
+          - HTTP/HTTPS routing
+          - gRPC support
+          - Rate limiting
+          
+      - name: Envoy AI Gateway
+        description: Custom Envoy gateway optimized for AI inference traffic
+        category: ingress
+        subcategory: gateway
+        use_cases:
+          - AI inference routing
+          - Model versioning
+          - Request/response logging
+          
+      - name: KGateway
+        description: Kubernetes Gateway implementation with advanced features
+        category: ingress
+        subcategory: gateway
+        use_cases:
+          - API gateway
+          - Request transformation
+          - Authentication
+          
+      - name: Tailscale Operator
+        description: Zero-config VPN mesh networking for Kubernetes
+        category: ingress
+        subcategory: vpn
+        use_cases:
+          - Secure access
+          - Mesh networking
+          - Remote connectivity
+
+  istio:
+    description: Service mesh for traffic management, security, and observability
+    technologies:
+      - name: Istio Base
+        description: Istio base CRDs and cluster-wide resources
+        category: istio
+        subcategory: foundation
+        use_cases:
+          - Service mesh foundation
+          - CRD installation
+          - Cluster setup
+          
+      - name: Istiod
+        description: Istio control plane for traffic management and policy
+        category: istio
+        subcategory: control-plane
+        use_cases:
+          - Traffic routing
+          - mTLS management
+          - Policy enforcement
+          
+      - name: Istio Ingress
+        description: Istio ingress gateway for cluster entry points
+        category: istio
+        subcategory: gateway
+        use_cases:
+          - External traffic ingress
+          - Load balancing
+          - TLS termination
+          
+      - name: Istio Ztunnel
+        description: Istio ambient mesh ztunnel for sidecar-less service mesh
+        category: istio
+        subcategory: data-plane
+        use_cases:
+          - Ambient mesh
+          - Zero-trust networking
+          - Transparent mTLS
+          
+      - name: Kiali
+        description: Service mesh observability and management console
+        category: istio
+        subcategory: observability
+        use_cases:
+          - Mesh visualization
+          - Traffic analysis
+          - Configuration validation
+
+  serverless:
+    description: Serverless and event-driven platforms
+    technologies:
+      - name: Knative Serving
+        description: Kubernetes-based serverless workload execution
+        category: serverless
+        subcategory: runtime
+        use_cases:
+          - Serverless functions
+          - Auto-scaling to zero
+          - Traffic splitting
+          
+      - name: Knative Operator
+        description: Operator for managing Knative components
+        category: serverless
+        subcategory: operator
+        use_cases:
+          - Knative lifecycle
+          - Component management
+          - Configuration
+
+  gpu:
+    description: GPU operators for accelerated AI/ML workloads
+    technologies:
+      - name: NVIDIA GPU Operator
+        description: Automated NVIDIA GPU management and driver installation
+        category: gpu
+        subcategory: nvidia
+        use_cases:
+          - GPU node setup
+          - Driver management
+          - GPU scheduling
+          
+      - name: AMD GPU Operator
+        description: AMD GPU support and management for Kubernetes
+        category: gpu
+        subcategory: amd
+        use_cases:
+          - AMD GPU scheduling
+          - ROCm support
+          - GPU monitoring
+
+  crossplane:
+    description: Infrastructure as Code for cloud resources
+    technologies:
+      - name: Crossplane
+        description: Universal cloud infrastructure management via Kubernetes
+        category: crossplane
+        subcategory: core
+        use_cases:
+          - Cloud resource provisioning
+          - Infrastructure as Code
+          - Multi-cloud management
+          
+      - name: Crossplane GCP
+        description: Google Cloud Platform provider for Crossplane
+        category: crossplane
+        subcategory: provider
+        use_cases:
+          - GCP resource creation
+          - Cloud SQL
+          - GKE management
+          
+      - name: Crossplane Keycloak
+        description: Keycloak resource management via Crossplane
+        category: crossplane
+        subcategory: provider
+        use_cases:
+          - Keycloak realm automation
+          - Client provisioning
+          - User management
+
+  database:
+    description: Database operators and management
+    technologies:
+      - name: CloudNativePG
+        description: PostgreSQL operator for cloud-native deployments
+        category: database
+        subcategory: postgresql
+        use_cases:
+          - PostgreSQL clusters
+          - Backup and restore
+          - High availability
+
+  base:
+    description: Core platform infrastructure and operators
+    technologies:
+      - name: MinIO Operator
+        description: S3-compatible object storage operator
+        category: base
+        subcategory: storage
+        use_cases:
+          - Object storage
+          - S3 API
+          - Backup storage
+          
+      - name: OpenEBS
+        description: Container-attached storage for Kubernetes
+        category: base
+        subcategory: storage
+        use_cases:
+          - Persistent volumes
+          - Local storage
+          - Replication
+          
+      - name: Operator Lifecycle Manager (OLM)
+        description: Operator management and lifecycle
+        category: base
+        subcategory: operator
+        use_cases:
+          - Operator installation
+          - Dependency management
+          - Upgrades
+          
+      - name: Tigera Operator
+        description: Calico network policy operator
+        category: base
+        subcategory: networking
+        use_cases:
+          - Network policies
+          - CNI plugin
+          - Security
+          
+      - name: CoreDNS
+        description: DNS server for Kubernetes service discovery
+        category: base
+        subcategory: dns
+        use_cases:
+          - Service discovery
+          - DNS resolution
+          - Custom DNS records
+          
+      - name: K8s Nodes
+        description: Node configuration and management
+        category: base
+        subcategory: infrastructure
+        use_cases:
+          - Node setup
+          - Configuration
+          - Labeling
+
+statistics:
+  total_technologies: 70+
+  categories: 10
+  primary_focus: Agentic AI security and platform reliability
+  deployment_method: GitOps with ArgoCD
+  cluster_type: Kind (dev), production-ready architecture

@@ -7,9 +7,13 @@ export const headerData = {
       text: 'Home',
       href: '/',
     },
-      {
+    {
       text: 'Team',
       href: getPermalink('/team'),
+    },
+    {
+      text: 'Platform',
+      href: getPermalink('/platform'),
     },
     
     // {
@@ -19,7 +23,7 @@ export const headerData = {
     // },
     {
       text: 'Blog',
-          href: getBlogPermalink(),
+      href: getBlogPermalink(),
     },
     {
       text: 'Contact',
