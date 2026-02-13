@@ -49,27 +49,27 @@ const platformData = yaml.load(readFileSync(yamlPath, 'utf8'));
 
   <Content
     title="Architecture Layers"
-    subtitle="Three-tier architecture for maximum flexibility and security"
+    subtitle="Three-tier architecture for agentic AI at scale"
     isReversed
     items={[
       {
-        title: 'Infrastructure Layer',
-        description: 'Multi-cloud (AWS, Azure, GCP, Tencent) and on-premises (Kubespray, Minikube, bare metal) deployment options.',
+        title: 'KubeKub Agentic',
+        description: 'Autonomous agent orchestration layer with KAgent, Agent Gateway, and Envoy AI Gateway for LLM traffic management and agent protocol handling.',
+        icon: 'tabler:bolt',
+      },
+      {
+        title: 'KubeKub Ops',
+        description: 'Operational layer with Networking & Security (Calico eBPF, Istio Ambient Mesh, Cert Manager, External DNS, External Secrets) and Observability Stack (Prometheus, Grafana Mimir, Loki, Tempo, OpenTelemetry).',
+        icon: 'tabler:stack',
+      },
+      {
+        title: 'Infrastructure & Core',
+        description: 'Kubernetes unified API abstraction layer running on multi-cloud (AWS EKS, Azure AKS, GCP GKE, Tencent TKE) and bare metal (Kubespray, Minikube).',
         icon: 'tabler:server',
       },
       {
-        title: 'Kubernetes Layer',
-        description: 'Cloud provider managed Kubernetes ensuring consistent API across all environments.',
-        icon: 'tabler:brand-docker',
-      },
-      {
-        title: 'Kubekub-Ops Layer',
-        description: 'GitOps-managed platform components including AI/ML, security, networking, and observability tools.',
-        icon: 'tabler:git-merge',
-      },
-      {
         title: 'Zero Trust Security',
-        description: 'Network policies, mutual TLS, and strict identity verification for all AI agent operations.',
+        description: 'eBPF-based network policies, Ambient service mesh, mutual TLS, and strict identity verification for all AI agent operations.',
         icon: 'tabler:shield-lock',
       },
     ]}
