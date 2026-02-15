@@ -1,0 +1,78 @@
+---
+// Contains AI-generated edits for kubekub.com - 2026-02-15
+import Layout from '~/layouts/PageLayout.astro';
+
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = {
+  title: 'Emerging Patterns - Kubekub',
+  description: 'Future-looking agentic system architectures and experimental patterns for next-generation autonomous infrastructure.',
+};
+---
+
+<Layout metadata={metadata}>
+ 
+
+  <!-- Emerging Patterns Widget ******* -->
+
+  <Features
+    id="patterns"
+    tagline="Future Architecture"
+    title="Next-Generation Agentic Patterns"
+    subtitle="Experimental architectures integrating emerging techniques with proven open-source components"
+    items={[
+      {
+        title: 'Small Language Models (SLMs) + Agent Swarms',
+        description:
+          'Run secure SLMs inside the company boundary to keep sensitive data in-house. Right-size models for tasks that do not need large LLMs, serve them with KServe, and orchestrate with MCP for distributed reasoning and task delegation.',
+        icon: 'tabler:brain',
+      },
+      {
+        title: 'LoRA Adapters for SLM Specialization',
+        description:
+          'Use lightweight LoRA adapters to specialize SLMs for domain tasks without full fine-tuning. Keep training data inside the company boundary and deploy multiple adapters on top of a shared base model.',
+        icon: 'tabler:layers-linked',
+      },
+      {
+        title: 'Sovereign LLM Sourcing (EU Vendors)',
+        description:
+          'Prioritize European LLM vendors and sovereign cloud hosting to align with data residency requirements. Build portable inference stacks that can run on EU-based providers without lock-in.',
+        icon: 'tabler:world',
+      },
+      {
+        title: 'Multi-Agent Coordination Layers',
+        description:
+          'Advanced patterns for agent collaboration: hierarchical planning (meta-agents directing sub-agents), consensus-based decision making, and dynamic role assignment using Kubernetes for scheduling and isolation.',
+        icon: 'tabler:network',
+      },
+      {
+        title: 'Inference Optimization at Scale',
+        description:
+          'Dynamic batching, speculative decoding, and attention optimization for inference workloads. Integrate with vLLM, TensorRT, and quantization frameworks on Kubernetes for cost-efficient agent serving.',
+        icon: 'tabler:rocket',
+      },
+      {
+        title: 'Edge Agent Deployment',
+        description:
+          'Autonomous agents running at edge: lightweight orchestration, local decision-making with cloud sync, offline-first patterns. Extend Kubernetes to edge using KubeEdge or similar for unified control plane.',
+        icon: 'tabler:wifi-0',
+      },
+      {
+        title: 'Self-Healing & Autonomous Feedback',
+        description:
+          'Agents that monitor their own performance, detect failures, and self-correct. Leverage Kubernetes operators, policy engines (Kyverno), and observability (Prometheus, Loki) for autonomous remediation.',
+        icon: 'tabler:heart-handshake',
+      },
+      {
+        title: 'Supply Chain Security for Agent Artifacts',
+        description:
+          'Advanced policy composition: verify agent code provenance, enforce software bill of materials (SBOM), secure container scanning for agent workloads. Integrate Sigstore, Kyverno ClusterPolicies, and admission controllers.',
+        icon: 'tabler:shield-lock',
+      },
+    ]}
+  />
+
+</Layout>

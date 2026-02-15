@@ -16,6 +16,9 @@ run-docs: ## Alias for dev - run development server
 preview: ## Preview production build locally
 	npm run preview
 
+serve-docs: ## Serve docs folder on local HTTP server (port 8000)
+	cd docs && python3 -m http.server 8000
+
 ## Build Commands
 
 build-docs: ## Build documentation and prepare for deployment
