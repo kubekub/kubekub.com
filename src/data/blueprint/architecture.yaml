@@ -23,7 +23,7 @@ layers:
         icon: Wrench
         subtext: MCP Tool Execution
         type: agent
-      - title: kMCP
+      - title: kmcp
         icon: Plug
         subtext: Kubernetes MCP
         type: agent
