@@ -1,3 +1,4 @@
+// Contains AI-generated edits for kubekub.com - 2026-02-15
 import React, { useState } from 'react';
 import { 
   Cloud, 
@@ -26,7 +27,9 @@ import {
   ShieldCheck,
   AlertTriangle,
   Bell,
-  HardDrive
+  HardDrive,
+  Wrench,
+  Plug
 } from 'lucide-react';
 
 const App = () => {
@@ -65,7 +68,7 @@ const App = () => {
           <div className="flex items-center justify-between">
             <div className="flex-1"></div>
             <h1 className={`${isCompact ? 'text-2xl md:text-3xl' : 'text-4xl md:text-5xl'} font-extrabold bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent flex-1`}>
-              KubeKub Architecture
+              Kubekub Architecture
             </h1>
             <div className="flex-1 flex justify-end">
               <button
@@ -91,12 +94,14 @@ const App = () => {
         >
           {!isCompact && <div className={`absolute -inset-4 bg-gradient-to-r from-rose-500/10 to-orange-500/10 rounded-3xl blur-xl transition-opacity duration-500 ${activeLayer === 'agentic' ? 'opacity-100' : 'opacity-0'}`} />}
           <div className={`relative bg-slate-50 dark:bg-slate-900/50 backdrop-blur-sm border border-slate-200 dark:border-slate-800 rounded-2xl ${isCompact ? 'p-3 md:p-4' : 'p-6 md:p-8'}`}>
-            <LayerHeader title="KubeKub Agentic" icon={Zap} color="text-rose-400" />
+            <LayerHeader title="Kubekub Agentic" icon={Zap} color="text-rose-400" />
             
-            <div className={`grid grid-cols-1 md:grid-cols-3 ${isCompact ? 'gap-3' : 'gap-6'}`}>
+            <div className={`grid grid-cols-1 md:grid-cols-5 ${isCompact ? 'gap-3' : 'gap-6'}`}>
               <TechCard title="KAgent" icon={Cpu} subtext="Autonomous Orchestration" type="agent" />
               <TechCard title="Agent Gateway" icon={Network} subtext="Agent Protocol Handling" type="agent" />
               <TechCard title="Envoy AI Gateway" icon={Share2} subtext="LLM Traffic Management" type="agent" />
+              <TechCard title="ToolHive" icon={Wrench} subtext="MCP Tool Execution" type="agent" />
+              <TechCard title="kMCP" icon={Plug} subtext="Kubernetes MCP" type="agent" />
             </div>
             
             <div className={`absolute left-1/2 bottom-0 w-0.5 ${isCompact ? 'h-6' : 'h-12'} bg-gradient-to-b from-slate-300 dark:from-slate-700 to-transparent translate-y-full -translate-x-1/2 hidden md:block`} />
@@ -111,7 +116,7 @@ const App = () => {
         >
           {!isCompact && <div className={`absolute -inset-4 bg-gradient-to-r from-amber-500/10 to-yellow-500/10 rounded-3xl blur-xl transition-opacity duration-500 ${activeLayer === 'auth' ? 'opacity-100' : 'opacity-0'}`} />}
           <div className={`relative bg-slate-50 dark:bg-slate-900/50 backdrop-blur-sm border border-slate-200 dark:border-slate-800 rounded-2xl ${isCompact ? 'p-3 md:p-4' : 'p-6 md:p-8'}`}>
-            <LayerHeader title="KubeKub Identity" icon={ShieldCheck} color="text-amber-400" />
+            <LayerHeader title="Kubekub Identity" icon={ShieldCheck} color="text-amber-400" />
             
             <div className={`grid grid-cols-1 md:grid-cols-2 ${isCompact ? 'gap-3' : 'gap-6'}`}>
               <TechCard title="OAuth2 (Keycloak)" icon={UserCheck} subtext="Authentication" type="security" />
@@ -130,7 +135,7 @@ const App = () => {
         >
           {!isCompact && <div className={`absolute -inset-4 bg-gradient-to-r from-emerald-500/10 to-purple-500/10 rounded-3xl blur-xl transition-opacity duration-500 ${activeLayer === 'ops' ? 'opacity-100' : 'opacity-0'}`} />}
           <div className={`relative bg-slate-50 dark:bg-slate-900/50 backdrop-blur-sm border border-slate-200 dark:border-slate-800 rounded-2xl ${isCompact ? 'p-3 md:p-4' : 'p-6 md:p-8'}`}>
-            <LayerHeader title="KubeKub Ops" icon={Layers} color="text-emerald-400" />
+            <LayerHeader title="Kubekub Ops" icon={Layers} color="text-emerald-400" />
             
             {/* GitOps Section - Platform Management */}
             <div className={`bg-gradient-to-r from-indigo-100 dark:from-indigo-900/40 to-purple-100 dark:to-purple-900/40 rounded-xl ${isCompact ? 'p-3' : 'p-5'} border-2 border-indigo-300 dark:border-indigo-500/40 ${isCompact ? 'mb-3' : 'mb-6'}`}>
