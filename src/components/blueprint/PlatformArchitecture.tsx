@@ -179,6 +179,7 @@ const App = () => {
                   <TechCard title="Loki" icon={FileText} subtext="Log Aggregation" type="obs" />
                   <TechCard title="Tempo" icon={Search} subtext="Distributed Tracing" type="obs" />
                   <TechCard title="OpenTelemetry" icon={Radio} subtext="Instrumentation" type="obs" />
+                  <TechCard title="Kiali" icon={Eye} subtext="Service Mesh UI" type="obs" />
                 </div>
               </div>
 
