@@ -8,7 +8,6 @@ import Features2 from '~/components/widgets/Features2.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import Content from '~/components/widgets/Content.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
-import FAQs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
@@ -213,42 +212,6 @@ const metadata = {
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
   </Features2>
-
-  <!-- FAQs Widget ******************* -->
-
-  <FAQs
-    title="Frequently Asked Questions"
-    subtitle="Common questions about working with Kubekub"
-    tagline="FAQs"
-    classes={{ container: 'max-w-6xl' }}
-    items={[
-      {
-        title: 'What is Cloud Native AI Platform Engineering?',
-        description:
-          "It's the specialized practice of building production-grade infrastructure for AI/ML workloads on Kubernetes. This includes model serving, autoscaling, traffic management, governance, and compliance—transforming experimental AI into enterprise-ready services.",
-      },
-      {
-        title: 'What types of engagements do you accept?',
-        description:
-          'Kubekub focuses on short-term, high-impact strategic engagements on a part-time basis. This includes platform architecture design, infrastructure implementation, team enablement, and fractional leadership for AI platform strategy.',
-      },
-      {
-        title: 'Do you work with startups or only enterprises?',
-        description:
-          "Kubekub works with organizations at any stage who are serious about operationalizing AI at scale. Whether you're a startup building your first production AI platform or an enterprise modernizing existing ML infrastructure, we can help.",
-      },
-      {
-        title: 'What makes your approach different?',
-        description:
-          "Kubekub focuses on specialization: we architect the platform layer that enables data science teams to succeed—not just deploying tools. We emphasize standards like KServe, Gateway API, and Kubernetes-native patterns for sustainable, production-ready AI infrastructure.",
-      },
-      {
-        title: 'How do I get started?',
-        description:
-          "Reach out via the contact form to schedule an initial consultation. We'll discuss your AI platform challenges, current infrastructure, and goals. From there, we'll propose a tailored engagement approach.",
-      },
-    ]}
-  />
 
   <!-- CallToAction Widget *********** -->
 
