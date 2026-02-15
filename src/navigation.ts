@@ -15,12 +15,10 @@ export const headerData = {
       text: 'Blueprint',
       href: getPermalink('/blueprint'),
     },
-    
-    // {
-    //   text: 'Services',
-    //   href: getPermalink('/services'),
-  
-    // },
+    {
+      text: 'Emerging Patterns',
+      href: getPermalink('/emerging-patterns'),
+    },
     {
       text: 'Blog',
       href: getBlogPermalink(),
