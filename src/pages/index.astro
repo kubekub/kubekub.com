@@ -6,7 +6,6 @@ import Note from '~/components/widgets/Note.astro';
 import Features from '~/components/widgets/Features.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import Steps from '~/components/widgets/Steps.astro';
-import Content from '~/components/widgets/Content.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
@@ -96,47 +95,39 @@ const metadata = {
     ]}
   />
 
-  <!-- Content Widget **************** -->
+  <!-- Integration Approach Widget *** -->
 
-  <Content
-    isReversed
+  <Features
     tagline="Integration Approach"
     title="Open-Source Components, Integrated Systems"
+    subtitle="Integration Provider, Not Platform Vendor—thoughtful composition of proven open-source components. I architect how Kubernetes, Istio, ArgoCD, and security tools work together. No proprietary black boxes, no vendor lock-in, no replacement of your team's expertise."
     items={[
       {
         title: 'Proven Open-Source Selection',
         description:
           'Curate best-of-breed components (Kubernetes, Istio, ArgoCD, Kyverno, Prometheus) instead of proprietary platforms. Your team controls and can replace any layer.',
+        icon: 'tabler:checkbox',
       },
       {
         title: 'Zero Vendor Lock-In',
         description:
           'Every component is portable: switch container runtimes, choose any cloud, migrate orchestrators. Standards-based (CNCF, OCI) ensure long-term freedom.',
+        icon: 'tabler:lock-open',
       },
       {
         title: 'Declarative, GitOps-First',
         description:
           'Everything versioned in Git: infrastructure (Crossplane), policies (Kyverno), deployments (ArgoCD). No undocumented configuration drift or magic buttons.',
+        icon: 'tabler:git-branch',
       },
       {
         title: 'Integrate, Don\'t Replace',
         description:
           'Work with your existing tools and workflows. Architect layers that simplify integration, reduce complexity, enable teams to focus on agents not plumbing.',
+        icon: 'tabler:plug-connected',
       },
     ]}
-
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Integration Provider, Not Platform Vendor
-      </h3>
-      The difference between scattered tools and production-ready agentic systems is thoughtful integration of proven open-source components. I architect how Kubernetes, Istio, ArgoCD, and security tools work together—no proprietary black boxes, no vendor lock-in, no replacement of your team's expertise.
-    </Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
+  />
 
   <!-- Steps Widget ****************** -->
 
