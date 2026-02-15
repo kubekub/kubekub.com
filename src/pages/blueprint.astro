@@ -14,8 +14,7 @@ const metadata = {
 
 // Load platform technologies data
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const yamlPath = path.join(__dirname, '../data/blueprint/platform-technologies.yaml');
-const platformData = yaml.load(readFileSync(yamlPath, 'utf8'));
+
 ---
 
 <Layout metadata={metadata}>
@@ -41,7 +40,7 @@ const platformData = yaml.load(readFileSync(yamlPath, 'utf8'));
       </p>
     </div>
     
-    <PlatformArchitecture platformData={platformData} client:load />
+    <PlatformArchitecture client:load />
   </section>
 
   <!-- Architecture Layers Cards *** -->

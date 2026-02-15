@@ -1,6 +1,5 @@
 // Contains AI-generated edits for kubekub.com - 2026-02-15
 import React, { useState } from 'react';
-import architectureData from '~/data/blueprint/architecture.json';
 import { 
   Cloud, 
   Server, 
@@ -33,54 +32,9 @@ import {
   Plug
 } from 'lucide-react';
 
-const iconMap = {
-  Cloud,
-  Server,
-  Shield,
-  Activity,
-  Database,
-  Globe,
-  Cpu,
-  Layers,
-  Lock,
-  Eye,
-  Network,
-  Box,
-  Zap,
-  LayoutGrid,
-  Search,
-  Key,
-  FileText,
-  Radio,
-  Share2,
-  GitBranch,
-  RefreshCw,
-  FileCheck,
-  UserCheck,
-  ShieldCheck,
-  AlertTriangle,
-  Bell,
-  HardDrive,
-  Wrench,
-  Plug
-};
-
-const resolveIcon = (name) => iconMap[name] || Box;
-
 const App = () => {
   const [activeLayer, setActiveLayer] = useState(null);
   const [isCompact, setIsCompact] = useState(false);
-  const layers = architectureData?.layers || [];
-  const getLayer = (id) => layers.find((layer) => layer.id === id) || {};
-  const agenticLayer = getLayer('agentic');
-  const identityLayer = getLayer('identity');
-  const opsLayer = getLayer('ops');
-  const infraLayer = getLayer('infra');
-  const gitops = opsLayer?.gitops || {};
-  const opsGroups = opsLayer?.groups || [];
-  const networkingGroup = opsGroups.find((group) => group.id === 'networking') || {};
-  const observabilityGroup = opsGroups.find((group) => group.id === 'observability') || {};
-  const backupGroup = opsGroups.find((group) => group.id === 'backup') || {};
 
   const LayerHeader = ({ title, icon: Icon, color }) => (
     <div className={`flex items-center space-x-3 ${isCompact ? 'mb-2' : 'mb-4'} ${color} ${isCompact ? 'p-2' : 'p-3'} rounded-lg bg-opacity-10 border border-opacity-20 border-current`}>
@@ -140,12 +94,14 @@ const App = () => {
         >
           {!isCompact && <div className={`absolute -inset-4 bg-gradient-to-r from-rose-500/10 to-orange-500/10 rounded-3xl blur-xl transition-opacity duration-500 ${activeLayer === 'agentic' ? 'opacity-100' : 'opacity-0'}`} />}
           <div className={`relative bg-slate-50 dark:bg-slate-900/50 backdrop-blur-sm border border-slate-200 dark:border-slate-800 rounded-2xl ${isCompact ? 'p-3 md:p-4' : 'p-6 md:p-8'}`}>
-            <LayerHeader title={agenticLayer.title} icon={resolveIcon(agenticLayer.icon)} color={agenticLayer.color} />
+            <LayerHeader title="Kubekub Agentic" icon={Zap} color="text-rose-400" />
             
-            <div className={`grid grid-cols-1 md:grid-cols-${agenticLayer?.layout?.columns || 3} ${isCompact ? 'gap-3' : 'gap-6'}`}>
-              {(agenticLayer?.items || []).map((item) => (
-                <TechCard key={item.title} title={item.title} icon={resolveIcon(item.icon)} subtext={item.subtext} type={item.type} />
-              ))}
+            <div className={`grid grid-cols-1 md:grid-cols-5 ${isCompact ? 'gap-3' : 'gap-6'}`}>
+              <TechCard title="KAgent" icon={Cpu} subtext="Autonomous Orchestration" type="agent" />
+              <TechCard title="Agent Gateway" icon={Network} subtext="Agent Protocol Handling" type="agent" />
+              <TechCard title="Envoy AI Gateway" icon={Share2} subtext="LLM Traffic Management" type="agent" />
+              <TechCard title="ToolHive" icon={Wrench} subtext="MCP Tool Execution" type="agent" />
+              <TechCard title="kmcp" icon={Plug} subtext="Kubernetes MCP" type="agent" />
             </div>
             
             <div className={`absolute left-1/2 bottom-0 w-0.5 ${isCompact ? 'h-6' : 'h-12'} bg-gradient-to-b from-slate-300 dark:from-slate-700 to-transparent translate-y-full -translate-x-1/2 hidden md:block`} />
@@ -160,12 +116,11 @@ const App = () => {
         >
           {!isCompact && <div className={`absolute -inset-4 bg-gradient-to-r from-amber-500/10 to-yellow-500/10 rounded-3xl blur-xl transition-opacity duration-500 ${activeLayer === 'auth' ? 'opacity-100' : 'opacity-0'}`} />}
           <div className={`relative bg-slate-50 dark:bg-slate-900/50 backdrop-blur-sm border border-slate-200 dark:border-slate-800 rounded-2xl ${isCompact ? 'p-3 md:p-4' : 'p-6 md:p-8'}`}>
-            <LayerHeader title={identityLayer.title} icon={resolveIcon(identityLayer.icon)} color={identityLayer.color} />
+            <LayerHeader title="KubeKub Identity" icon={ShieldCheck} color="text-amber-400" />
             
-            <div className={`grid grid-cols-1 md:grid-cols-${identityLayer?.layout?.columns || 2} ${isCompact ? 'gap-3' : 'gap-6'}`}>
-              {(identityLayer?.items || []).map((item) => (
-                <TechCard key={item.title} title={item.title} icon={resolveIcon(item.icon)} subtext={item.subtext} type={item.type} />
-              ))}
+            <div className={`grid grid-cols-1 md:grid-cols-2 ${isCompact ? 'gap-3' : 'gap-6'}`}>
+              <TechCard title="OAuth2 (Keycloak)" icon={UserCheck} subtext="Authentication" type="security" />
+              <TechCard title="Authorization Policies" icon={ShieldCheck} subtext="Fine-Grained Access" type="security" />
             </div>
             
             <div className={`absolute left-1/2 bottom-0 w-0.5 ${isCompact ? 'h-6' : 'h-12'} bg-gradient-to-b from-slate-300 dark:from-slate-700 to-transparent translate-y-full -translate-x-1/2 hidden md:block`} />
@@ -180,18 +135,17 @@ const App = () => {
         >
           {!isCompact && <div className={`absolute -inset-4 bg-gradient-to-r from-emerald-500/10 to-purple-500/10 rounded-3xl blur-xl transition-opacity duration-500 ${activeLayer === 'ops' ? 'opacity-100' : 'opacity-0'}`} />}
           <div className={`relative bg-slate-50 dark:bg-slate-900/50 backdrop-blur-sm border border-slate-200 dark:border-slate-800 rounded-2xl ${isCompact ? 'p-3 md:p-4' : 'p-6 md:p-8'}`}>
-            <LayerHeader title={opsLayer.title} icon={resolveIcon(opsLayer.icon)} color={opsLayer.color} />
+            <LayerHeader title="KubeKub Ops" icon={Layers} color="text-emerald-400" />
             
             {/* GitOps Section - Platform Management */}
             <div className={`bg-gradient-to-r from-indigo-100 dark:from-indigo-900/40 to-purple-100 dark:to-purple-900/40 rounded-xl ${isCompact ? 'p-3' : 'p-5'} border-2 border-indigo-300 dark:border-indigo-500/40 ${isCompact ? 'mb-3' : 'mb-6'}`}>
               <h3 className={`${isCompact ? 'text-xs' : 'text-sm'} font-bold text-indigo-700 dark:text-indigo-300 uppercase tracking-wider ${isCompact ? 'mb-1' : 'mb-2'} flex items-center gap-2`}>
-                {React.createElement(resolveIcon(gitops.icon), { className: isCompact ? 'w-3 h-3' : 'w-5 h-5' })} {gitops.title}
+                <GitBranch className={isCompact ? 'w-3 h-3' : 'w-5 h-5'} /> GitOps Platform Management
               </h3>
-              {!isCompact && <p className="text-indigo-600 dark:text-indigo-200/70 text-xs mb-4">{gitops.description}</p>}
+              {!isCompact && <p className="text-indigo-600 dark:text-indigo-200/70 text-xs mb-4">Manages all Kubernetes resources, infrastructure, and platform components</p>}
               <div className={`grid grid-cols-2 sm:grid-cols-4 ${isCompact ? 'gap-2' : 'gap-4'}`}>
-                {(gitops?.items || []).map((item) => (
-                  <TechCard key={item.title} title={item.title} icon={resolveIcon(item.icon)} subtext={item.subtext} type={item.type} />
-                ))}
+                <TechCard title="ArgoCD" icon={GitBranch} subtext="Continuous Deployment" type="default" />
+                <TechCard title="Crossplane" icon={RefreshCw} subtext="Infrastructure as Code" type="default" />
               </div>
             </div>
 
@@ -200,36 +154,41 @@ const App = () => {
               {/* Networking & Security Sub-group */}
               <div className={`bg-slate-100 dark:bg-slate-900/60 rounded-xl ${isCompact ? 'p-3' : 'p-5'} border border-slate-300 dark:border-slate-700/50`}>
                 <h3 className={`${isCompact ? 'text-xs' : 'text-sm'} font-bold text-slate-700 dark:text-slate-400 uppercase tracking-wider ${isCompact ? 'mb-2' : 'mb-4'} flex items-center gap-2`}>
-                  {React.createElement(resolveIcon(networkingGroup.icon), { className: isCompact ? 'w-3 h-3' : 'w-4 h-4' })} {networkingGroup.title}
+                  <Shield className={isCompact ? 'w-3 h-3' : 'w-4 h-4'} /> Networking & Security
                 </h3>
                 <div className={`grid grid-cols-2 sm:grid-cols-3 ${isCompact ? 'gap-2' : 'gap-4'}`}>
-                  {(networkingGroup?.items || []).map((item) => (
-                    <TechCard key={item.title} title={item.title} icon={resolveIcon(item.icon)} subtext={item.subtext} type={item.type} />
-                  ))}
+                  <TechCard title="Kyverno" icon={FileCheck} subtext="Policy Engine" type="security" />
+                  <TechCard title="Falco" icon={AlertTriangle} subtext="Runtime Security" type="security" />
+                  <TechCard title="Calico" icon={Activity} subtext="eBPF Dataplane" type="security" />
+                  <TechCard title="Istio" icon={LayoutGrid} subtext="Ambient Mesh" type="security" />
+                  <TechCard title="Cert Manager" icon={Lock} subtext="TLS Automation" type="security" />
+                  <TechCard title="External DNS" icon={Globe} subtext="DNS Sync" type="security" />
+                  <TechCard title="Ext. Secrets" icon={Key} subtext="Secret Mgmt" type="security" />
                 </div>
               </div>
 
               {/* Observability Sub-group */}
               <div className={`bg-slate-100 dark:bg-slate-900/60 rounded-xl ${isCompact ? 'p-3' : 'p-5'} border border-slate-300 dark:border-slate-700/50`}>
                 <h3 className={`${isCompact ? 'text-xs' : 'text-sm'} font-bold text-slate-700 dark:text-slate-400 uppercase tracking-wider ${isCompact ? 'mb-2' : 'mb-4'} flex items-center gap-2`}>
-                  {React.createElement(resolveIcon(observabilityGroup.icon), { className: isCompact ? 'w-3 h-3' : 'w-4 h-4' })} {observabilityGroup.title}
+                  <Eye className={isCompact ? 'w-3 h-3' : 'w-4 h-4'} /> Observability Stack
                 </h3>
                 <div className={`grid grid-cols-2 sm:grid-cols-3 ${isCompact ? 'gap-2' : 'gap-4'}`}>
-                  {(observabilityGroup?.items || []).map((item) => (
-                    <TechCard key={item.title} title={item.title} icon={resolveIcon(item.icon)} subtext={item.subtext} type={item.type} />
-                  ))}
+                  <TechCard title="Prometheus" icon={Activity} subtext="Metrics Collection" type="obs" />
+                  <TechCard title="Alertmanager" icon={Bell} subtext="Alert Routing" type="obs" />
+                  <TechCard title="Grafana Mimir" icon={Database} subtext="LT Metrics Storage" type="obs" />
+                  <TechCard title="Loki" icon={FileText} subtext="Log Aggregation" type="obs" />
+                  <TechCard title="Tempo" icon={Search} subtext="Distributed Tracing" type="obs" />
+                  <TechCard title="OpenTelemetry" icon={Radio} subtext="Instrumentation" type="obs" />
                 </div>
               </div>
 
               {/* Backup & DR Sub-group */}
               <div className={`bg-slate-100 dark:bg-slate-900/60 rounded-xl ${isCompact ? 'p-3' : 'p-5'} border border-slate-300 dark:border-slate-700/50 lg:col-span-2`}>
                 <h3 className={`${isCompact ? 'text-xs' : 'text-sm'} font-bold text-slate-700 dark:text-slate-400 uppercase tracking-wider ${isCompact ? 'mb-2' : 'mb-4'} flex items-center gap-2`}>
-                  {React.createElement(resolveIcon(backupGroup.icon), { className: isCompact ? 'w-3 h-3' : 'w-4 h-4' })} {backupGroup.title}
+                  <HardDrive className={isCompact ? 'w-3 h-3' : 'w-4 h-4'} /> Backup & Disaster Recovery
                 </h3>
                 <div className={`grid grid-cols-2 sm:grid-cols-3 ${isCompact ? 'gap-2' : 'gap-4'}`}>
-                  {(backupGroup?.items || []).map((item) => (
-                    <TechCard key={item.title} title={item.title} icon={resolveIcon(item.icon)} subtext={item.subtext} type={item.type} />
-                  ))}
+                  <TechCard title="Velero" icon={HardDrive} subtext="Cluster Backup" type="default" />
                 </div>
               </div>
 
@@ -246,25 +205,27 @@ const App = () => {
         >
           {!isCompact && <div className={`absolute -inset-4 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 rounded-3xl blur-xl transition-opacity duration-500 ${activeLayer === 'infra' ? 'opacity-100' : 'opacity-0'}`} />}
           <div className={`relative bg-slate-50 dark:bg-slate-900/50 backdrop-blur-sm border border-slate-200 dark:border-slate-800 rounded-2xl ${isCompact ? 'p-3 md:p-4' : 'p-6 md:p-8'}`}>
-            <LayerHeader title={infraLayer.title} icon={resolveIcon(infraLayer.icon)} color={infraLayer.color} />
+            <LayerHeader title="Infrastructure & Core" icon={Server} color="text-blue-400" />
             
             <div className={`flex flex-col ${isCompact ? 'gap-3' : 'gap-6'}`}>
               
               {/* The Unifying Layer */}
               <div className={`bg-indigo-100 dark:bg-indigo-900/20 border border-indigo-300 dark:border-indigo-500/30 rounded-lg ${isCompact ? 'p-2' : 'p-4'} text-center`}>
                 <h3 className={`${isCompact ? 'text-sm' : 'text-lg'} font-bold text-indigo-700 dark:text-indigo-300 flex items-center justify-center gap-2`}>
-                  {React.createElement(resolveIcon(infraLayer?.core?.icon), { className: isCompact ? 'w-3 h-3' : 'w-5 h-5' })} {infraLayer?.core?.title}
+                  <Box className={isCompact ? 'w-3 h-3' : 'w-5 h-5'} /> Kubernetes Core
                 </h3>
-                {!isCompact && <p className="text-indigo-600 dark:text-indigo-200/60 text-sm mt-1">{infraLayer?.core?.description}</p>}
+                {!isCompact && <p className="text-indigo-600 dark:text-indigo-200/60 text-sm mt-1">Unified API Abstraction Layer</p>}
               </div>
 
               {/* Multi-Cloud & On-Prem Grid */}
               <div className={`grid grid-cols-2 md:grid-cols-5 ${isCompact ? 'gap-2' : 'gap-4'}`}>
-                {(infraLayer?.items || []).map((item, index) => (
-                  <div key={item.title} className={index === 4 ? 'col-span-2 md:col-span-1' : undefined}>
-                    <TechCard title={item.title} icon={resolveIcon(item.icon)} subtext={item.subtext} type={item.type} />
-                  </div>
-                ))}
+                <TechCard title="AWS" icon={Cloud} subtext="EKS" type="cloud" />
+                <TechCard title="Azure" icon={Cloud} subtext="AKS" type="cloud" />
+                <TechCard title="GCP" icon={Cloud} subtext="GKE" type="cloud" />
+                <TechCard title="Tencent" icon={Cloud} subtext="TKE" type="cloud" />
+                <div className="col-span-2 md:col-span-1">
+                   <TechCard title="Bare Metal" icon={Server} subtext="Kubespray / Minikube" type="cloud" />
+                </div>
               </div>
 
             </div>
