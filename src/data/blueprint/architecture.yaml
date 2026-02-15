@@ -1,0 +1,166 @@
+# Contains AI-generated edits for kubekub.com - 2026-02-15
+layers:
+  - id: agentic
+    title: Kubekub Agentic
+    icon: Zap
+    color: text-rose-400
+    layout:
+      columns: 5
+    items:
+      - title: KAgent
+        icon: Cpu
+        subtext: Autonomous Orchestration
+        type: agent
+      - title: Agent Gateway
+        icon: Network
+        subtext: Agent Protocol Handling
+        type: agent
+      - title: Envoy AI Gateway
+        icon: Share2
+        subtext: LLM Traffic Management
+        type: agent
+      - title: ToolHive
+        icon: Wrench
+        subtext: MCP Tool Execution
+        type: agent
+      - title: kMCP
+        icon: Plug
+        subtext: Kubernetes MCP
+        type: agent
+
+  - id: identity
+    title: Kubekub Identity
+    icon: ShieldCheck
+    color: text-amber-400
+    layout:
+      columns: 2
+    items:
+      - title: OAuth2 (Keycloak)
+        icon: UserCheck
+        subtext: Authentication
+        type: security
+      - title: Authorization Policies
+        icon: ShieldCheck
+        subtext: Fine-Grained Access
+        type: security
+
+  - id: ops
+    title: Kubekub Ops
+    icon: Layers
+    color: text-emerald-400
+    gitops:
+      title: GitOps Platform Management
+      icon: GitBranch
+      description: Manages all Kubernetes resources, infrastructure, and platform components
+      items:
+        - title: ArgoCD
+          icon: GitBranch
+          subtext: Continuous Deployment
+          type: default
+        - title: Crossplane
+          icon: RefreshCw
+          subtext: Infrastructure as Code
+          type: default
+    groups:
+      - id: networking
+        title: Networking & Security
+        icon: Shield
+        items:
+          - title: Kyverno
+            icon: FileCheck
+            subtext: Policy Engine
+            type: security
+          - title: Falco
+            icon: AlertTriangle
+            subtext: Runtime Security
+            type: security
+          - title: Calico
+            icon: Activity
+            subtext: eBPF Dataplane
+            type: security
+          - title: Istio
+            icon: LayoutGrid
+            subtext: Ambient Mesh
+            type: security
+          - title: Cert Manager
+            icon: Lock
+            subtext: TLS Automation
+            type: security
+          - title: External DNS
+            icon: Globe
+            subtext: DNS Sync
+            type: security
+          - title: Ext. Secrets
+            icon: Key
+            subtext: Secret Mgmt
+            type: security
+      - id: observability
+        title: Observability Stack
+        icon: Eye
+        items:
+          - title: Prometheus
+            icon: Activity
+            subtext: Metrics Collection
+            type: obs
+          - title: Alertmanager
+            icon: Bell
+            subtext: Alert Routing
+            type: obs
+          - title: Grafana Mimir
+            icon: Database
+            subtext: LT Metrics Storage
+            type: obs
+          - title: Loki
+            icon: FileText
+            subtext: Log Aggregation
+            type: obs
+          - title: Tempo
+            icon: Search
+            subtext: Distributed Tracing
+            type: obs
+          - title: OpenTelemetry
+            icon: Radio
+            subtext: Instrumentation
+            type: obs
+          - title: Kiali
+            icon: Eye
+            subtext: Service Mesh UI
+            type: obs
+      - id: backup
+        title: Backup & Disaster Recovery
+        icon: HardDrive
+        items:
+          - title: Velero
+            icon: HardDrive
+            subtext: Cluster Backup
+            type: default
+
+  - id: infra
+    title: Infrastructure & Core
+    icon: Server
+    color: text-blue-400
+    core:
+      title: Kubernetes Core
+      icon: Box
+      description: Unified API Abstraction Layer
+    items:
+      - title: AWS
+        icon: Cloud
+        subtext: EKS
+        type: cloud
+      - title: Azure
+        icon: Cloud
+        subtext: AKS
+        type: cloud
+      - title: GCP
+        icon: Cloud
+        subtext: GKE
+        type: cloud
+      - title: Tencent
+        icon: Cloud
+        subtext: TKE
+        type: cloud
+      - title: Bare Metal
+        icon: Server
+        subtext: Kubespray / Minikube
+        type: cloud
