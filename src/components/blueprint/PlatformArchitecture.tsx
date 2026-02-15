@@ -115,7 +115,7 @@ const App = () => {
             
             <div className={`grid grid-cols-1 md:grid-cols-2 ${isCompact ? 'gap-3' : 'gap-6'}`}>
               <TechCard title="OAuth2 (Keycloak)" icon={UserCheck} subtext="Authentication" type="security" />
-              <TechCard title="Authzen + OpenFGA" icon={ShieldCheck} subtext="Authorization" type="security" />
+              <TechCard title="Authorization Policies" icon={ShieldCheck} subtext="Fine-Grained Access" type="security" />
             </div>
             
             <div className={`absolute left-1/2 bottom-0 w-0.5 ${isCompact ? 'h-6' : 'h-12'} bg-gradient-to-b from-slate-300 dark:from-slate-700 to-transparent translate-y-full -translate-x-1/2 hidden md:block`} />
