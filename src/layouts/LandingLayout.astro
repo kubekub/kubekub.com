@@ -2,7 +2,7 @@
 import PageLayout from '~/layouts/PageLayout.astro';
 import Header from '~/components/widgets/Header.astro';
 
-import { headerData } from '~/navigation';
+import { getHeaderData } from '~/navigation';
 import type { MetaData } from '~/types';
 
 export interface Props {
@@ -10,6 +10,16 @@ export interface Props {
 }
 
 const { metadata } = Astro.props;
+const pathname = new URL(Astro.url).pathname;
+const isSpanish = pathname === '/es' || pathname.startsWith('/es/');
+const locale = isSpanish ? 'es' : 'en';
+const headerData = getHeaderData(locale);
+
+const languageSwitchHref = isSpanish
+  ? pathname.replace(/^\/es(?=\/|$)/, '') || '/'
+  : `/es${pathname === '/' ? '' : pathname}`;
+
+const languageSwitchText = isSpanish ? 'EN' : 'ES';
 ---
 
 <PageLayout metadata={metadata}>
@@ -19,10 +29,12 @@ const { metadata } = Astro.props;
         links={headerData?.links[2] ? [headerData.links[2]] : undefined}
         actions={[
           {
-            text: 'Download',
+            text: locale === 'es' ? 'Descargar' : 'Download',
             href: 'https://github.com/arthelokyo/Kubekub',
           },
         ]}
+        locale={locale}
+        languageSwitch={{ text: languageSwitchText, href: languageSwitchHref }}
         showToggleTheme
         position="right"
       />
