@@ -2,205 +2,177 @@
 import Layout from '~/layouts/PageLayout.astro';
 
 import Hero from '~/components/widgets/Hero.astro';
-import Note from '~/components/widgets/Note.astro';
 import Features from '~/components/widgets/Features.astro';
-import Features2 from '~/components/widgets/Features2.astro';
-import Steps from '~/components/widgets/Steps.astro';
-import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
-import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
-  title: 'Kubekub — Agentic AI Infrastructure & Platform Engineering',
+  title: 'Kubekub — Secure Agentic AI, Simplified',
   ignoreTitleTemplate: true,
 };
 ---
 
 <Layout metadata={metadata}>
   <!-- Hero Widget ******************* -->
-
-  <Hero
+const metadata = {
+  title: 'Kubekub — AI Governance Blueprint on Kubernetes',
     actions={[
       {
         variant: 'primary',
-        text: 'Schedule a Consultation',
+        text: 'Talk to Us',
+const riskCards = [
+  {
+    title: 'Agents acting on real systems',
+    description:
+      'The challenge is no longer generating text. It is controlling agents that can read data, call tools, and execute actions across enterprise systems.',
+    accent: 'from-rose-500 to-orange-400',
+  },
+  {
+    title: 'Governance gaps become business risk',
+    description:
+      'Without approval flows, traceability, access control, and policy boundaries, the risk sits with the company, not with the model vendor.',
+    accent: 'from-amber-500 to-yellow-300',
+  },
+  {
+    title: 'Regulation is now an architecture problem',
+    description:
+      'The EU AI Act pushes teams toward concrete engineering controls: identity, observability, human oversight, isolation, and auditable execution.',
+    accent: 'from-sky-500 to-cyan-300',
+  },
+];
+
+const controlAreas = [
+  {
+    kicker: 'Identity',
+    title: 'Fine-grained authorization before the model acts',
+    description:
+      'Authentication, delegated identity, and relationship-based authorization make agent access decisions explicit instead of hoping prompts behave.',
+  },
+  {
+    kicker: 'Governance',
+    title: 'Auditable tools, approvals, and execution boundaries',
+    description:
+      'Tool registries, MCP-based integration, approval steps, and action logs turn agent behavior into something reviewable by security and compliance teams.',
+  },
+  {
+    kicker: 'Runtime',
+    title: 'Kubernetes isolation for resilient agent execution',
+    description:
+      'Sandboxed workloads, network policy, quotas, and controlled runtimes keep agent failures contained instead of letting them become infrastructure incidents.',
+  },
+  {
+    kicker: 'Evidence',
+    title: 'Observability and compliance by design',
+    description:
+      'Telemetry, policy-as-code, GitOps, and human-in-the-loop checkpoints create the evidence trail needed for internal governance and regulated environments.',
+  },
+];
+
+const stackLayers = [
+  {
+    title: 'AI gateway and guardrails',
+    description: 'Authentication, prompt filtering, policy enforcement, and controlled ingress for agent traffic.',
+  },
+  {
+    title: 'Authorization and identity',
+    description: 'IdP integration plus fine-grained authorization for users, agents, tools, and data paths.',
+  },
+  {
+    title: 'Kubernetes-native runtime',
+    description: 'Open-source runtimes, workload isolation, resource controls, and network boundaries for agent execution.',
+  },
+  {
+    title: 'MCP and tool governance',
+    description: 'Discoverable, versioned, auditable tools instead of opaque agent integrations spread across codebases.',
+  },
+  {
+    title: 'GitOps and platform operations',
+    description: 'Policies, infrastructure, and changes managed as code so teams can operate and evolve the blueprint safely.',
+  },
+  {
+    title: 'Open-source optionality',
+    description: 'Standards and swappable components reduce vendor lock-in and keep the customer in control of the architecture.',
+  },
+];
+
+const audience = [
+  'Platform teams that need to move AI from experiments to production',
+  'Regulated or risk-sensitive companies that need governance before broad rollout',
+  'Organizations that want open-source architecture instead of black-box AI lock-in',
+];
+
+const proofPoints = [
+  '26 years building software and infrastructure platforms',
+  'Cloud-native and Kubernetes work across Europe, public sector, Roche, and Hexagon',
+  'A blueprint approach: deployed in the customer infrastructure, operated under the customer rules',
+];
+
         href: '/contact',
         icon: 'tabler:message-circle',
       },
-      { text: 'Learn More', href: '#about' },
+      { text: 'Technical Blueprint', href: '/technical' },
     ]}
   >
     <Fragment slot="title">
-      Secure <span class="text-accent dark:text-white highlight">Agentic AI</span> Infrastructure: Open-Source Integration
+      Secure <span class="text-accent dark:text-white highlight">Agentic AI</span> Without the Chaos
     </Fragment>
 
     <Fragment slot="subtitle">
-      <span class="font-semibold">Autonomous agents at scale:</span> architect secure, governed agentic systems using <span class="font-semibold">proven open-source (Kubernetes, Istio, ArgoCD, KServe)</span> with <span class="font-semibold">GitOps automation, policy-based security, and zero vendor lock-in</span> across any cloud or on-premises.
+      Build and operate agentic systems with <span class="font-semibold">clear controls, strong security, and full visibility</span>. We help teams move from experiments to production safely.
     </Fragment>
   </Hero>
 
-  <!-- Note Widget ******************* -->
-
-
-  <!-- Features Widget *************** -->
-
   <Features
     id="about"
-    tagline="Open-Source Integration"
-    title="Curated Agentic AI Infrastructure Stack"
-    subtitle="Architect secure autonomous agent systems by integrating proven open-source components—no proprietary vendor platforms or lock-in"
+    tagline="What You Get"
+    title="A Controlled Agentic Platform"
+    subtitle="Simple principles for safe autonomy, backed by proven open-source building blocks."
     items={[
       {
-        title: 'KAgent & Agent Control Plane',
+        title: 'Governed Agent Actions',
         description:
-          'Integrate KAgent with MCP (Model Context Protocol) and ToolHive for Kubernetes-native agent orchestration, governance, and authorization.',
-        icon: 'tabler:robot',
+          'Policies, approvals, and scoped permissions keep agents useful without letting them run wild.',
+        icon: 'tabler:shield-check',
       },
       {
-        title: 'Gateway API Inference Routing',
+        title: 'Security by Default',
         description:
-          'Integrate Gateway API with Inference Extensions for intelligent agent request routing, load balancing, and multi-endpoint orchestration.',
-        icon: 'tabler:route',
-      },
-      {
-        title: 'Zero-Trust Security Stack',
-        description:
-          'Compose Istio ambient mesh, Kyverno policies, Falco runtime security into cohesive zero-trust architecture for agent workloads.',
+          'Zero-trust networking, least privilege, and runtime controls protect data and systems from accidental misuse.',
         icon: 'tabler:lock',
       },
       {
-        title: 'GitOps Platform Layer',
+        title: 'Observable and Auditable',
         description:
-          'Integrate ArgoCD (deployment), Crossplane (infrastructure as code), and Kubernetes for declarative, driftless infrastructure management.',
-        icon: 'tabler:git-merge',
-      },
-      {
-        title: 'Observability & Incident Response',
-        description:
-          'Compose Prometheus metrics, Grafana visualization, Loki logs, OpenTelemetry traces, Alertmanager routing, and Velero backups into single stack.',
+          'Every action is traceable. You get logs, metrics, and incident visibility to operate with confidence.',
         icon: 'tabler:chart-dots',
-      },
-      {
-        title: 'Developer Platform Architecture',
-        description:
-          'Design self-service abstractions using open standards (OLM, Operators) for agent deployment, isolation, and governance across teams.',
-        icon: 'tabler:hexagon-3d',
-      },
-      {
-        title: 'Multi-Tenant & Portable Design',
-        description:
-          'Architect namespace isolation, RBAC, network policies, and resource quotas portable across AWS, Azure, GCP, on-premises—no vendor specifics.',
-        icon: 'tabler:shield-check',
       },
     ]}
   />
 
-  <!-- Integration Approach Widget *** -->
-
   <Features
-    tagline="Integration Approach"
-    title="Open-Source Components, Integrated Systems"
-    subtitle="Integration Provider, Not Platform Vendor—thoughtful composition of proven open-source components. I architect how Kubernetes, Istio, ArgoCD, and security tools work together. No proprietary black boxes, no vendor lock-in, no replacement of your team's expertise."
+    tagline="How We Work"
+    title="Practical, Open, and Vendor-Neutral"
+    subtitle="We integrate proven open-source tools into a system your team can understand, own, and evolve."
     items={[
       {
-        title: 'Proven Open-Source Selection',
+        title: 'No Lock-In',
         description:
-          'Curate best-of-breed components (Kubernetes, Istio, ArgoCD, Kyverno, Prometheus) instead of proprietary platforms. Your team controls and can replace any layer.',
-        icon: 'tabler:checkbox',
-      },
-      {
-        title: 'Zero Vendor Lock-In',
-        description:
-          'Every component is portable: switch container runtimes, choose any cloud, migrate orchestrators. Standards-based (CNCF, OCI) ensure long-term freedom.',
+          'Your architecture stays portable across cloud and on-prem. Replace components when you need to, not when a vendor decides.',
         icon: 'tabler:lock-open',
       },
       {
-        title: 'Declarative, GitOps-First',
+        title: 'GitOps and Policy-as-Code',
         description:
-          'Everything versioned in Git: infrastructure (Crossplane), policies (Kyverno), deployments (ArgoCD). No undocumented configuration drift or magic buttons.',
+          'Infrastructure, policies, and workflows live in Git for reliable operations and clear change history.',
         icon: 'tabler:git-branch',
       },
       {
-        title: 'Integrate, Don\'t Replace',
+        title: 'Deep Technical Option',
         description:
-          'Work with your existing tools and workflows. Architect layers that simplify integration, reduce complexity, enable teams to focus on agents not plumbing.',
-        icon: 'tabler:plug-connected',
+          'Need all architectural details? Visit the technical blueprint with stack and implementation patterns.',
+        icon: 'tabler:cpu',
       },
     ]}
   />
-
-  <!-- Steps Widget ****************** -->
-
-  <Steps
-    title="Open-Source Integration Process"
-    items={[
-      {
-        title: '<span class="font-medium">Assess & Architect</span>',
-        description:
-          'Understand your agent requirements, existing tooling, and constraints. Design component integration strategy using proven open-source (Kubernetes, Istio, ArgoCD, etc.)',
-        icon: 'tabler:stethoscope',
-      },
-      {
-        title: '<span class="font-medium">Integrate & Configure</span>',
-        description:
-          'Hands-on assembly: wire components together, configure GitOps workflows, define policies (Kyverno), implement zero-trust. All version-controlled, all replaceable.',
-        icon: 'tabler:tools',
-      },
-      {
-        title: '<span class="font-medium">Validate & Operate</span>',
-        description:
-          'Test integration end-to-end, optimize performance, ensure observability. Launch agents with confidence in reliability and security.',
-        icon: 'tabler:rocket',
-      },
-      {
-        title: '<span class="font-medium">Document & Exit</span>',
-        description:
-          'Full documentation of component choices, integration points, and operational procedures. Your team owns the system; we enable independence.',
-        icon: 'tabler:school',
-      },
-    ]}
-  />
-
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="Why Choose Kubekub"
-    subtitle="Open-source integrator, not platform vendor—25+ years building portable, standards-based infrastructure"
-    tagline="Value Proposition"
-    items={[
-      {
-        title: 'No Vendor Lock-In',
-        description: 'Every component replaceable: swap Istio for Cilium, ArgoCD for Flux, change cloud providers. CNCF-aligned, open standards throughout.',
-        icon: 'tabler:lock-open',
-      },
-      {
-        title: 'Open-Source Native',
-        description: 'Specialize in Kubernetes ecosystem: proven tools (Istio, ArgoCD, Kyverno, Falco, Prometheus). No proprietary wrappers, no licensing surprises.',
-        icon: 'tabler:brand-github',
-      },
-      {
-        title: 'Integration Expertise',
-        description: 'Architecture strength: how components collaborate, not replacing them. GitOps workflows, security integration, operational automation.',
-        icon: 'tabler:puzzle',
-      },
-      {
-        title: 'Your Team Owns It',
-        description: 'Full transparency, full documentation. Every architectural decision explained. Team walks away capable, not dependent on consultants.',
-        icon: 'tabler:users',
-      },
-      {
-        title: 'Battle-Tested Components',
-        description: 'Production experience scaling proven CNCF tools. Not experimenting—applying proven patterns to your agent infrastructure.',
-        icon: 'tabler:award',
-      },
-    ]}
-  >
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Features2>
-
-  <!-- CallToAction Widget *********** -->
 
   <CallToAction
     actions={[
@@ -210,14 +182,18 @@ const metadata = {
         href: '/contact',
         icon: 'tabler:message-circle',
       },
+      {
+        text: 'View Technical Blueprint',
+        href: '/technical',
+      },
     ]}
   >
     <Fragment slot="title">
-      Ready to Integrate Open-Source for Agentic AI?
+      Ready to Build Agentic AI with Real Control?
     </Fragment>
 
     <Fragment slot="subtitle">
-      Building agentic systems with portability and zero vendor lock-in in mind? Let's discuss how Kubekub can architect the integration of proven open-source components (Kubernetes, Istio, ArgoCD, Kyverno) for your agent infrastructure.
+      Start with a clear strategy: secure execution, policy guardrails, and reliable operations. Then scale with confidence.
     </Fragment>
   </CallToAction>
 

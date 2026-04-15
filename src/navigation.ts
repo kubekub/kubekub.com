@@ -7,14 +7,16 @@ export const headerData = {
       text: 'Home',
       href: '/',
     },
+
     {
-      text: 'Team',
-      href: getPermalink('/team'),
+      text: 'Technical',
+      href: getPermalink('/technical'),
     },
     {
       text: 'Blueprint',
       href: getPermalink('/blueprint'),
     },
+
     {
       text: 'Emerging Patterns',
       href: getPermalink('/emerging-patterns'),
@@ -22,6 +24,10 @@ export const headerData = {
     {
       text: 'Blog',
       href: getBlogPermalink(),
+    },
+    {
+      text: 'Team',
+      href: getPermalink('/team'),
     },
     {
       text: 'Contact',
