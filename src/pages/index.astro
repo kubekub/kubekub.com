@@ -1,224 +1,307 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 
-import Hero from '~/components/widgets/Hero.astro';
-import Note from '~/components/widgets/Note.astro';
-import Features from '~/components/widgets/Features.astro';
-import Features2 from '~/components/widgets/Features2.astro';
-import Steps from '~/components/widgets/Steps.astro';
-import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
-import Stats from '~/components/widgets/Stats.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
-
 const metadata = {
-  title: 'Kubekub — Agentic AI Infrastructure & Platform Engineering',
+  title: 'Kubekub — AI Governance Blueprint on Kubernetes',
+  description:
+    'Control and accountability for Agentic AI in your company.',
   ignoreTitleTemplate: true,
 };
+
+const painCards = [
+  {
+    title: 'Companies want AI, but not loss of control',
+    description:
+      'When AI agents can act on internal systems, the problem becomes control, approvals, and responsibility.',
+    accent: 'from-rose-500 to-orange-400',
+  },
+  {
+    title: 'Governance usually arrives late',
+    description:
+      'Security, legal, and audit teams need clear permissions, traceability, and human oversight before they can support scale.',
+    accent: 'from-amber-500 to-yellow-300',
+  },
+  {
+    title: 'Closed AI stacks create dependency',
+    description:
+      'Many companies do not want to solve today’s AI rush by giving away control of data and architecture.',
+    accent: 'from-sky-500 to-cyan-300',
+  },
+];
+
+const outcomeCards = [
+  {
+    kicker: 'Outcome 1',
+    title: 'Adopt AI with clear limits',
+    description:
+      'Use agents with clear scope, controlled access, and approvals for sensitive actions.',
+  },
+  {
+    kicker: 'Outcome 2',
+    title: 'Governance that helps scale',
+    description:
+      'Give security, audit, and compliance the evidence they need so AI can move forward.',
+  },
+  {
+    kicker: 'Outcome 3',
+    title: 'Keep ownership',
+    description:
+      'Run the blueprint in your own environment and keep long-term control.',
+  },
+];
+
+const stackLayers = [
+  {
+    title: 'AI gateway and guardrails',
+    description: 'Authentication, prompt filtering, policy enforcement, and controlled ingress for agent traffic.',
+  },
+  {
+    title: 'Authorization and identity',
+    description: 'IdP integration plus fine-grained authorization for users, agents, tools, and data paths.',
+  },
+  {
+    title: 'Kubernetes-native runtime',
+    description: 'Open-source runtimes, workload isolation, resource controls, and network boundaries for agent execution.',
+  },
+  {
+    title: 'MCP and tool governance',
+    description: 'Discoverable, versioned, auditable tools instead of opaque agent integrations spread across codebases.',
+  },
+  {
+    title: 'GitOps and platform operations',
+    description: 'Policies, infrastructure, and changes managed as code so teams can operate and evolve the blueprint safely.',
+  },
+  {
+    title: 'Open-source optionality',
+    description: 'Standards and swappable components reduce vendor lock-in and keep the customer in control of the architecture.',
+  },
+];
+
+const audience = [
+  'Platform teams that need to move AI from experiments to production',
+  'Regulated or risk-sensitive companies that need governance before broad rollout',
+  'Organizations that want open-source architecture instead of black-box AI lock-in',
+];
+
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero Widget ******************* -->
+  <section class="relative overflow-hidden bg-[linear-gradient(135deg,#fff7ed_0%,#f8fafc_38%,#ecfeff_100%)] dark:bg-[linear-gradient(135deg,#0f172a_0%,#111827_42%,#022c22_100%)]">
+    <div class="absolute inset-0 opacity-70">
+      <div class="absolute left-[-10rem] top-[-7rem] h-72 w-72 rounded-full bg-orange-200/60 blur-3xl dark:bg-orange-500/15"></div>
+      <div class="absolute right-[-8rem] top-20 h-80 w-80 rounded-full bg-cyan-200/60 blur-3xl dark:bg-cyan-500/15"></div>
+      <div class="absolute bottom-[-9rem] left-1/3 h-72 w-72 rounded-full bg-emerald-200/50 blur-3xl dark:bg-emerald-500/10"></div>
+    </div>
 
-  <Hero
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Schedule a Consultation',
-        href: '/contact',
-        icon: 'tabler:message-circle',
-      },
-      { text: 'Learn More', href: '#about' },
-    ]}
-  >
-    <Fragment slot="title">
-      Secure <span class="text-accent dark:text-white highlight">Agentic AI</span> Infrastructure: Open-Source Integration
-    </Fragment>
+    <div class="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+      <div class="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
+        <div>
+          <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-slate-900/10 bg-white/80 px-4 py-2 text-sm font-medium tracking-wide text-slate-700 shadow-sm backdrop-blur dark:border-white/10 dark:bg-slate-900/60 dark:text-slate-200">
+            <span class="h-2 w-2 rounded-full bg-emerald-500"></span>
+            Governance for Agentic AI
+          </div>
 
-    <Fragment slot="subtitle">
-      <span class="font-semibold">Autonomous agents at scale:</span> architect secure, governed agentic systems using <span class="font-semibold">proven open-source (Kubernetes, Istio, ArgoCD, KServe)</span> with <span class="font-semibold">GitOps automation, policy-based security, and zero vendor lock-in</span> across any cloud or on-premises.
-    </Fragment>
-  </Hero>
+          <h1 class="max-w-4xl font-heading text-5xl font-black leading-[0.96] tracking-[-0.04em] text-slate-950 dark:text-white sm:text-6xl xl:text-7xl">
+            Control and accountability for Agentic AI in your company.
+          </h1>
 
-  <!-- Note Widget ******************* -->
+          <p class="mt-6 max-w-3xl text-xl leading-8 text-slate-700 dark:text-slate-300">
+            Agentic AI is entering companies faster than governance can keep up.
+          </p>
 
+          <p class="mt-4 max-w-3xl text-lg leading-8 text-slate-600 dark:text-slate-400">
+            If an AI agent makes a critical mistake tomorrow, can your team explain exactly what happened? Kubekub helps companies deploy a customer-owned blueprint so the answer is yes: with traceability, approvals, and EU AI Act readiness by design.
+          </p>
 
-  <!-- Features Widget *************** -->
+          <div class="mt-10 flex flex-col gap-4 sm:flex-row">
+            <a
+              href="/contact"
+              class="inline-flex items-center justify-center rounded-full bg-slate-950 px-7 py-4 text-base font-semibold text-white shadow-[0_18px_45px_-18px_rgba(15,23,42,0.7)] transition hover:-translate-y-0.5 hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
+            >
+              Talk to Us
+            </a>
+            <a
+              href="/blueprint"
+              class="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white/80 px-7 py-4 text-base font-semibold text-slate-900 backdrop-blur transition hover:-translate-y-0.5 hover:border-slate-950 dark:border-white/15 dark:bg-slate-900/60 dark:text-white dark:hover:border-white/40"
+            >
+              See the Blueprint
+            </a>
+          </div>
 
-  <Features
-    id="about"
-    tagline="Open-Source Integration"
-    title="Curated Agentic AI Infrastructure Stack"
-    subtitle="Architect secure autonomous agent systems by integrating proven open-source components—no proprietary vendor platforms or lock-in"
-    items={[
-      {
-        title: 'KAgent & Agent Control Plane',
-        description:
-          'Integrate KAgent with MCP (Model Context Protocol) and ToolHive for Kubernetes-native agent orchestration, governance, and authorization.',
-        icon: 'tabler:robot',
-      },
-      {
-        title: 'Gateway API Inference Routing',
-        description:
-          'Integrate Gateway API with Inference Extensions for intelligent agent request routing, load balancing, and multi-endpoint orchestration.',
-        icon: 'tabler:route',
-      },
-      {
-        title: 'Zero-Trust Security Stack',
-        description:
-          'Compose Istio ambient mesh, Kyverno policies, Falco runtime security into cohesive zero-trust architecture for agent workloads.',
-        icon: 'tabler:lock',
-      },
-      {
-        title: 'GitOps Platform Layer',
-        description:
-          'Integrate ArgoCD (deployment), Crossplane (infrastructure as code), and Kubernetes for declarative, driftless infrastructure management.',
-        icon: 'tabler:git-merge',
-      },
-      {
-        title: 'Observability & Incident Response',
-        description:
-          'Compose Prometheus metrics, Grafana visualization, Loki logs, OpenTelemetry traces, Alertmanager routing, and Velero backups into single stack.',
-        icon: 'tabler:chart-dots',
-      },
-      {
-        title: 'Developer Platform Architecture',
-        description:
-          'Design self-service abstractions using open standards (OLM, Operators) for agent deployment, isolation, and governance across teams.',
-        icon: 'tabler:hexagon-3d',
-      },
-      {
-        title: 'Multi-Tenant & Portable Design',
-        description:
-          'Architect namespace isolation, RBAC, network policies, and resource quotas portable across AWS, Azure, GCP, on-premises—no vendor specifics.',
-        icon: 'tabler:shield-check',
-      },
-    ]}
-  />
+        </div>
 
-  <!-- Integration Approach Widget *** -->
+        <div class="lg:pt-6">
+          <div class="rounded-[2rem] border border-slate-200/70 bg-white/80 p-6 shadow-[0_30px_120px_-40px_rgba(15,23,42,0.45)] backdrop-blur dark:border-white/10 dark:bg-slate-900/70">
+            <div class="rounded-[1.5rem] bg-slate-950 p-6 text-white dark:bg-slate-950/90">
+              <div class="text-xs font-semibold uppercase tracking-[0.22em] text-cyan-300">The current challenge</div>
+              <div class="mt-4 text-3xl font-bold leading-tight">AI scales faster than most companies can govern it.</div>
+              <div class="mt-4 space-y-3 text-sm leading-6 text-slate-300">
+                <div class="flex items-start gap-3">
+                  <span class="mt-1 h-2.5 w-2.5 rounded-full bg-cyan-300"></span>
+                  <p>Business teams push adoption, while security and compliance lack visibility.</p>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="mt-1 h-2.5 w-2.5 rounded-full bg-emerald-300"></span>
+                  <p>Without governance, legal and operational responsibility stays with your company.</p>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="mt-1 h-2.5 w-2.5 rounded-full bg-amber-300"></span>
+                  <p>The result is blind spots, shadow AI, and avoidable exposure.</p>
+                </div>
+              </div>
+            </div>
 
-  <Features
-    tagline="Integration Approach"
-    title="Open-Source Components, Integrated Systems"
-    subtitle="Integration Provider, Not Platform Vendor—thoughtful composition of proven open-source components. I architect how Kubernetes, Istio, ArgoCD, and security tools work together. No proprietary black boxes, no vendor lock-in, no replacement of your team's expertise."
-    items={[
-      {
-        title: 'Proven Open-Source Selection',
-        description:
-          'Curate best-of-breed components (Kubernetes, Istio, ArgoCD, Kyverno, Prometheus) instead of proprietary platforms. Your team controls and can replace any layer.',
-        icon: 'tabler:checkbox',
-      },
-      {
-        title: 'Zero Vendor Lock-In',
-        description:
-          'Every component is portable: switch container runtimes, choose any cloud, migrate orchestrators. Standards-based (CNCF, OCI) ensure long-term freedom.',
-        icon: 'tabler:lock-open',
-      },
-      {
-        title: 'Declarative, GitOps-First',
-        description:
-          'Everything versioned in Git: infrastructure (Crossplane), policies (Kyverno), deployments (ArgoCD). No undocumented configuration drift or magic buttons.',
-        icon: 'tabler:git-branch',
-      },
-      {
-        title: 'Integrate, Don\'t Replace',
-        description:
-          'Work with your existing tools and workflows. Architect layers that simplify integration, reduce complexity, enable teams to focus on agents not plumbing.',
-        icon: 'tabler:plug-connected',
-      },
-    ]}
-  />
+            <div class="mt-5 grid gap-4 sm:grid-cols-2">
+              <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-white/10 dark:bg-slate-900/50">
+                <div class="text-sm font-semibold text-slate-500 dark:text-slate-400">Blind governance</div>
+                <div class="mt-2 text-lg font-semibold text-slate-900 dark:text-white">Low visibility, high risk</div>
+                <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400">
+                  Teams deploy agents, but few can track clearly what they do, what data they touch, and who approved it.
+                </p>
+              </div>
 
-  <!-- Steps Widget ****************** -->
+              <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-white/10 dark:bg-slate-900/50">
+                <div class="text-sm font-semibold text-slate-500 dark:text-slate-400">Regulatory pressure</div>
+                <div class="mt-2 text-lg font-semibold text-slate-900 dark:text-white">Control is no longer optional</div>
+                <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400">
+                  EU AI Act expectations are becoming operational requirements. Traceability and governance are now core capabilities.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <Steps
-    title="Open-Source Integration Process"
-    items={[
-      {
-        title: '<span class="font-medium">Assess & Architect</span>',
-        description:
-          'Understand your agent requirements, existing tooling, and constraints. Design component integration strategy using proven open-source (Kubernetes, Istio, ArgoCD, etc.)',
-        icon: 'tabler:stethoscope',
-      },
-      {
-        title: '<span class="font-medium">Integrate & Configure</span>',
-        description:
-          'Hands-on assembly: wire components together, configure GitOps workflows, define policies (Kyverno), implement zero-trust. All version-controlled, all replaceable.',
-        icon: 'tabler:tools',
-      },
-      {
-        title: '<span class="font-medium">Validate & Operate</span>',
-        description:
-          'Test integration end-to-end, optimize performance, ensure observability. Launch agents with confidence in reliability and security.',
-        icon: 'tabler:rocket',
-      },
-      {
-        title: '<span class="font-medium">Document & Exit</span>',
-        description:
-          'Full documentation of component choices, integration points, and operational procedures. Your team owns the system; we enable independence.',
-        icon: 'tabler:school',
-      },
-    ]}
-  />
+  <section class="bg-slate-950 py-20 text-white dark:bg-black">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <p class="text-sm font-semibold uppercase tracking-[0.24em] text-orange-300">The pain points</p>
+        <h2 class="mt-4 font-heading text-4xl font-black tracking-[-0.03em] sm:text-5xl">
+          The issue is not AI ambition. It is governance capacity.
+        </h2>
+      </div>
 
-  <!-- Features2 Widget ************** -->
+      <div class="mt-12 grid gap-6 lg:grid-cols-3">
+        {painCards.map((card) => (
+          <article class="group overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5">
+            <div class={`h-2 w-full bg-gradient-to-r ${card.accent}`}></div>
+            <div class="p-7">
+              <h3 class="text-2xl font-semibold leading-tight text-white">{card.title}</h3>
+              <p class="mt-4 text-base leading-7 text-slate-300">{card.description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
 
-  <Features2
-    title="Why Choose Kubekub"
-    subtitle="Open-source integrator, not platform vendor—25+ years building portable, standards-based infrastructure"
-    tagline="Value Proposition"
-    items={[
-      {
-        title: 'No Vendor Lock-In',
-        description: 'Every component replaceable: swap Istio for Cilium, ArgoCD for Flux, change cloud providers. CNCF-aligned, open standards throughout.',
-        icon: 'tabler:lock-open',
-      },
-      {
-        title: 'Open-Source Native',
-        description: 'Specialize in Kubernetes ecosystem: proven tools (Istio, ArgoCD, Kyverno, Falco, Prometheus). No proprietary wrappers, no licensing surprises.',
-        icon: 'tabler:brand-github',
-      },
-      {
-        title: 'Integration Expertise',
-        description: 'Architecture strength: how components collaborate, not replacing them. GitOps workflows, security integration, operational automation.',
-        icon: 'tabler:puzzle',
-      },
-      {
-        title: 'Your Team Owns It',
-        description: 'Full transparency, full documentation. Every architectural decision explained. Team walks away capable, not dependent on consultants.',
-        icon: 'tabler:users',
-      },
-      {
-        title: 'Battle-Tested Components',
-        description: 'Production experience scaling proven CNCF tools. Not experimenting—applying proven patterns to your agent infrastructure.',
-        icon: 'tabler:award',
-      },
-    ]}
-  >
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Features2>
+  <section class="bg-white py-20 dark:bg-slate-950">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.24em] text-orange-600 dark:text-orange-300">The outcome</p>
+          <h2 class="mt-4 font-heading text-4xl font-black tracking-[-0.03em] text-slate-950 dark:text-white sm:text-5xl">
+            Adopt Agentic AI with clear accountability.
+          </h2>
+          <p class="mt-6 text-lg leading-8 text-slate-600 dark:text-slate-400">
+            Kubekub applies platform engineering so business, security, and compliance teams can support adoption together.
+          </p>
+          <p class="mt-4 text-lg leading-8 text-slate-600 dark:text-slate-400">
+            The goal is simple: clear control, auditable actions, and less dependency on closed stacks.
+          </p>
+        </div>
 
-  <!-- CallToAction Widget *********** -->
+        <div class="grid gap-5 md:grid-cols-3">
+          {outcomeCards.map((item) => (
+            <article class="rounded-[1.75rem] border border-slate-200 bg-slate-50 p-6 shadow-[0_18px_50px_-40px_rgba(15,23,42,0.8)] dark:border-white/10 dark:bg-slate-900/60">
+              <div class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">{item.kicker}</div>
+              <h3 class="mt-3 text-xl font-semibold leading-tight text-slate-950 dark:text-white">{item.title}</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-400">{item.description}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <CallToAction
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Get in Touch',
-        href: '/contact',
-        icon: 'tabler:message-circle',
-      },
-    ]}
-  >
-    <Fragment slot="title">
-      Ready to Integrate Open-Source for Agentic AI?
-    </Fragment>
+  <section class="bg-[linear-gradient(180deg,#fffaf0_0%,#ffffff_100%)] py-20 dark:bg-[linear-gradient(180deg,#111827_0%,#0f172a_100%)]">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mb-10 max-w-3xl">
+        <p class="text-sm font-semibold uppercase tracking-[0.24em] text-cyan-700 dark:text-cyan-300">How we make that possible</p>
+        <h2 class="mt-4 font-heading text-4xl font-black tracking-[-0.03em] text-slate-950 dark:text-white sm:text-5xl">
+          The method is technical. The goal is business control.
+        </h2>
+        <p class="mt-5 text-lg leading-8 text-slate-600 dark:text-slate-400">
+          We use platform engineering and open-source components so companies keep control over data, operations, and future evolution.
+        </p>
+      </div>
 
-    <Fragment slot="subtitle">
-      Building agentic systems with portability and zero vendor lock-in in mind? Let's discuss how Kubekub can architect the integration of proven open-source components (Kubernetes, Istio, ArgoCD, Kyverno) for your agent infrastructure.
-    </Fragment>
-  </CallToAction>
+      <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        {stackLayers.map((layer, index) => (
+          <article class="rounded-[1.5rem] border border-slate-200 bg-white p-6 dark:border-white/10 dark:bg-slate-900/60">
+            <div class="flex items-center gap-3">
+              <div class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-950 text-sm font-bold text-white dark:bg-white dark:text-slate-950">
+                {index + 1}
+              </div>
+              <h3 class="text-xl font-semibold text-slate-950 dark:text-white">{layer.title}</h3>
+            </div>
+            <p class="mt-4 text-sm leading-7 text-slate-600 dark:text-slate-400">{layer.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
 
+  <section class="bg-slate-100 py-20 dark:bg-slate-900">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
+        <div class="rounded-[2rem] bg-slate-950 p-8 text-white dark:bg-black">
+          <p class="text-sm font-semibold uppercase tracking-[0.24em] text-emerald-300">Who this is for</p>
+          <h2 class="mt-4 font-heading text-4xl font-black tracking-[-0.03em] sm:text-5xl">
+            Companies that need a safe path from AI experimentation to adoption.
+          </h2>
+          <div class="mt-8 space-y-4">
+            {audience.map((item) => (
+              <div class="flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-4">
+                <span class="mt-1 h-2.5 w-2.5 flex-none rounded-full bg-emerald-300"></span>
+                <p class="text-base leading-7 text-slate-200">{item}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="rounded-[2rem] border border-slate-200 bg-white p-8 dark:border-white/10 dark:bg-slate-950/70">
+          <p class="text-sm font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">Engagement model</p>
+          <h3 class="mt-4 text-3xl font-bold tracking-[-0.03em] text-slate-950 dark:text-white">
+            A blueprint your company can keep and operate.
+          </h3>
+          <p class="mt-5 text-lg leading-8 text-slate-600 dark:text-slate-400">
+            Kubekub focuses on architecture, integration, governance patterns, and deployment. The result is a customer-owned foundation for AI adoption with more control, less lock-in, and a clearer compliance posture.
+          </p>
+          <div class="mt-8 rounded-[1.5rem] bg-orange-50 p-6 dark:bg-orange-500/10">
+            <div class="text-sm font-semibold uppercase tracking-[0.22em] text-orange-700 dark:text-orange-300">Outcome</div>
+            <p class="mt-3 text-lg leading-8 text-slate-700 dark:text-slate-300">
+              AI agents can operate inside the company with defined boundaries, human oversight, and evidence for security and compliance teams.
+            </p>
+          </div>
+          <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+            <a
+              href="/technical"
+              class="inline-flex items-center justify-center rounded-full border border-slate-300 px-6 py-3.5 text-sm font-semibold text-slate-900 transition hover:border-slate-950 dark:border-white/15 dark:text-white dark:hover:border-white/40"
+            >
+              View Technical Details
+            </a>
+            <a
+              href="/contact"
+              class="inline-flex items-center justify-center rounded-full bg-orange-500 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-orange-600"
+            >
+              Discuss a Deployment
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>

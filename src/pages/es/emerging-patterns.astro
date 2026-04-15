@@ -1,0 +1,69 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Features from '~/components/widgets/Features.astro';
+
+const metadata = {
+  title: 'Patrones emergentes - Kubekub',
+  description: 'Patrones de arquitectura para la siguiente generacion de sistemas agénticos.',
+};
+---
+
+<Layout metadata={metadata}>
+  <Features
+    id="patterns"
+    tagline="Arquitectura futura"
+    title="Patrones emergentes para IA Agéntica"
+    subtitle="Arquitecturas experimentales combinando tecnicas nuevas con componentes open source probados"
+    items={[
+      {
+        title: 'SLMs + Swarms de agentes',
+        description:
+          'Modelos pequenos dentro del perimetro de la empresa para tareas sensibles, con orquestacion distribuida.',
+        icon: 'tabler:brain',
+      },
+      {
+        title: 'Adapters LoRA para especializacion',
+        description:
+          'Especializacion por dominio sin fine-tuning completo, manteniendo datos y control en casa.',
+        icon: 'tabler:layers-linked',
+      },
+      {
+        title: 'Sourcing soberano de LLMs',
+        description:
+          'Priorizar proveedores y hosting europeos para requisitos de residencia de datos y soberania.',
+        icon: 'tabler:world',
+      },
+      {
+        title: 'Capas de coordinacion multi-agente',
+        description:
+          'Planificacion jerarquica, consenso y asignacion dinamica de roles en runtime Kubernetes.',
+        icon: 'tabler:network',
+      },
+      {
+        title: 'Optimizacion de inferencia',
+        description:
+          'Batching dinamico, cuantizacion y optimizacion para reducir coste y latencia en produccion.',
+        icon: 'tabler:rocket',
+      },
+      {
+        title: 'Despliegue de agentes en edge',
+        description:
+          'Patrones offline-first y sincronizacion cloud para entornos distribuidos.',
+        icon: 'tabler:wifi-0',
+      },
+      {
+        title: 'Feedback autonomo y self-healing',
+        description:
+          'Deteccion de fallos y remediacion automatizada con observabilidad y politicas.',
+        icon: 'tabler:heart-handshake',
+      },
+      {
+        title: 'Seguridad de supply chain',
+        description:
+          'Provenance, SBOM y politicas de admision para artefactos de agentes y workloads de IA.',
+        icon: 'tabler:shield-lock',
+      },
+    ]}
+  />
+</Layout>

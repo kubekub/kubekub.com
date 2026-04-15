@@ -1,0 +1,31 @@
+---
+import Features2 from '~/components/widgets/Features2.astro';
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'Equipo',
+};
+---
+
+<Layout metadata={metadata}>
+  <Features2
+    title="Nuestro equipo"
+    subtitle="Platform engineering para IA Agéntica"
+    items={[
+      {
+        title: 'Juan Carlos Garcia Pelaez',
+        description: 'Fundador y Cloud Native AI Platform Engineer con mas de 25 anos de experiencia en arquitectura IT. Especializado en plataformas de IA Agéntica sobre Kubernetes, GitOps y seguridad en produccion.',
+        icon: 'tabler:user',
+        callToAction: {
+          text: 'Perfil de LinkedIn',
+          href: 'https://www.linkedin.com/in/juancarlosgpelaez/',
+          target: '_blank',
+        },
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+</Layout>

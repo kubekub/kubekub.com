@@ -1,36 +1,85 @@
 import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
 
-export const headerData = {
-  links: [
+type Locale = 'en' | 'es';
 
-    {
-      text: 'Home',
-      href: '/',
-    },
-    {
-      text: 'Team',
-      href: getPermalink('/team'),
-    },
-    {
-      text: 'Blueprint',
-      href: getPermalink('/blueprint'),
-    },
-    {
-      text: 'Emerging Patterns',
-      href: getPermalink('/emerging-patterns'),
-    },
-    {
-      text: 'Blog',
-      href: getBlogPermalink(),
-    },
-    {
-      text: 'Contact',
-      href: getPermalink('/contact'),
-    },    
-  ]
-  // ,
-  // actions: [{ text: 'Download', href: 'https://github.com/arthelokyo/Kubekub', target: '_blank' }],
+const localizePath = (locale: Locale, path: string) => {
+  if (locale === 'es') {
+    return path === '/' ? '/es' : `/es${path}`;
+  }
+  return path;
 };
+
+export const getHeaderData = (locale: Locale = 'en') => {
+  if (locale === 'es') {
+    return {
+      links: [
+        {
+          text: 'Inicio',
+          href: localizePath(locale, '/'),
+        },
+        {
+          text: 'Técnico',
+          href: localizePath(locale, '/technical'),
+        },
+        {
+          text: 'Blueprint',
+          href: localizePath(locale, '/blueprint'),
+        },
+        {
+          text: 'Patrones',
+          href: localizePath(locale, '/emerging-patterns'),
+        },
+        {
+          text: 'Blog',
+          href: localizePath(locale, '/blog'),
+        },
+        {
+          text: 'Equipo',
+          href: localizePath(locale, '/team'),
+        },
+        {
+          text: 'Contacto',
+          href: localizePath(locale, '/contact'),
+        },
+      ],
+    };
+  }
+
+  return {
+    links: [
+      {
+        text: 'Home',
+        href: localizePath(locale, '/'),
+      },
+      {
+        text: 'Technical',
+        href: localizePath(locale, '/technical'),
+      },
+      {
+        text: 'Blueprint',
+        href: localizePath(locale, '/blueprint'),
+      },
+      {
+        text: 'Emerging Patterns',
+        href: localizePath(locale, '/emerging-patterns'),
+      },
+      {
+        text: 'Blog',
+        href: localizePath(locale, '/blog'),
+      },
+      {
+        text: 'Team',
+        href: localizePath(locale, '/team'),
+      },
+      {
+        text: 'Contact',
+        href: localizePath(locale, '/contact'),
+      },
+    ],
+  };
+};
+
+export const headerData = getHeaderData('en');
 
 export const footerData = {}
  

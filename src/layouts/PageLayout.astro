@@ -3,7 +3,7 @@ import Layout from '~/layouts/Layout.astro';
 import Header from '~/components/widgets/Header.astro';
 import Footer from '~/components/widgets/Footer.astro';
 
-import { headerData, footerData } from '~/navigation';
+import { getHeaderData, footerData } from '~/navigation';
 
 import type { MetaData } from '~/types';
 
@@ -12,11 +12,28 @@ export interface Props {
 }
 
 const { metadata } = Astro.props;
+const pathname = new URL(Astro.url).pathname;
+const isSpanish = pathname === '/es' || pathname.startsWith('/es/');
+const locale = isSpanish ? 'es' : 'en';
+const headerData = getHeaderData(locale);
+
+const languageSwitchHref = isSpanish
+  ? pathname.replace(/^\/es(?=\/|$)/, '') || '/'
+  : `/es${pathname === '/' ? '' : pathname}`;
+
+const languageSwitchText = isSpanish ? 'EN' : 'ES';
 ---
 
 <Layout metadata={metadata}>
   <slot name="header">
-    <Header {...headerData} isSticky showRssFeed showToggleTheme />
+    <Header
+      {...headerData}
+      isSticky
+      showRssFeed
+      showToggleTheme
+      locale={locale}
+      languageSwitch={{ text: languageSwitchText, href: languageSwitchHref }}
+    />
   </slot>
   <main>
     <slot />

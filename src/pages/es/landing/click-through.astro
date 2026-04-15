@@ -1,0 +1,39 @@
+---
+import Layout from '~/layouts/LandingLayout.astro';
+
+import Hero2 from '~/components/widgets/Hero2.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = {
+  title: 'Demo Landing Click-through',
+};
+---
+
+<Layout metadata={metadata}>
+  <Hero2
+    tagline="Demo Click-through"
+    title="Landing Click-through: el puente perfecto a la conversion"
+    subtitle="Aprende a disenar una landing que guia al visitante hacia tu oferta principal."
+    actions={[
+      { variant: 'primary', text: 'Llamada a la accion', href: '#', icon: 'tabler:square-rounded-arrow-right' },
+      { text: 'Saber mas', href: '#' },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      alt: 'Imagen principal Click-through',
+    }}
+  />
+
+  <CallToAction
+    title="Proximamente"
+    subtitle="Estamos trabajando en el contenido de estas paginas demo. Muy pronto estaran listas."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Descargar plantilla',
+        href: 'https://github.com/arthelokyo/Kubekub',
+        icon: 'tabler:download',
+      },
+    ]}
+  />
+</Layout>

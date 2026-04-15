@@ -1,0 +1,156 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = {
+  title: 'Kubekub — Blueprint Tecnico para Infraestructura de IA Agéntica',
+};
+---
+
+<Layout metadata={metadata}>
+  <Hero
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Agendar una consulta',
+        href: '/es/contact',
+        icon: 'tabler:message-circle',
+      },
+      { text: 'Volver al inicio', href: '/es' },
+    ]}
+  >
+    <Fragment slot="title">
+      Infraestructura de <span class="text-accent dark:text-white highlight">IA Agéntica</span> con control y seguridad
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      Arquitectura y despliegue de sistemas de agentes autonomos con componentes <span class="font-semibold">open source probados</span> (Kubernetes, Istio, ArgoCD, KServe), GitOps, politicas de seguridad y enfoque sin lock-in.
+    </Fragment>
+  </Hero>
+
+  <Features
+    id="about"
+    tagline="Integracion Open Source"
+    title="Stack tecnico para IA Agéntica"
+    subtitle="Integramos componentes open source en una arquitectura operable y segura"
+    items={[
+      {
+        title: 'KAgent y plano de control de agentes',
+        description:
+          'Integracion de KAgent con MCP y ToolHive para orquestacion, gobernanza y autorizacion en Kubernetes.',
+        icon: 'tabler:robot',
+      },
+      {
+        title: 'Gateway API para inferencia',
+        description:
+          'Enrutado de peticiones, balanceo y orquestacion multi-endpoint para workloads de IA.',
+        icon: 'tabler:route',
+      },
+      {
+        title: 'Seguridad Zero Trust',
+        description:
+          'Istio, Kyverno y controles runtime para proteger datos y acciones de agentes.',
+        icon: 'tabler:lock',
+      },
+      {
+        title: 'Capa GitOps',
+        description:
+          'ArgoCD para despliegues y gestion declarativa de infraestructura y politicas.',
+        icon: 'tabler:git-merge',
+      },
+      {
+        title: 'Observabilidad y respuesta',
+        description:
+          'Metricas, logs y trazas para operar con evidencia y reducir puntos ciegos.',
+        icon: 'tabler:chart-dots',
+      },
+      {
+        title: 'Diseno multi-tenant y portable',
+        description:
+          'Aislamiento, RBAC y politicas de red portables entre cloud y on-prem.',
+        icon: 'tabler:shield-check',
+      },
+    ]}
+  />
+
+  <Steps
+    title="Proceso de integracion"
+    items={[
+      {
+        title: '<span class="font-medium">Evaluar y disenar</span>',
+        description:
+          'Analizamos requisitos de agentes, seguridad y cumplimiento para definir arquitectura objetivo.',
+        icon: 'tabler:stethoscope',
+      },
+      {
+        title: '<span class="font-medium">Integrar y configurar</span>',
+        description:
+          'Conectamos componentes, flujos GitOps y politicas de control en tu entorno.',
+        icon: 'tabler:tools',
+      },
+      {
+        title: '<span class="font-medium">Validar y operar</span>',
+        description:
+          'Pruebas end-to-end, observabilidad y hardening para pasar a produccion con seguridad.',
+        icon: 'tabler:rocket',
+      },
+      {
+        title: '<span class="font-medium">Documentar y transferir</span>',
+        description:
+          'Tu equipo se queda con el conocimiento, el codigo y el control de la operacion.',
+        icon: 'tabler:school',
+      },
+    ]}
+  />
+
+  <Features2
+    title="Por que Kubekub"
+    subtitle="Integracion open source orientada a control, no dependencia"
+    tagline="Propuesta de valor"
+    items={[
+      {
+        title: 'Sin lock-in',
+        description: 'Componentes reemplazables y arquitectura portable para evolucionar sin ataduras.',
+        icon: 'tabler:lock-open',
+      },
+      {
+        title: 'Open source por diseno',
+        description: 'Uso de estandares y ecosistema cloud-native para mantener soberania tecnica.',
+        icon: 'tabler:brand-github',
+      },
+      {
+        title: 'Tu equipo lo opera',
+        description: 'Documentacion completa y transferencia para autonomia real despues del despliegue.',
+        icon: 'tabler:users',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Hablar con nosotros',
+        href: '/es/contact',
+        icon: 'tabler:message-circle',
+      },
+    ]}
+  >
+    <Fragment slot="title">
+      Listo para desplegar IA Agéntica con control real?
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      Te ayudamos a disenar e integrar una base tecnica gobernable, segura y sostenible en el tiempo.
+    </Fragment>
+  </CallToAction>
+</Layout>
