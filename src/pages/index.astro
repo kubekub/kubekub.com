@@ -1,24 +1,13 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 
-import Hero from '~/components/widgets/Hero.astro';
-import Features from '~/components/widgets/Features.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
-
-const metadata = {
-  title: 'Kubekub — Secure Agentic AI, Simplified',
-  ignoreTitleTemplate: true,
-};
----
-
-<Layout metadata={metadata}>
-  <!-- Hero Widget ******************* -->
 const metadata = {
   title: 'Kubekub — AI Governance Blueprint on Kubernetes',
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Talk to Us',
+  description:
+    'Kubekub helps companies deploy governed AI agents on their own infrastructure with platform engineering, open-source standards, and controls aligned with the EU AI Act.',
+  ignoreTitleTemplate: true,
+};
+
 const riskCards = [
   {
     title: 'Agents acting on real systems',
@@ -105,96 +94,232 @@ const proofPoints = [
   'Cloud-native and Kubernetes work across Europe, public sector, Roche, and Hexagon',
   'A blueprint approach: deployed in the customer infrastructure, operated under the customer rules',
 ];
+---
 
-        href: '/contact',
-        icon: 'tabler:message-circle',
-      },
-      { text: 'Technical Blueprint', href: '/technical' },
-    ]}
-  >
-    <Fragment slot="title">
-      Secure <span class="text-accent dark:text-white highlight">Agentic AI</span> Without the Chaos
-    </Fragment>
+<Layout metadata={metadata}>
+  <section class="relative overflow-hidden bg-[linear-gradient(135deg,#fff7ed_0%,#f8fafc_38%,#ecfeff_100%)] dark:bg-[linear-gradient(135deg,#0f172a_0%,#111827_42%,#022c22_100%)]">
+    <div class="absolute inset-0 opacity-70">
+      <div class="absolute left-[-10rem] top-[-7rem] h-72 w-72 rounded-full bg-orange-200/60 blur-3xl dark:bg-orange-500/15"></div>
+      <div class="absolute right-[-8rem] top-20 h-80 w-80 rounded-full bg-cyan-200/60 blur-3xl dark:bg-cyan-500/15"></div>
+      <div class="absolute bottom-[-9rem] left-1/3 h-72 w-72 rounded-full bg-emerald-200/50 blur-3xl dark:bg-emerald-500/10"></div>
+    </div>
 
-    <Fragment slot="subtitle">
-      Build and operate agentic systems with <span class="font-semibold">clear controls, strong security, and full visibility</span>. We help teams move from experiments to production safely.
-    </Fragment>
-  </Hero>
+    <div class="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+      <div class="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
+        <div>
+          <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-slate-900/10 bg-white/80 px-4 py-2 text-sm font-medium tracking-wide text-slate-700 shadow-sm backdrop-blur dark:border-white/10 dark:bg-slate-900/60 dark:text-slate-200">
+            <span class="h-2 w-2 rounded-full bg-emerald-500"></span>
+            AI governance, regulation, and control for real companies
+          </div>
 
-  <Features
-    id="about"
-    tagline="What You Get"
-    title="A Controlled Agentic Platform"
-    subtitle="Simple principles for safe autonomy, backed by proven open-source building blocks."
-    items={[
-      {
-        title: 'Governed Agent Actions',
-        description:
-          'Policies, approvals, and scoped permissions keep agents useful without letting them run wild.',
-        icon: 'tabler:shield-check',
-      },
-      {
-        title: 'Security by Default',
-        description:
-          'Zero-trust networking, least privilege, and runtime controls protect data and systems from accidental misuse.',
-        icon: 'tabler:lock',
-      },
-      {
-        title: 'Observable and Auditable',
-        description:
-          'Every action is traceable. You get logs, metrics, and incident visibility to operate with confidence.',
-        icon: 'tabler:chart-dots',
-      },
-    ]}
-  />
+          <h1 class="max-w-4xl font-heading text-5xl font-black leading-[0.96] tracking-[-0.04em] text-slate-950 dark:text-white sm:text-6xl xl:text-7xl">
+            Bring AI agents into the company without losing control.
+          </h1>
 
-  <Features
-    tagline="How We Work"
-    title="Practical, Open, and Vendor-Neutral"
-    subtitle="We integrate proven open-source tools into a system your team can understand, own, and evolve."
-    items={[
-      {
-        title: 'No Lock-In',
-        description:
-          'Your architecture stays portable across cloud and on-prem. Replace components when you need to, not when a vendor decides.',
-        icon: 'tabler:lock-open',
-      },
-      {
-        title: 'GitOps and Policy-as-Code',
-        description:
-          'Infrastructure, policies, and workflows live in Git for reliable operations and clear change history.',
-        icon: 'tabler:git-branch',
-      },
-      {
-        title: 'Deep Technical Option',
-        description:
-          'Need all architectural details? Visit the technical blueprint with stack and implementation patterns.',
-        icon: 'tabler:cpu',
-      },
-    ]}
-  />
+          <p class="mt-6 max-w-3xl text-xl leading-8 text-slate-700 dark:text-slate-300">
+            Most companies are not blocked by models. They are blocked by risk: who can access data, what an agent is allowed to do, how actions are approved, and how to prove control to security, audit, and regulators.
+          </p>
 
-  <CallToAction
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Get in Touch',
-        href: '/contact',
-        icon: 'tabler:message-circle',
-      },
-      {
-        text: 'View Technical Blueprint',
-        href: '/technical',
-      },
-    ]}
-  >
-    <Fragment slot="title">
-      Ready to Build Agentic AI with Real Control?
-    </Fragment>
+          <p class="mt-4 max-w-3xl text-lg leading-8 text-slate-600 dark:text-slate-400">
+            Kubekub helps design and deploy a customer-owned blueprint so AI agents can run on your infrastructure with governance, traceability, and compliance by design, including readiness for the EU AI Act.
+          </p>
 
-    <Fragment slot="subtitle">
-      Start with a clear strategy: secure execution, policy guardrails, and reliable operations. Then scale with confidence.
-    </Fragment>
-  </CallToAction>
+          <div class="mt-10 flex flex-col gap-4 sm:flex-row">
+            <a
+              href="/contact"
+              class="inline-flex items-center justify-center rounded-full bg-slate-950 px-7 py-4 text-base font-semibold text-white shadow-[0_18px_45px_-18px_rgba(15,23,42,0.7)] transition hover:-translate-y-0.5 hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
+            >
+              Talk About Your Risks
+            </a>
+            <a
+              href="/blueprint"
+              class="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white/80 px-7 py-4 text-base font-semibold text-slate-900 backdrop-blur transition hover:-translate-y-0.5 hover:border-slate-950 dark:border-white/15 dark:bg-slate-900/60 dark:text-white dark:hover:border-white/40"
+            >
+              See the Blueprint
+            </a>
+          </div>
 
+          <div class="mt-10 grid gap-4 sm:grid-cols-3">
+            {proofPoints.map((point) => (
+              <div class="rounded-3xl border border-white/70 bg-white/75 p-4 text-sm leading-6 text-slate-700 shadow-[0_18px_50px_-28px_rgba(15,23,42,0.45)] backdrop-blur dark:border-white/10 dark:bg-slate-900/55 dark:text-slate-300">
+                {point}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="lg:pt-6">
+          <div class="rounded-[2rem] border border-slate-200/70 bg-white/80 p-6 shadow-[0_30px_120px_-40px_rgba(15,23,42,0.45)] backdrop-blur dark:border-white/10 dark:bg-slate-900/70">
+            <div class="rounded-[1.5rem] bg-slate-950 p-6 text-white dark:bg-slate-950/90">
+              <div class="text-xs font-semibold uppercase tracking-[0.22em] text-cyan-300">The core problem</div>
+              <div class="mt-4 text-3xl font-bold leading-tight">AI moves fast. Governance usually arrives too late.</div>
+              <div class="mt-4 space-y-3 text-sm leading-6 text-slate-300">
+                <div class="flex items-start gap-3">
+                  <span class="mt-1 h-2.5 w-2.5 rounded-full bg-cyan-300"></span>
+                  <p>Agents touch real systems, real customer data, and real business processes.</p>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="mt-1 h-2.5 w-2.5 rounded-full bg-emerald-300"></span>
+                  <p>Without clear controls, the risk stays with the company, not with the AI vendor.</p>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span class="mt-1 h-2.5 w-2.5 rounded-full bg-amber-300"></span>
+                  <p>Security, audit, and compliance teams need evidence, approvals, and traceability before scale.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-5 grid gap-4 sm:grid-cols-2">
+              <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-white/10 dark:bg-slate-900/50">
+                <div class="text-sm font-semibold text-slate-500 dark:text-slate-400">What companies want</div>
+                <div class="mt-2 text-lg font-semibold text-slate-900 dark:text-white">Adopt AI safely</div>
+                <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400">
+                  Use agents to improve operations without exposing the company to uncontrolled access, opaque automation, or governance gaps.
+                </p>
+              </div>
+
+              <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-white/10 dark:bg-slate-900/50">
+                <div class="text-sm font-semibold text-slate-500 dark:text-slate-400">What usually blocks them</div>
+                <div class="mt-2 text-lg font-semibold text-slate-900 dark:text-white">Lack of control</div>
+                <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400">
+                  No clear permissions, no approval model, no audit trail, and too much dependency on closed vendor platforms.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-slate-950 py-20 text-white dark:bg-black">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <p class="text-sm font-semibold uppercase tracking-[0.24em] text-orange-300">The business problem</p>
+        <h2 class="mt-4 font-heading text-4xl font-black tracking-[-0.03em] sm:text-5xl">
+          Companies want AI adoption. What they fear is loss of control.
+        </h2>
+      </div>
+
+      <div class="mt-12 grid gap-6 lg:grid-cols-3">
+        {riskCards.map((card) => (
+          <article class="group overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5">
+            <div class={`h-2 w-full bg-gradient-to-r ${card.accent}`}></div>
+            <div class="p-7">
+              <h3 class="text-2xl font-semibold leading-tight text-white">{card.title}</h3>
+              <p class="mt-4 text-base leading-7 text-slate-300">{card.description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-20 dark:bg-slate-950">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.24em] text-orange-600 dark:text-orange-300">The Kubekub approach</p>
+          <h2 class="mt-4 font-heading text-4xl font-black tracking-[-0.03em] text-slate-950 dark:text-white sm:text-5xl">
+            Governance first, architecture second.
+          </h2>
+          <p class="mt-6 text-lg leading-8 text-slate-600 dark:text-slate-400">
+            The first problem to solve is not which framework to choose. It is how to let AI act inside the business without creating blind spots for legal, security, and operations teams.
+          </p>
+          <p class="mt-4 text-lg leading-8 text-slate-600 dark:text-slate-400">
+            Kubekub uses platform engineering to turn those concerns into something executable: approvals, traceability, access boundaries, observability, and infrastructure the customer owns.
+          </p>
+        </div>
+
+        <div class="grid gap-5 md:grid-cols-2">
+          {controlAreas.map((item) => (
+            <article class="rounded-[1.75rem] border border-slate-200 bg-slate-50 p-6 shadow-[0_18px_50px_-40px_rgba(15,23,42,0.8)] dark:border-white/10 dark:bg-slate-900/60">
+              <div class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">{item.kicker}</div>
+              <h3 class="mt-3 text-xl font-semibold leading-tight text-slate-950 dark:text-white">{item.title}</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-400">{item.description}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-[linear-gradient(180deg,#fffaf0_0%,#ffffff_100%)] py-20 dark:bg-[linear-gradient(180deg,#111827_0%,#0f172a_100%)]">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mb-10 max-w-3xl">
+        <p class="text-sm font-semibold uppercase tracking-[0.24em] text-cyan-700 dark:text-cyan-300">How we solve it</p>
+        <h2 class="mt-4 font-heading text-4xl font-black tracking-[-0.03em] text-slate-950 dark:text-white sm:text-5xl">
+          Open source and platform engineering are the means, not the message.
+        </h2>
+        <p class="mt-5 text-lg leading-8 text-slate-600 dark:text-slate-400">
+          We use open standards and modular components because companies need sovereignty, portability, and long-term control, especially when governance and regulation matter.
+        </p>
+      </div>
+
+      <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        {stackLayers.map((layer, index) => (
+          <article class="rounded-[1.5rem] border border-slate-200 bg-white p-6 dark:border-white/10 dark:bg-slate-900/60">
+            <div class="flex items-center gap-3">
+              <div class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-950 text-sm font-bold text-white dark:bg-white dark:text-slate-950">
+                {index + 1}
+              </div>
+              <h3 class="text-xl font-semibold text-slate-950 dark:text-white">{layer.title}</h3>
+            </div>
+            <p class="mt-4 text-sm leading-7 text-slate-600 dark:text-slate-400">{layer.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-slate-100 py-20 dark:bg-slate-900">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
+        <div class="rounded-[2rem] bg-slate-950 p-8 text-white dark:bg-black">
+          <p class="text-sm font-semibold uppercase tracking-[0.24em] text-emerald-300">Who this is for</p>
+          <h2 class="mt-4 font-heading text-4xl font-black tracking-[-0.03em] sm:text-5xl">
+            Teams that need AI control before scale.
+          </h2>
+          <div class="mt-8 space-y-4">
+            {audience.map((item) => (
+              <div class="flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-4">
+                <span class="mt-1 h-2.5 w-2.5 flex-none rounded-full bg-emerald-300"></span>
+                <p class="text-base leading-7 text-slate-200">{item}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="rounded-[2rem] border border-slate-200 bg-white p-8 dark:border-white/10 dark:bg-slate-950/70">
+          <p class="text-sm font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">Engagement model</p>
+          <h3 class="mt-4 text-3xl font-bold tracking-[-0.03em] text-slate-950 dark:text-white">
+            A blueprint your company can keep and operate.
+          </h3>
+          <p class="mt-5 text-lg leading-8 text-slate-600 dark:text-slate-400">
+            Kubekub focuses on architecture, integration, governance patterns, and deployment. The result is a customer-owned foundation for AI adoption with more control, less lock-in, and clearer compliance posture.
+          </p>
+          <div class="mt-8 rounded-[1.5rem] bg-orange-50 p-6 dark:bg-orange-500/10">
+            <div class="text-sm font-semibold uppercase tracking-[0.22em] text-orange-700 dark:text-orange-300">Outcome</div>
+            <p class="mt-3 text-lg leading-8 text-slate-700 dark:text-slate-300">
+              AI agents can operate inside the company with defined boundaries, human oversight, and evidence for security and compliance teams.
+            </p>
+          </div>
+          <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+            <a
+              href="/technical"
+              class="inline-flex items-center justify-center rounded-full border border-slate-300 px-6 py-3.5 text-sm font-semibold text-slate-900 transition hover:border-slate-950 dark:border-white/15 dark:text-white dark:hover:border-white/40"
+            >
+              View Technical Details
+            </a>
+            <a
+              href="/contact"
+              class="inline-flex items-center justify-center rounded-full bg-orange-500 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-orange-600"
+            >
+              Discuss a Deployment
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>
